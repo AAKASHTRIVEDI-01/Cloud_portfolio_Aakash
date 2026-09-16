@@ -76,7 +76,7 @@ export default function Hero() {
 
           {/* Download Resume */}
           <a
-            href={`${import.meta.env.BASE_URL}Aakash_Trivedi_Resume.pdf`}
+            href="/Cloud_portfolio_Aakash/Aakash_Trivedi_Resume.pdf"
             download="Aakash_Trivedi_Resume.pdf"
             className="group flex items-center gap-2 rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-gray-200 transition-all duration-300 hover:border-gold-500/40 hover:text-gold-300"
           >
