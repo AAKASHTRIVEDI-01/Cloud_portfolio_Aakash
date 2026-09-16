@@ -7,15 +7,15 @@ html {
 }
 
 body {
-  background-color: #0E0C0A;
-  color: #E5E7EB;
+  background-color: #0F1110;
+  color: #E7E5E0;
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: rgba(240, 131, 30, 0.3);
+  background: rgba(201, 168, 78, 0.30);
   color: #fff;
 }
 
@@ -23,14 +23,14 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0E0C0A;
+  background: #0F1110;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(240, 131, 30, 0.2);
+  background: rgba(201, 168, 78, 0.20);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(240, 131, 30, 0.4);
+  background: rgba(201, 168, 78, 0.40);
 }
 
 .glass {
@@ -41,10 +41,10 @@ body {
 }
 
 .glass-orange {
-  background: rgba(240, 131, 30, 0.04);
+  background: rgba(201, 168, 78, 0.04);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(240, 131, 30, 0.1);
+  border: 1px solid rgba(201, 168, 78, 0.10);
 }
 
 .hazy-white {
@@ -73,8 +73,8 @@ body {
   font-weight: 600;
 }
 
-.gradient-text-flame {
-  background: linear-gradient(135deg, #F9C078 0%, #F0831E 50%, #E06B12 100%);
+.gradient-text-gold {
+  background: linear-gradient(135deg, #E8D99B 0%, #C9A84E 50%, #92731F 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -88,7 +88,7 @@ body {
   position: absolute;
   inset: 0;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(240, 131, 30, 0.4), rgba(240, 131, 30, 0.05));
+  background: linear-gradient(135deg, rgba(201, 168, 78, 0.40), rgba(240, 131, 30, 0.05));
   border-radius: inherit;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;

@@ -33,11 +33,11 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
       />
 
       {/* Panel */}
-      <div className="relative z-10 my-auto w-full max-w-3xl animate-scale-in rounded-2xl border border-flame-500/15 bg-ink-800/95 p-6 shadow-2xl shadow-black/50 sm:p-8 md:p-10">
+      <div className="relative z-10 my-auto w-full max-w-3xl animate-scale-in rounded-2xl border border-gold-500/15 bg-ink-800/95 p-6 shadow-2xl shadow-black/50 sm:p-8 md:p-10">
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 text-gray-400 transition-colors hover:border-flame-500/40 hover:text-flame-300"
+          className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 text-gray-400 transition-colors hover:border-gold-500/40 hover:text-gold-300"
           aria-label="Close"
         >
           <X className="h-4 w-4" />
@@ -45,7 +45,7 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
 
         {/* Title */}
         <div className="mb-6 pr-10">
-          <span className="eyebrow text-flame-400">Case Study</span>
+          <span className="eyebrow text-gold-400">Case Study</span>
           <h2 className="mt-3 font-display text-2xl font-bold leading-tight text-white sm:text-3xl">
             {study.title}
           </h2>
@@ -59,7 +59,7 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
           {study.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-md border border-flame-500/20 bg-flame-500/[0.08] px-2.5 py-1 text-xs font-medium text-flame-200"
+              className="rounded-md border border-gold-500/20 bg-gold-500/[0.08] px-2.5 py-1 text-xs font-medium text-gold-200"
             >
               {tag}
             </span>
@@ -70,14 +70,14 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-white/8 bg-white/[0.02] p-5">
             <div className="mb-2 flex items-center gap-2">
-              <AlertCircle className="h-4 w-4 text-flame-400" />
+              <AlertCircle className="h-4 w-4 text-gold-400" />
               <h3 className="font-display text-sm font-semibold text-white">The Problem</h3>
             </div>
             <p className="text-xs leading-relaxed text-gray-400">{study.problem}</p>
           </div>
           <div className="rounded-xl border border-white/8 bg-white/[0.02] p-5">
             <div className="mb-2 flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 text-flame-400" />
+              <CheckCircle2 className="h-4 w-4 text-gold-400" />
               <h3 className="font-display text-sm font-semibold text-white">What I Solved</h3>
             </div>
             <p className="text-xs leading-relaxed text-gray-400">{study.solution}</p>
@@ -87,13 +87,13 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
         {/* What I Built */}
         <div className="mt-6">
           <div className="mb-3 flex items-center gap-2">
-            <Wrench className="h-4 w-4 text-flame-400" />
+            <Wrench className="h-4 w-4 text-gold-400" />
             <h3 className="font-display text-sm font-semibold text-white">What I Built</h3>
           </div>
           <ul className="grid gap-2 sm:grid-cols-2">
             {study.whatIBuilt.map((item) => (
               <li key={item} className="flex items-start gap-2 text-xs text-gray-400">
-                <span className="mt-1.5 h-1 w-1 flex-none rounded-full bg-flame-400" />
+                <span className="mt-1.5 h-1 w-1 flex-none rounded-full bg-gold-400" />
                 {item}
               </li>
             ))}
@@ -118,12 +118,12 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
         {/* Focus */}
         <div className="mt-6 border-t border-white/8 pt-5">
           <div className="mb-2 flex items-center gap-2">
-            <Target className="h-4 w-4 text-flame-400" />
+            <Target className="h-4 w-4 text-gold-400" />
             <span className="text-xs font-medium text-gray-500">Focus Areas</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {study.focus.map((f) => (
-              <span key={f} className="text-xs font-medium text-flame-300">
+              <span key={f} className="text-xs font-medium text-gold-300">
                 {f}
               </span>
             )).reduce((acc: React.ReactNode[], el, i) => {
