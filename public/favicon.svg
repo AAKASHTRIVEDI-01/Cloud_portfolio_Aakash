@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="8" fill="#0B0E10"/>
+  <rect x="0.5" y="0.5" width="31" height="31" rx="7.5" stroke="#D4AF37" stroke-opacity="0.4"/>
+  <path d="M9.5 21C8.11929 21 7 19.8807 7 18.5C7 17.1869 8.01429 16.1118 9.30909 16.011C9.64091 13.7382 11.6033 12 14 12C15.1432 12 16.1834 12.4348 16.969 13.149C17.6534 11.8385 19.0305 11 20.6 11C22.9196 11 24.8 12.8804 24.8 15.2C24.8 15.3524 24.7892 15.5022 24.7684 15.6487C25.4952 16.1952 26 17.0427 26 18C26 19.6569 24.6569 21 23 21H9.5Z" fill="url(#cloudGrad)"/>
+  <defs>
+    <linearGradient id="cloudGrad" x1="7" y1="11" x2="26" y2="21" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF6D6"/>
+      <stop offset="0.5" stop-color="#D4AF37"/>
+      <stop offset="1" stop-color="#C5A028"/>
+    </linearGradient>
+  </defs>
+</svg>
