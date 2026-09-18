@@ -1,14 +1,25 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
+import {
+  Menu,
+  X,
+  Sparkles,
+  User,
+  Cpu,
+  FolderGit2,
+  Award,
+  Briefcase,
+  Send,
+  Github,
+} from 'lucide-react';
 import atLogo from '../assets/at.jpg';
 
 const NAV_LINKS = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Certifications', href: '#certifications' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '#about', icon: User },
+  { label: 'Skills', href: '#skills', icon: Cpu },
+  { label: 'Projects', href: '#projects', icon: FolderGit2 },
+  { label: 'Certifications', href: '#certifications', icon: Award },
+  { label: 'Experience', href: '#experience', icon: Briefcase },
+  { label: 'Contact', href: '#contact', icon: Send },
 ];
 
 export default function Navbar() {
@@ -43,7 +54,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-3 sm:pt-4 pointer-events-none">
       <nav
-        className={`pointer-events-auto flex items-center justify-between w-full max-w-5xl rounded-2xl px-4 py-2.5 sm:px-6 sm:py-3 transition-all duration-300 ${
+        className={`pointer-events-auto flex items-center justify-between w-full max-w-5xl rounded-2xl px-3.5 py-2 sm:px-5 sm:py-2.5 transition-all duration-300 ${
           scrolled
             ? 'glass-panel shadow-2xl shadow-black/60 border-white/10'
             : 'bg-ink-900/60 backdrop-blur-md border border-white/5 shadow-lg shadow-black/20'
@@ -64,31 +75,50 @@ export default function Navbar() {
           </div>
         </a>
 
-        {/* Desktop Links */}
-        <div className="hidden items-center gap-1 lg:gap-2 md:flex">
+        {/* Desktop Links with Icons */}
+        <div className="hidden items-center gap-1 lg:gap-1.5 md:flex">
           {NAV_LINKS.map((link) => {
+            const Icon = link.icon;
             const isActive = activeSection === link.href.substring(1);
             return (
               <a
                 key={link.href}
                 href={link.href}
-                className={`relative px-3 py-1.5 text-xs font-medium transition-all duration-200 rounded-lg ${
+                className={`group relative flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium transition-all duration-200 rounded-lg ${
                   isActive
                     ? 'text-white bg-white/10 shadow-sm'
                     : 'text-gray-400 hover:text-gold-300 hover:bg-white/[0.04]'
                 }`}
               >
-                {link.label}
+                <Icon
+                  className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                    isActive
+                      ? 'text-gold-400'
+                      : 'text-gray-400 group-hover:text-gold-400 group-hover:scale-110'
+                  }`}
+                />
+                <span>{link.label}</span>
                 {isActive && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-[2px] rounded-full bg-gold-400" />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-[2px] rounded-full bg-gold-400 shadow-[0_0_8px_rgba(212,175,55,0.8)]" />
                 )}
               </a>
             );
           })}
         </div>
 
-        {/* Action Button */}
-        <div className="hidden sm:flex items-center gap-3">
+        {/* Action Buttons: GitHub link & Get in touch */}
+        <div className="hidden sm:flex items-center gap-2.5">
+          <a
+            href="https://github.com/AAKASHTRIVEDI-01"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-gray-300 transition-all duration-200 hover:border-gold-500/40 hover:bg-gold-500/10 hover:text-gold-300"
+            aria-label="GitHub Profile"
+            title="GitHub Profile"
+          >
+            <Github className="h-4 w-4" />
+          </a>
+
           <a
             href="#contact"
             className="group relative inline-flex items-center gap-1.5 overflow-hidden rounded-xl border border-gold-500/40 bg-gold-500/10 px-3.5 py-1.5 text-xs font-semibold text-gold-300 transition-all duration-300 hover:border-gold-400 hover:bg-gold-500/20 hover:shadow-[0_0_16px_rgba(212,175,55,0.25)]"
@@ -110,20 +140,38 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {menuOpen && (
-        <div className="pointer-events-auto fixed inset-x-4 top-[70px] z-50 rounded-2xl border border-white/10 bg-ink-900/95 p-4 shadow-2xl backdrop-blur-2xl md:hidden animate-scale-in">
+        <div className="pointer-events-auto fixed inset-x-4 top-[65px] z-50 rounded-2xl border border-white/10 bg-ink-900/95 p-4 shadow-2xl backdrop-blur-2xl md:hidden animate-scale-in">
           <div className="flex flex-col gap-1">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.map((link) => {
+              const Icon = link.icon;
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-gray-300 transition-colors hover:bg-white/5 hover:text-gold-300"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04]">
+                      <Icon className="h-4 w-4 text-gold-400" />
+                    </div>
+                    <span>{link.label}</span>
+                  </div>
+                  <span className="text-xs text-gray-500 font-mono">→</span>
+                </a>
+              );
+            })}
+            <div className="mt-2 border-t border-white/8 pt-3 flex flex-col gap-2">
               <a
-                key={link.href}
-                href={link.href}
+                href="https://github.com/AAKASHTRIVEDI-01"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-gray-300 transition-colors hover:bg-white/5 hover:text-gold-300"
+                className="flex items-center justify-center gap-2 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-gray-200 hover:border-gold-500/40 hover:text-gold-300"
               >
-                <span>{link.label}</span>
-                <ArrowUpRight className="h-4 w-4 text-gray-500" />
+                <Github className="h-4 w-4" />
+                <span>Visit GitHub Profile</span>
               </a>
-            ))}
-            <div className="mt-2 border-t border-white/8 pt-3">
               <a
                 href="#contact"
                 onClick={() => setMenuOpen(false)}

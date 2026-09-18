@@ -103,10 +103,29 @@ function CertCard({
         </span>
       </div>
 
+      {/* Competencies Validated */}
+      <div className="mt-4 flex flex-wrap gap-1.5">
+        {[
+          'Identities & Governance',
+          'Storage & Blob',
+          'Compute & VMs',
+          'Virtual Networking',
+          'Monitoring & Alerting',
+        ].map((item) => (
+          <span
+            key={item}
+            className="inline-flex items-center gap-1 rounded-md border border-gold-500/20 bg-gold-500/[0.05] px-2 py-0.5 text-[11px] font-medium text-gold-300/90"
+          >
+            <CheckCircle2 className="h-3 w-3 text-gold-400 flex-none" />
+            <span>{item}</span>
+          </span>
+        ))}
+      </div>
+
       {/* Certificate Image Preview */}
       <div
         onClick={onOpenModal}
-        className="group/preview relative mt-5 overflow-hidden rounded-xl border border-white/10 bg-black/40 cursor-pointer shadow-md transition-all duration-300 hover:border-gold-500/40"
+        className="group/preview relative mt-4 overflow-hidden rounded-xl border border-white/10 bg-black/40 cursor-pointer shadow-md transition-all duration-300 hover:border-gold-500/40"
       >
         <img
           src={cert.image}

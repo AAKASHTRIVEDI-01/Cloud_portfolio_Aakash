@@ -1,4 +1,4 @@
-import { ArrowRight, Network, GitBranch, Boxes, Layers, ExternalLink } from 'lucide-react';
+import { ArrowRight, Network, GitBranch, Boxes, Layers, ExternalLink, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import { caseStudies, type CaseStudy } from '@/data/caseStudies';
 
@@ -6,6 +6,24 @@ const ICONS: Record<string, typeof Network> = {
   Network,
   GitBranch,
   Boxes,
+};
+
+const ACCENTS: Record<string, { border: string; glow: string; badge: string }> = {
+  'enterprise-infra': {
+    border: 'group-hover:border-azure-500/40',
+    glow: 'group-hover:shadow-[0_0_24px_rgba(2,132,199,0.15)]',
+    badge: 'border-azure-500/30 bg-azure-500/10 text-azure-300',
+  },
+  'iac-cicd': {
+    border: 'group-hover:border-gold-500/40',
+    glow: 'group-hover:shadow-[0_0_24px_rgba(212,175,55,0.15)]',
+    badge: 'border-gold-500/30 bg-gold-500/10 text-gold-300',
+  },
+  'aks-platform': {
+    border: 'group-hover:border-violet-500/40',
+    glow: 'group-hover:shadow-[0_0_24px_rgba(139,92,246,0.15)]',
+    badge: 'border-violet-500/30 bg-violet-500/10 text-violet-300',
+  },
 };
 
 interface ProjectsProps {
@@ -60,21 +78,22 @@ function ProjectCard({
   onOpen: (s: CaseStudy) => void;
 }) {
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const accent = ACCENTS[study.id] ?? ACCENTS['enterprise-infra'];
 
   return (
     <div
       ref={ref}
-      className={`reveal ${visible ? 'visible' : ''} glass-card group flex flex-col justify-between rounded-2xl p-6 sm:p-7 hover:-translate-y-1.5`}
+      className={`reveal ${visible ? 'visible' : ''} glass-card group flex flex-col justify-between rounded-2xl p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1.5 ${accent.border} ${accent.glow}`}
       style={{ transitionDelay: `${index * 120}ms` }}
     >
       <div>
         {/* Top bar */}
         <div className="flex items-center justify-between">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-gold-500/30 bg-gold-500/[0.08] transition-colors duration-300 group-hover:border-gold-400 group-hover:bg-gold-500/15">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-gold-500/30 bg-gold-500/[0.08] transition-all duration-300 group-hover:scale-105 group-hover:border-gold-400 group-hover:bg-gold-500/15">
             <Icon className="h-6 w-6 text-gold-400 transition-transform group-hover:scale-110" />
           </div>
-          <span className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-gray-400">
-            Case Study
+          <span className={`rounded-full border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${accent.badge}`}>
+            Architecture Spec
           </span>
         </div>
 
@@ -90,10 +109,10 @@ function ProjectCard({
 
         {/* What I Built Highlights */}
         {study.whatIBuilt && study.whatIBuilt.length > 0 && (
-          <ul className="mt-4 space-y-1.5 border-t border-white/5 pt-3 text-xs text-gray-400">
-            {study.whatIBuilt.slice(0, 2).map((item, idx) => (
-              <li key={idx} className="flex items-start gap-1.5">
-                <span className="mt-1 h-1 w-1 flex-none rounded-full bg-gold-400" />
+          <ul className="mt-4 space-y-2 border-t border-white/5 pt-3 text-xs text-gray-300">
+            {study.whatIBuilt.slice(0, 3).map((item, idx) => (
+              <li key={idx} className="flex items-start gap-2">
+                <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-none text-gold-400" />
                 <span className="line-clamp-1">{item}</span>
               </li>
             ))}

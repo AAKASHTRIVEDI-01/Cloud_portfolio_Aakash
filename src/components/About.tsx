@@ -1,27 +1,52 @@
-import { Network, Shield, Cpu, Activity, CheckCircle2 } from 'lucide-react';
+import {
+  Network,
+  ShieldCheck,
+  Cpu,
+  Activity,
+  CheckCircle2,
+  Lock,
+  Layers,
+  Workflow,
+  Zap,
+} from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 
 const PILLARS = [
   {
     icon: Network,
     title: 'Cloud Networking & HA',
-    desc: 'Hub-and-spoke topologies, Application Gateway/WAF, NSGs, route tables, and disaster recovery.',
+    accent: 'text-azure-400 border-azure-500/30 bg-azure-500/[0.08] group-hover:border-azure-400 group-hover:bg-azure-500/15',
+    tag: 'Hub & Spoke • WAF',
+    desc: 'Hub-and-spoke topologies, Application Gateway/WAF, NSGs, route tables, and multi-region disaster recovery.',
   },
   {
-    icon: Shield,
+    icon: ShieldCheck,
     title: 'Security & Governance',
-    desc: 'Zero-trust architecture, Entra ID (Azure AD), RBAC enforcement, Azure Policy, and Key Vault.',
+    accent: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/[0.08] group-hover:border-emerald-400 group-hover:bg-emerald-500/15',
+    tag: 'Zero-Trust • RBAC',
+    desc: 'Zero-trust architecture, Entra ID (Azure AD), RBAC enforcement, Azure Policy, Key Vault, and least-privilege access.',
   },
   {
     icon: Cpu,
     title: 'Infrastructure as Code',
-    desc: 'Repeatable, version-controlled provisioning using Bicep, ARM templates, Terraform, and Git.',
+    accent: 'text-gold-400 border-gold-500/30 bg-gold-500/[0.08] group-hover:border-gold-400 group-hover:bg-gold-500/15',
+    tag: 'Bicep • Terraform',
+    desc: 'Repeatable, version-controlled provisioning using Bicep, ARM templates, Terraform, and remote state management.',
   },
   {
     icon: Activity,
     title: 'Observability & DevOps',
-    desc: 'End-to-end CI/CD pipelines in Azure DevOps/GitHub Actions, Azure Monitor, and Log Analytics.',
+    accent: 'text-violet-400 border-violet-500/30 bg-violet-500/[0.08] group-hover:border-violet-400 group-hover:bg-violet-500/15',
+    tag: 'CI/CD • KQL Analytics',
+    desc: 'End-to-end CI/CD pipelines in Azure DevOps/GitHub Actions, Azure Monitor, Log Analytics, and automated alerting.',
   },
+];
+
+const PRINCIPLES = [
+  { icon: Lock, label: 'Zero-Trust Security' },
+  { icon: Layers, label: 'Modular Topologies' },
+  { icon: Workflow, label: 'GitOps Automation' },
+  { icon: Zap, label: 'High-Uptime Resilience' },
 ];
 
 export default function About() {
@@ -56,15 +81,26 @@ export default function About() {
               </p>
             </div>
 
-            {/* Philosophy callout */}
+            {/* Architecture Principles Grid */}
             <div className="mt-8 rounded-2xl border border-gold-500/20 bg-gold-500/[0.04] p-5">
               <div className="flex items-center gap-2 text-xs font-semibold text-gold-300 uppercase tracking-wider">
                 <CheckCircle2 className="h-4 w-4 text-gold-400" />
-                <span>Core Engineering Principle</span>
+                <span>Core Engineering Principles</span>
               </div>
-              <p className="mt-2 text-xs leading-relaxed text-gray-300 sm:text-sm">
-                "Infrastructure should be treated with the same rigor as application code — automated, version-controlled, auditable, and resilient by default."
-              </p>
+              <div className="mt-3 grid grid-cols-2 gap-2.5">
+                {PRINCIPLES.map((p) => {
+                  const PIcon = p.icon;
+                  return (
+                    <div
+                      key={p.label}
+                      className="flex items-center gap-2 rounded-lg border border-white/5 bg-white/[0.02] px-2.5 py-1.5 text-xs text-gray-300"
+                    >
+                      <PIcon className="h-3.5 w-3.5 text-gold-400 flex-none" />
+                      <span className="font-medium text-[11px]">{p.label}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
@@ -75,11 +111,16 @@ export default function About() {
               return (
                 <div
                   key={pillar.title}
-                  className="glass-card group flex flex-col justify-between rounded-2xl p-6"
+                  className="glass-card group flex flex-col justify-between rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1"
                 >
                   <div>
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-gold-500/30 bg-gold-500/[0.08] transition-colors group-hover:border-gold-400 group-hover:bg-gold-500/15">
-                      <Icon className="h-5 w-5 text-gold-400 transition-transform group-hover:scale-110" />
+                    <div className="flex items-center justify-between">
+                      <div className={`flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-300 ${pillar.accent}`}>
+                        <Icon className="h-5 w-5 transition-transform group-hover:scale-110" />
+                      </div>
+                      <span className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-0.5 text-[10px] font-mono text-gray-400">
+                        {pillar.tag}
+                      </span>
                     </div>
                     <h3 className="mt-4 font-display text-base font-bold text-white group-hover:text-gold-300 transition-colors">
                       {pillar.title}
