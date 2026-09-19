@@ -19,7 +19,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative mx-auto max-w-6xl px-6 pt-24 pb-12 sm:pt-32">
+    <section id="contact" className="relative mx-auto max-w-6xl px-6 pt-12 pb-12 sm:pt-16 sm:pb-16">
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="flex items-center gap-2">
           <span className="eyebrow text-gold-400">Get In Touch</span>
@@ -55,7 +55,7 @@ export default function Contact() {
         </div>
 
         {/* Contact Cards Grid */}
-        <div className="mt-12 grid gap-5 sm:grid-cols-3">
+        <div className="mt-8 sm:mt-10 grid gap-5 sm:grid-cols-3">
           {/* Email Card */}
           <div className="glass-card group flex flex-col justify-between rounded-2xl p-6 transition-all duration-300 hover:border-gold-500/40 hover:shadow-[0_0_24px_rgba(212,175,55,0.12)]">
             <div>

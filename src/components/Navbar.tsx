@@ -16,8 +16,8 @@ import atLogo from '../assets/at.jpg';
 const NAV_LINKS = [
   { label: 'About', href: '#about', icon: User },
   { label: 'Skills', href: '#skills', icon: Cpu },
-  { label: 'Projects', href: '#projects', icon: FolderGit2 },
   { label: 'Certifications', href: '#certifications', icon: Award },
+  { label: 'Projects', href: '#projects', icon: FolderGit2 },
   { label: 'Experience', href: '#experience', icon: Briefcase },
   { label: 'Contact', href: '#contact', icon: Send },
 ];

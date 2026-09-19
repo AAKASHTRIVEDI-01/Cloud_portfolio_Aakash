@@ -53,14 +53,14 @@ export default function About() {
   const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
-    <section id="about" className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32">
+    <section id="about" className="relative mx-auto max-w-6xl px-6 py-12 sm:py-16">
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="flex items-center gap-2">
           <span className="eyebrow text-gold-400">About Me</span>
           <span className="h-px w-12 bg-gold-500/30" />
         </div>
 
-        <div className="mt-8 grid gap-12 lg:grid-cols-12 lg:gap-14">
+        <div className="mt-6 sm:mt-8 grid gap-8 lg:grid-cols-12 lg:gap-10">
           {/* Narrative - 5 cols */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
@@ -136,7 +136,7 @@ export default function About() {
         </div>
 
         {/* Tech tags strip */}
-        <div className="mt-12 flex flex-wrap items-center gap-2.5 border-t border-white/5 pt-8">
+        <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-2.5 border-t border-white/5 pt-6">
           <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider mr-2">
             Core Toolkit:
           </span>

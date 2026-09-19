@@ -79,7 +79,7 @@ export default function Experience() {
   const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
-    <section id="experience" className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32">
+    <section id="experience" className="relative mx-auto max-w-6xl px-6 py-12 sm:py-16">
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="flex items-center gap-2">
           <span className="eyebrow text-gold-400">Experience</span>
@@ -93,8 +93,8 @@ export default function Experience() {
         </p>
       </div>
 
-      <div className="mt-14 max-w-3xl">
-        <div className="relative border-l-2 border-white/10 pl-6 sm:pl-10 space-y-10">
+      <div className="mt-8 sm:mt-10 max-w-3xl">
+        <div className="relative border-l-2 border-white/10 pl-6 sm:pl-10 space-y-6 sm:space-y-8">
           {EXPERIENCE.map((exp, i) => (
             <TimelineItem key={i} exp={exp} index={i} />
           ))}

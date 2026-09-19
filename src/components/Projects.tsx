@@ -34,7 +34,7 @@ export default function Projects({ onOpenStudy }: ProjectsProps) {
   const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
-    <section id="projects" className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32">
+    <section id="projects" className="relative mx-auto max-w-6xl px-6 py-12 sm:py-16">
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="flex items-center gap-2">
           <span className="eyebrow text-gold-400">Featured Work</span>
@@ -48,7 +48,7 @@ export default function Projects({ onOpenStudy }: ProjectsProps) {
         </p>
       </div>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-3">
+      <div className="mt-8 sm:mt-10 grid gap-6 md:grid-cols-3">
         {caseStudies.map((study, i) => {
           const Icon = ICONS[study.icon] ?? Network;
           return (

@@ -27,8 +27,8 @@ export default function App() {
           <Hero />
           <About />
           <Skills />
-          <Projects onOpenStudy={setActiveStudy} />
           <Certifications />
+          <Projects onOpenStudy={setActiveStudy} />
           <Experience />
           <Contact />
         </main>
