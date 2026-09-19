@@ -8,11 +8,11 @@ import {
   ShieldCheck,
   Calendar,
   Sparkles,
-  TrendingUp,
-  Compass,
+  Cloud,
 } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import az104Cert from '@/assets/az-104-cert.jpg';
+import awsBadge from '@/assets/aws-cloud-foundations.png';
 
 export interface Certification {
   code: string;
@@ -20,6 +20,7 @@ export interface Certification {
   issuer: string;
   status: string;
   image: string;
+  isBadge?: boolean;
   credentialId?: string;
   certificationNumber?: string;
   issueDate?: string;
@@ -38,6 +39,14 @@ const CERTS: Certification[] = [
     certificationNumber: 'E8F3C1-A4B41E',
     issueDate: 'July 1, 2026',
     expiryDate: 'July 2, 2027',
+  },
+  {
+    code: 'AWS Academy',
+    name: 'AWS Academy Graduate - Cloud Foundations',
+    issuer: 'Amazon Web Services (AWS)',
+    status: 'Trained & Accredited',
+    image: awsBadge,
+    isBadge: true,
   },
 ];
 
@@ -64,41 +73,25 @@ const VALIDATED_COMPETENCIES = [
   },
 ];
 
-const ROADMAP_CERTS = [
-  {
-    code: 'AZ-305',
-    name: 'Azure Solutions Architect Expert',
-    status: 'In Progress',
-    focus: 'Enterprise multi-region design, zero-trust governance & business continuity',
-    badgeClass: 'border-azure-500/30 text-azure-400 bg-azure-500/10',
-  },
-  {
-    code: 'AZ-400',
-    name: 'DevOps Solutions & CI/CD',
-    status: 'Planned',
-    focus: 'Enterprise delivery automation, GitOps pipelines & security compliance',
-    badgeClass: 'border-gold-500/30 text-gold-400 bg-gold-500/10',
-  },
-];
-
 export default function Certifications() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
   const primaryCert = CERTS[0];
+  const awsCert = CERTS[1];
 
   return (
     <section id="certifications" className="relative mx-auto max-w-6xl px-6 py-12 sm:py-16">
       {/* Section Header */}
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="flex items-center gap-2">
-          <span className="eyebrow text-gold-400">Certifications</span>
+          <span className="eyebrow text-gold-400">Certifications &amp; Badges</span>
           <span className="h-px w-12 bg-gold-500/30" />
         </div>
         <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl">
-          Microsoft Azure credentials.
+          Cloud credentials &amp; certifications.
         </h2>
         <p className="mt-2.5 max-w-2xl text-sm leading-relaxed text-gray-400 sm:text-base">
-          Industry-recognized certifications validating enterprise cloud architecture, identity governance, security controls, and high-availability operations.
+          Industry-recognized credentials validating primary Microsoft Azure enterprise architecture alongside foundational multi-cloud training.
         </p>
       </div>
 
@@ -234,46 +227,76 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* Continuous Cloud Learning & Certification Roadmap */}
-          <div className="flex-1 rounded-2xl border border-white/8 bg-white/[0.02] p-5 sm:p-6 backdrop-blur-sm transition-all hover:border-white/15">
-            <div className="flex items-center gap-2 border-b border-white/8 pb-3.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-azure-500/30 bg-azure-500/10">
-                <TrendingUp className="h-4 w-4 text-azure-400" />
+          {/* AWS Academy Cloud Foundations Badge Card */}
+          <div className="flex-1 rounded-2xl border border-white/8 bg-white/[0.02] p-5 sm:p-6 backdrop-blur-sm transition-all hover:border-amber-500/30 shadow-lg shadow-black/20">
+            <div className="flex items-center justify-between border-b border-white/8 pb-3.5">
+              <div className="flex items-center gap-2.5">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-amber-500/30 bg-amber-500/10">
+                  <Award className="h-4 w-4 text-amber-400" />
+                </div>
+                <div>
+                  <h4 className="font-display text-sm font-bold text-white">
+                    AWS Academy Cloud Foundations
+                  </h4>
+                  <p className="text-[11px] text-gray-400">Accredited by Amazon Web Services</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-display text-sm font-bold text-white">
-                  Continuous Professional Growth
-                </h4>
-                <p className="text-[11px] text-gray-400">Target architectural milestones</p>
-              </div>
+
+              <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 text-[10px] font-semibold text-amber-300">
+                Trained Badge
+              </span>
             </div>
 
-            <div className="mt-4 space-y-3">
-              {ROADMAP_CERTS.map((item) => (
-                <div
-                  key={item.code}
-                  className="rounded-xl border border-white/6 bg-white/[0.015] p-3 transition-colors hover:border-white/15 hover:bg-white/[0.03]"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs font-bold text-white">{item.code}</span>
-                      <h5 className="text-xs font-medium text-gray-300">{item.name}</h5>
-                    </div>
-                    <span className={`rounded px-1.5 py-0.5 text-[10px] font-semibold border ${item.badgeClass}`}>
-                      {item.status}
-                    </span>
-                  </div>
-                  <p className="mt-1.5 text-[11px] text-gray-400 leading-relaxed">
-                    {item.focus}
-                  </p>
+            {/* Badge Preview & Content */}
+            <div className="mt-4 flex flex-col sm:flex-row items-center sm:items-start gap-4">
+              <div
+                onClick={() => setSelectedCert(awsCert)}
+                className="group/badge relative flex-none cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/60 p-2 transition-all hover:border-amber-500/50 hover:shadow-[0_0_20px_rgba(245,158,11,0.15)]"
+                title="Click to view full badge"
+              >
+                <img
+                  src={awsCert.image}
+                  alt="AWS Academy Cloud Foundations Trained Badge"
+                  className="h-24 w-24 object-contain transition-transform duration-300 group-hover/badge:scale-105"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 backdrop-blur-[1px] transition-opacity group-hover/badge:opacity-100 rounded-xl">
+                  <Eye className="h-4 w-4 text-amber-400" />
                 </div>
-              ))}
+              </div>
+
+              <div className="flex-1 text-center sm:text-left">
+                <p className="text-xs text-gray-300 leading-relaxed">
+                  Trained on AWS core architecture, cloud security, compute (EC2), storage (S3), networking (VPC), and cloud economics.
+                </p>
+                <div className="mt-2.5 flex flex-wrap gap-1.5 justify-center sm:justify-start">
+                  {['AWS Cloud Concepts', 'EC2 & S3', 'VPC Networking', 'Shared Responsibility'].map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-md border border-white/8 bg-white/[0.03] px-2 py-0.5 text-[10px] text-gray-300 font-mono"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-3.5 flex items-center justify-center sm:justify-start gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedCert(awsCert)}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors"
+                  >
+                    <Eye className="h-3.5 w-3.5" />
+                    <span>View Official Badge</span>
+                  </button>
+                  <span className="text-gray-600 text-xs">•</span>
+                  <span className="text-[11px] text-gray-500">Multi-Cloud Foundation</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Full Certificate Inspection Modal */}
+      {/* Full Certificate / Badge Inspection Modal */}
       {selectedCert && (
         <CertModal cert={selectedCert} onClose={() => setSelectedCert(null)} />
       )}
@@ -352,12 +375,14 @@ function CertModal({
           </div>
         </div>
 
-        {/* Certificate Image View */}
-        <div className="relative flex-1 overflow-auto rounded-xl border border-white/10 bg-black/60 p-2 sm:p-3">
+        {/* Certificate / Badge Image View */}
+        <div className="relative flex-1 overflow-auto rounded-xl border border-white/10 bg-black/60 p-4 sm:p-6 flex items-center justify-center">
           <img
             src={cert.image}
-            alt={`${cert.code} Certificate`}
-            className="mx-auto max-h-[64vh] w-auto rounded-lg object-contain shadow-2xl"
+            alt={`${cert.code} Certificate / Badge`}
+            className={`mx-auto rounded-lg object-contain shadow-2xl ${
+              cert.isBadge ? 'max-h-[50vh] max-w-[340px]' : 'max-h-[64vh] w-auto'
+            }`}
           />
         </div>
 
@@ -382,10 +407,16 @@ function CertModal({
                 <span className="text-gray-200">{cert.issueDate}</span>
               </span>
             )}
+            {!cert.credentialId && (
+              <span>
+                <strong className="font-medium text-gray-500">Issuer:</strong>{' '}
+                <span className="text-gray-200">{cert.issuer}</span>
+              </span>
+            )}
           </div>
           <div className="flex items-center gap-1.5 text-gold-400">
             <ShieldCheck className="h-4 w-4" />
-            <span className="font-medium">Online Verifiable</span>
+            <span className="font-medium">Verified Credential</span>
           </div>
         </div>
       </div>
