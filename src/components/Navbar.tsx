@@ -108,18 +108,8 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Action Buttons: Direct Contact, LinkedIn, GitHub & Get in Touch */}
-        <div className="hidden sm:flex items-center gap-2">
-          <a
-            href="mailto:aakashtrivedi2003@gmail.com"
-            className="flex h-8 items-center gap-1.5 rounded-xl border border-gold-500/30 bg-gold-500/10 px-2.5 text-xs font-mono text-gold-300 transition-all duration-200 hover:border-gold-400 hover:bg-gold-500/20"
-            title="Email: aakashtrivedi2003@gmail.com"
-            aria-label="Send direct email"
-          >
-            <Mail className="h-3.5 w-3.5 text-gold-400" />
-            <span className="hidden lg:inline text-[11px]">aakashtrivedi2003@gmail.com</span>
-          </a>
-
+        {/* Action Buttons: LinkedIn, GitHub & Get in Touch */}
+        <div className="hidden sm:flex items-center gap-2.5">
           <a
             href="https://linkedin.com/in/aakashtrivedi1003"
             target="_blank"
@@ -128,7 +118,7 @@ export default function Navbar() {
             aria-label="LinkedIn Profile"
             title="LinkedIn Profile"
           >
-            <Linkedin className="h-3.5 w-3.5" />
+            <Linkedin className="h-4 w-4 text-azure-400" />
           </a>
 
           <a
@@ -165,20 +155,6 @@ export default function Navbar() {
       {menuOpen && (
         <div className="pointer-events-auto fixed inset-x-4 top-[65px] z-50 rounded-2xl border border-white/10 bg-ink-900/95 p-4 shadow-2xl backdrop-blur-2xl md:hidden animate-scale-in">
           <div className="flex flex-col gap-1">
-            {/* Direct Contact Banner inside Mobile Menu */}
-            <div className="mb-2 rounded-xl border border-gold-500/30 bg-gold-500/[0.08] p-3 text-center">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-gold-400 block mb-1">
-                Direct Contact
-              </span>
-              <a
-                href="mailto:aakashtrivedi2003@gmail.com"
-                className="font-mono text-xs text-gold-200 font-semibold flex items-center justify-center gap-1.5 break-all hover:text-white"
-              >
-                <Mail className="h-3.5 w-3.5 text-gold-400 flex-none" />
-                <span>aakashtrivedi2003@gmail.com</span>
-              </a>
-            </div>
-
             {NAV_LINKS.map((link) => {
               const Icon = link.icon;
               return (

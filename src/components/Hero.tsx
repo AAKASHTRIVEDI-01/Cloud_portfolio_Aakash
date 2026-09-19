@@ -84,53 +84,10 @@ export default function Hero() {
           <strong className="font-semibold text-white">Automated CI/CD DevOps Pipelines</strong>.
         </p>
 
-        {/* Prominent Direct Contact Bar on Top */}
-        <div
-          className="mt-5 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs animate-fade-up opacity-0"
-          style={{ animationDelay: '0.48s' }}
-        >
-          <a
-            href="mailto:aakashtrivedi2003@gmail.com"
-            className="group inline-flex items-center gap-2 rounded-xl border border-gold-500/40 bg-gold-500/10 px-3.5 py-2 font-medium text-gold-300 transition-all hover:bg-gold-500/20 hover:border-gold-400 hover:shadow-[0_0_16px_rgba(212,175,55,0.25)]"
-            title="Direct Email: aakashtrivedi2003@gmail.com"
-          >
-            <Mail className="h-4 w-4 text-gold-400 transition-transform group-hover:scale-110" />
-            <span className="font-mono text-xs sm:text-sm font-semibold">aakashtrivedi2003@gmail.com</span>
-          </a>
-
-          <a
-            href="https://linkedin.com/in/aakashtrivedi1003"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-azure-500/30 bg-azure-500/10 px-3.5 py-2 font-medium text-azure-300 transition-all hover:border-azure-400 hover:bg-azure-500/20 hover:text-white"
-          >
-            <Linkedin className="h-4 w-4 text-azure-400" />
-            <span>LinkedIn</span>
-          </a>
-
-          <a
-            href="https://github.com/AAKASHTRIVEDI-01"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2 font-medium text-gray-300 transition-all hover:border-white/30 hover:bg-white/[0.08] hover:text-white"
-          >
-            <Github className="h-4 w-4 text-gray-400" />
-            <span>GitHub</span>
-          </a>
-
-          <div className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-3 py-2 text-[11px] font-medium text-emerald-400">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-            </span>
-            <span>India • Available for Cloud Roles</span>
-          </div>
-        </div>
-
         {/* Live Architecture & Operations Telemetry Pill */}
         <div
-          className="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3 rounded-2xl border border-white/10 bg-black/40 px-4 py-2 backdrop-blur-md animate-fade-up opacity-0 text-[11px] font-mono text-gray-400 shadow-inner"
-          style={{ animationDelay: '0.52s' }}
+          className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3 rounded-2xl border border-white/10 bg-black/40 px-4 py-2 backdrop-blur-md animate-fade-up opacity-0 text-[11px] font-mono text-gray-400 shadow-inner"
+          style={{ animationDelay: '0.5s' }}
         >
           <div className="flex items-center gap-1.5 text-emerald-400">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -150,8 +107,8 @@ export default function Hero() {
 
         {/* Key Competency Badges with Icons */}
         <div
-          className="mt-5 flex flex-wrap justify-center gap-2.5 sm:gap-3 animate-fade-up opacity-0"
-          style={{ animationDelay: '0.58s' }}
+          className="mt-6 flex flex-wrap justify-center gap-2.5 sm:gap-3 animate-fade-up opacity-0"
+          style={{ animationDelay: '0.55s' }}
         >
           <a
             href="#certifications"
@@ -176,7 +133,7 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div
-          className="mt-6 sm:mt-7 flex flex-col items-center gap-3 sm:flex-row animate-fade-up opacity-0"
+          className="mt-7 flex flex-col items-center gap-3 sm:flex-row animate-fade-up opacity-0"
           style={{ animationDelay: '0.65s' }}
         >
           <a
@@ -194,6 +151,41 @@ export default function Hero() {
           >
             <FileText className="h-4 w-4 transition-transform group-hover:scale-110 text-gray-400 group-hover:text-gold-400" />
             <span>Technical Profile (PDF)</span>
+          </a>
+        </div>
+
+        {/* Clean, Prominent Contact Details Row */}
+        <div
+          className="mt-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs animate-fade-up opacity-0"
+          style={{ animationDelay: '0.72s' }}
+        >
+          <a
+            href="mailto:aakashtrivedi2003@gmail.com"
+            className="group inline-flex items-center gap-2 rounded-xl border border-gold-500/30 bg-gold-500/[0.06] px-3.5 py-2 font-medium text-gold-300 transition-all hover:border-gold-400 hover:bg-gold-500/15 hover:shadow-[0_0_14px_rgba(212,175,55,0.2)]"
+            title="Email: aakashtrivedi2003@gmail.com"
+          >
+            <Mail className="h-3.5 w-3.5 text-gold-400 transition-transform group-hover:scale-110" />
+            <span className="font-mono text-xs">aakashtrivedi2003@gmail.com</span>
+          </a>
+
+          <a
+            href="https://linkedin.com/in/aakashtrivedi1003"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2 font-medium text-gray-300 transition-all hover:border-azure-400/50 hover:bg-azure-500/10 hover:text-azure-300"
+          >
+            <Linkedin className="h-3.5 w-3.5 text-azure-400" />
+            <span>LinkedIn</span>
+          </a>
+
+          <a
+            href="https://github.com/AAKASHTRIVEDI-01"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2 font-medium text-gray-300 transition-all hover:border-white/30 hover:bg-white/[0.06] hover:text-white"
+          >
+            <Github className="h-3.5 w-3.5 text-gray-400" />
+            <span>GitHub</span>
           </a>
         </div>
       </div>
