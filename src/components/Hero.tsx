@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[88vh] sm:min-h-[92vh] items-center justify-center overflow-hidden px-6 pt-24 pb-12 sm:pt-28 sm:pb-16"
+      className="relative flex min-h-[82vh] sm:min-h-[86vh] items-center justify-center overflow-hidden px-6 pt-8 pb-12 sm:pt-12 sm:pb-16"
     >
       {/* Ambient background glows */}
       <div className="pointer-events-none absolute inset-0">

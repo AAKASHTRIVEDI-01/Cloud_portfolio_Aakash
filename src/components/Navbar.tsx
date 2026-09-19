@@ -54,14 +54,14 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-3 sm:pt-4 pointer-events-none">
-      <nav
-        className={`pointer-events-auto flex items-center justify-between w-full max-w-5xl rounded-2xl px-3.5 py-2 sm:px-5 sm:py-2.5 transition-all duration-300 ${
-          scrolled
-            ? 'glass-panel shadow-2xl shadow-black/60 border-white/10'
-            : 'bg-ink-900/60 backdrop-blur-md border border-white/5 shadow-lg shadow-black/20'
-        }`}
-      >
+    <header
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? 'bg-ink-950/90 backdrop-blur-md border-b border-white/10 shadow-xl shadow-black/40'
+          : 'bg-ink-950/70 backdrop-blur-md border-b border-white/5'
+      }`}
+    >
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3 sm:py-3.5">
         {/* Brand / Logo */}
         <a href="#hero" className="flex items-center gap-3 group">
           <div className="relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center overflow-hidden rounded-xl border border-gold-500/30 bg-black transition-all duration-300 group-hover:border-gold-500/70 group-hover:shadow-[0_0_12px_rgba(212,175,55,0.3)]">
@@ -153,7 +153,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {menuOpen && (
-        <div className="pointer-events-auto fixed inset-x-4 top-[65px] z-50 rounded-2xl border border-white/10 bg-ink-900/95 p-4 shadow-2xl backdrop-blur-2xl md:hidden animate-scale-in">
+        <div className="border-b border-white/10 bg-ink-900/98 px-6 py-4 shadow-2xl backdrop-blur-2xl md:hidden animate-scale-in">
           <div className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => {
               const Icon = link.icon;
