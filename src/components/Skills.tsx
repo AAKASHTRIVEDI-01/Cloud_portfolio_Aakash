@@ -39,6 +39,7 @@ import { useReveal } from '@/hooks/useReveal';
 
 export interface SkillItem {
   name: string;
+  description: string;
   icon: LucideIcon;
   tag?: string;
   learning?: boolean;
@@ -69,22 +70,46 @@ const SKILL_GROUPS: SkillGroup[] = [
     accentBadge: 'text-azure-400 bg-azure-500/10 border-azure-500/30',
     borderHover: 'hover:border-azure-500/40',
     glowClass: 'hover:shadow-[0_0_28px_rgba(2,132,199,0.14)]',
-    iconBg: 'bg-azure-500/10 border-azure-500/30',
+    iconBg: 'bg-azure-500/10 text-azure-400',
     iconColor: 'text-azure-400',
     description: 'Enterprise virtual networking, compute scaling, identity governance, and high availability.',
     skills: [
-      { name: 'Azure VNets & Peering', icon: Network, tag: 'Networking' },
-      { name: 'NSGs & Route Tables (UDR)', icon: Route, tag: 'Routing' },
-      { name: 'App Gateway & WAF', icon: Globe, tag: 'L7 Security' },
-      { name: 'Azure Firewall & VPN', icon: Flame, tag: 'Perimeter' },
-      { name: 'Azure Load Balancers', icon: Layers, tag: 'HA' },
-      { name: 'Storage & Blob Tiers', icon: HardDrive, tag: 'Storage' },
-      { name: 'Azure SQL', icon: Database, tag: 'Database' },
-      { name: 'Microsoft Entra ID', icon: KeyRound, tag: 'Identity' },
-      { name: 'RBAC & PIM', icon: Lock, tag: 'Zero-Trust' },
-      { name: 'Key Vault & Certificates', icon: ShieldCheck, tag: 'Secrets' },
-      { name: 'Azure Policy & Blueprints', icon: FileCheck, tag: 'Governance' },
-      { name: 'Backup & Site Recovery (ASR)', icon: RotateCcw, tag: 'DR / Resilience' },
+      {
+        name: 'Virtual Networks & Hybrid Peering',
+        description: 'Hub-and-spoke topologies, global VNet peering, VPN gateways, and custom route tables (UDR).',
+        icon: Network,
+        tag: 'Networking',
+      },
+      {
+        name: 'Network Security & Perimeter Defense',
+        description: 'Layer-4/7 NSGs, Azure Firewall policies, Application Gateway with Web Application Firewall (WAF).',
+        icon: Flame,
+        tag: 'Security',
+      },
+      {
+        name: 'High Availability & Load Balancing',
+        description: 'Azure Load Balancers (Standard/Internal), Traffic Manager, and zone-redundant availability sets.',
+        icon: Layers,
+        tag: 'HA & Scaling',
+      },
+      {
+        name: 'Identity & Access Governance',
+        description: 'Microsoft Entra ID, role-based access control (RBAC), Privileged Identity Management (PIM), and Conditional Access.',
+        icon: KeyRound,
+        tag: 'Zero-Trust',
+      },
+      {
+        name: 'Secrets Management & Compliance',
+        description: 'Azure Key Vault (keys, secrets, certs), Azure Policy enforcement, and regulatory compliance blueprints.',
+        icon: Lock,
+        tag: 'Governance',
+      },
+      {
+        name: 'Business Continuity & Disaster Recovery',
+        description: 'Azure Backup policies, Recovery Services vaults, and Azure Site Recovery (ASR) failover drills.',
+        icon: RotateCcw,
+        tag: 'BCDR',
+      },
     ],
   },
   {
@@ -96,17 +121,40 @@ const SKILL_GROUPS: SkillGroup[] = [
     accentBadge: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
     borderHover: 'hover:border-emerald-500/40',
     glowClass: 'hover:shadow-[0_0_28px_rgba(16,185,129,0.14)]',
-    iconBg: 'bg-emerald-500/10 border-emerald-500/30',
+    iconBg: 'bg-emerald-500/10 text-emerald-400',
     iconColor: 'text-emerald-400',
     description: 'Proactive metrics monitoring, log analytics querying, and administrative automation.',
     skills: [
-      { name: 'Azure Monitor', icon: Activity, tag: 'Telemetry' },
-      { name: 'Log Analytics & KQL', icon: Terminal, tag: 'Query Engine' },
-      { name: 'Application Insights', icon: LineChart, tag: 'APM' },
-      { name: 'Alert Rules & Action Groups', icon: Bell, tag: 'Ops Alerting' },
-      { name: 'Azure CLI (az)', icon: Code2, tag: 'Scripting' },
-      { name: 'PowerShell Automation', icon: Terminal, tag: 'Admin Automation' },
-      { name: 'Cost Management & Budgets', icon: DollarSign, tag: 'FinOps' },
+      {
+        name: 'Azure Monitor & Telemetry',
+        description: 'Platform metrics collection, diagnostics logging, and centralized multi-resource health dashboards.',
+        icon: Activity,
+        tag: 'Telemetry',
+      },
+      {
+        name: 'Log Analytics & KQL Queries',
+        description: 'Deep investigative log analysis, Kusto Query Language (KQL) scripts, and custom operational workbooks.',
+        icon: Terminal,
+        tag: 'KQL',
+      },
+      {
+        name: 'Application Insights (APM)',
+        description: 'End-to-end request tracing, application performance profiling, dependency mapping, and exception triage.',
+        icon: LineChart,
+        tag: 'APM',
+      },
+      {
+        name: 'Alert Rules & Incident Response',
+        description: 'Multi-threshold metric alerts, scheduled query alerts, and automated Action Group notifications.',
+        icon: Bell,
+        tag: 'Alerting',
+      },
+      {
+        name: 'Admin Automation & Cloud Scripting',
+        description: 'Az PowerShell modules, Azure CLI (az) administration, automated maintenance tasks, and Cost Management budgets.',
+        icon: Code2,
+        tag: 'Automation',
+      },
     ],
   },
   {
@@ -118,16 +166,34 @@ const SKILL_GROUPS: SkillGroup[] = [
     accentBadge: 'text-gold-400 bg-gold-500/10 border-gold-500/30',
     borderHover: 'hover:border-gold-500/40',
     glowClass: 'hover:shadow-[0_0_28px_rgba(212,175,55,0.14)]',
-    iconBg: 'bg-gold-500/10 border-gold-500/30',
+    iconBg: 'bg-gold-500/10 text-gold-400',
     iconColor: 'text-gold-400',
     description: 'Automating immutable infrastructure provisioning and continuous software delivery.',
     skills: [
-      { name: 'Bicep & ARM Templates', icon: FileCode2, tag: 'Azure IaC' },
-      { name: 'Terraform (IaC)', icon: Box, tag: 'Multi-Cloud IaC' },
-      { name: 'Azure DevOps Pipelines', icon: Workflow, tag: 'CI/CD' },
-      { name: 'GitHub Actions Workflows', icon: GitPullRequest, tag: 'Automation' },
-      { name: 'Git & Branching Workflows', icon: GitBranch, tag: 'GitOps' },
-      { name: 'CI/CD Automation', icon: Zap, tag: 'Deployment' },
+      {
+        name: 'Terraform & Bicep (IaC)',
+        description: 'Declarative cloud provisioning, reusable infrastructure modules, remote state locking, and ARM migration.',
+        icon: Box,
+        tag: 'IaC',
+      },
+      {
+        name: 'Azure DevOps CI/CD Pipelines',
+        description: 'Multi-stage YAML pipelines, self-hosted and cloud build agents, service connections, and approval gates.',
+        icon: Workflow,
+        tag: 'CI/CD',
+      },
+      {
+        name: 'GitHub Actions Workflows',
+        description: 'Automated validation, linting, secret-masked deployments via OpenID Connect (OIDC), and release automation.',
+        icon: GitPullRequest,
+        tag: 'Automation',
+      },
+      {
+        name: 'GitOps & Version Control Hygiene',
+        description: 'Trunk-based branching, pull request governance, semantic versioning, and collaborative code reviews.',
+        icon: GitBranch,
+        tag: 'GitOps',
+      },
     ],
   },
   {
@@ -139,14 +205,36 @@ const SKILL_GROUPS: SkillGroup[] = [
     accentBadge: 'text-violet-400 bg-violet-500/10 border-violet-500/30',
     borderHover: 'hover:border-violet-500/40',
     glowClass: 'hover:shadow-[0_0_28px_rgba(139,92,246,0.14)]',
-    iconBg: 'bg-violet-500/10 border-violet-500/30',
+    iconBg: 'bg-violet-500/10 text-violet-400',
     iconColor: 'text-violet-400',
     description: 'Containerizing microservices and managing orchestrated Kubernetes clusters.',
     skills: [
-      { name: 'Docker Containerization', icon: Boxes, tag: 'Packaging' },
-      { name: 'Azure Container Registry (ACR)', icon: Archive, tag: 'Registry' },
-      { name: 'Azure Kubernetes Service (AKS)', icon: Server, tag: 'Orchestration', learning: true },
-      { name: 'Container Apps', icon: Cpu, tag: 'Serverless', learning: true },
+      {
+        name: 'Docker Containerization',
+        description: 'Multi-stage Dockerfiles, minimal base images, security scanning, and multi-container environment configurations.',
+        icon: Boxes,
+        tag: 'Packaging',
+      },
+      {
+        name: 'Azure Kubernetes Service (AKS)',
+        description: 'Managed Kubernetes clusters, node pool scaling, ingress controller configuration, and Helm deployments.',
+        icon: Server,
+        tag: 'Orchestration',
+        learning: true,
+      },
+      {
+        name: 'Azure Container Registry (ACR)',
+        description: 'Private secure container registry, geo-replication, vulnerability triage, and automated ACR build tasks.',
+        icon: Archive,
+        tag: 'Registry',
+      },
+      {
+        name: 'Azure Container Apps',
+        description: 'Serverless microservice deployment, event-driven autoscaling (KEDA), Dapr integration, and HTTPS ingress.',
+        icon: Cpu,
+        tag: 'Serverless',
+        learning: true,
+      },
     ],
   },
 ];
@@ -172,6 +260,7 @@ export default function Skills() {
       const matchingSkills = group.skills.filter(
         (s) =>
           s.name.toLowerCase().includes(query) ||
+          s.description.toLowerCase().includes(query) ||
           (s.tag && s.tag.toLowerCase().includes(query)) ||
           group.title.toLowerCase().includes(query) ||
           group.category.toLowerCase().includes(query)
@@ -203,7 +292,7 @@ export default function Skills() {
 
         {/* Executive Competency Highlights Bar */}
         <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-          <div className="rounded-xl border border-white/8 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-gold-500/25 hover:bg-white/[0.03]">
+          <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-gold-500/25 hover:bg-white/[0.03]">
             <div className="flex items-center gap-2">
               <Cloud className="h-4 w-4 text-azure-400" />
               <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Ecosystem</span>
@@ -212,16 +301,16 @@ export default function Skills() {
             <p className="mt-0.5 text-[11px] text-gray-500">Core enterprise cloud platform</p>
           </div>
 
-          <div className="rounded-xl border border-white/8 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-gold-500/25 hover:bg-white/[0.03]">
+          <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-gold-500/25 hover:bg-white/[0.03]">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-gold-400" />
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Stack Scope</span>
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Core Stack</span>
             </div>
-            <div className="mt-1 text-lg font-bold text-white sm:text-xl">{TOTAL_SKILLS_COUNT}+ Tech Skills</div>
-            <p className="mt-0.5 text-[11px] text-gray-500">Across 4 core cloud domains</p>
+            <div className="mt-1 text-lg font-bold text-white sm:text-xl">{TOTAL_SKILLS_COUNT} Core Skills</div>
+            <p className="mt-0.5 text-[11px] text-gray-500">Curated across 4 cloud pillars</p>
           </div>
 
-          <div className="rounded-xl border border-white/8 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-gold-500/25 hover:bg-white/[0.03]">
+          <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-gold-500/25 hover:bg-white/[0.03]">
             <div className="flex items-center gap-2">
               <GitBranch className="h-4 w-4 text-emerald-400" />
               <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Automation</span>
@@ -230,7 +319,7 @@ export default function Skills() {
             <p className="mt-0.5 text-[11px] text-gray-500">Terraform, Bicep, Pipelines</p>
           </div>
 
-          <div className="rounded-xl border border-white/8 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-gold-500/25 hover:bg-white/[0.03]">
+          <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-gold-500/25 hover:bg-white/[0.03]">
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-4 w-4 text-gold-400" />
               <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Certification</span>
@@ -243,7 +332,7 @@ export default function Skills() {
         {/* Interactive Filter & Search Controls */}
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           {/* Domain Tabs */}
-          <div className="flex flex-wrap items-center gap-1.5 rounded-xl border border-white/8 bg-white/[0.02] p-1 text-xs">
+          <div className="flex flex-wrap items-center gap-1.5 rounded-xl border border-white/5 bg-white/[0.02] p-1 text-xs">
             <button
               type="button"
               onClick={() => setActiveTab('all')}
@@ -253,7 +342,7 @@ export default function Skills() {
                   : 'text-gray-400 hover:text-white hover:bg-white/[0.04]'
               }`}
             >
-              All Domains ({TOTAL_SKILLS_COUNT})
+              All Pillars ({TOTAL_SKILLS_COUNT})
             </button>
             {SKILL_GROUPS.map((g) => (
               <button
@@ -327,11 +416,10 @@ export default function Skills() {
 function SkillCard({
   group,
   index,
-  activeTab,
 }: {
   group: SkillGroup;
   index: number;
-  activeTab: string;
+  activeTab?: string;
 }) {
   const { ref, visible } = useReveal<HTMLDivElement>();
   const GroupIcon = group.icon;
@@ -343,11 +431,11 @@ function SkillCard({
       style={{ transitionDelay: `${index * 80}ms` }}
     >
       <div>
-        {/* Header */}
+        {/* Card Header */}
         <div className="flex items-start justify-between gap-4 border-b border-white/5 pb-4">
           <div className="flex items-center gap-3">
             <div
-              className={`flex h-11 w-11 flex-none items-center justify-center rounded-xl border ${group.iconBg} shadow-sm transition-transform duration-300 group-hover:scale-105`}
+              className={`flex h-10 w-10 flex-none items-center justify-center rounded-xl ${group.iconBg} shadow-sm transition-transform duration-300 group-hover:scale-105`}
             >
               <GroupIcon className={`h-5 w-5 ${group.iconColor}`} />
             </div>
@@ -365,7 +453,7 @@ function SkillCard({
             </div>
           </div>
 
-          <span className="hidden sm:inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-0.5 text-[11px] font-mono text-gray-400">
+          <span className="hidden sm:inline-flex items-center rounded-full bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-mono text-gray-400">
             {group.skills.length} {group.skills.length === 1 ? 'skill' : 'skills'}
           </span>
         </div>
@@ -374,40 +462,39 @@ function SkillCard({
           {group.description}
         </p>
 
-        {/* Structured Skills Grid */}
-        <div
-          className={`mt-4.5 grid gap-2 sm:gap-2.5 ${
-            activeTab !== 'all' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2'
-          }`}
-        >
+        {/* Clean, Simplistic Skills List (No white borders, high readability) */}
+        <div className="mt-4 space-y-1.5">
           {group.skills.map((skill) => {
             const SkillIcon = skill.icon;
             return (
               <div
                 key={skill.name}
-                className={`group/item flex items-center justify-between gap-2.5 rounded-xl border p-2.5 transition-all duration-200 ${
-                  skill.learning
-                    ? 'border-gold-500/30 bg-gold-500/[0.06] hover:border-gold-400 hover:bg-gold-500/12'
-                    : 'border-white/8 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05]'
-                }`}
+                className="group/item flex items-start justify-between gap-3 rounded-xl px-3 py-2.5 transition-all duration-200 hover:bg-white/[0.035]"
               >
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="flex h-7 w-7 flex-none items-center justify-center rounded-lg border border-white/10 bg-black/40">
-                    <SkillIcon className="h-3.5 w-3.5 text-gold-400 transition-transform duration-200 group-hover/item:scale-110" />
+                <div className="flex items-start gap-3 min-w-0 flex-1">
+                  <div className={`mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-lg ${group.iconBg} transition-transform duration-200 group-hover/item:scale-110`}>
+                    <SkillIcon className={`h-3.5 w-3.5 ${group.iconColor}`} />
                   </div>
-                  <span className="text-xs font-medium text-gray-200 group-hover/item:text-white truncate">
-                    {skill.name}
-                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-xs sm:text-sm font-semibold text-white group-hover/item:text-gold-300 transition-colors">
+                        {skill.name}
+                      </span>
+                      {skill.learning ? (
+                        <span className="inline-flex items-center gap-1 rounded bg-gold-500/15 px-1.5 py-0.5 text-[10px] font-medium text-gold-300">
+                          <Sparkles className="h-2.5 w-2.5 text-gold-400" />
+                          Active Focus
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="mt-0.5 text-[11px] sm:text-xs leading-relaxed text-gray-400 group-hover/item:text-gray-300">
+                      {skill.description}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Status / Domain Tag */}
-                {skill.learning ? (
-                  <span className="inline-flex flex-none items-center gap-1 rounded bg-gold-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-gold-300">
-                    <Sparkles className="h-2.5 w-2.5 text-gold-400" />
-                    Active
-                  </span>
-                ) : skill.tag ? (
-                  <span className="inline-flex flex-none rounded bg-white/[0.04] px-1.5 py-0.5 text-[10px] font-mono text-gray-400">
+                {skill.tag && !skill.learning ? (
+                  <span className="hidden sm:inline-flex flex-none rounded bg-white/[0.04] px-2 py-0.5 text-[10px] font-mono text-gray-400 mt-0.5">
                     {skill.tag}
                   </span>
                 ) : null}
