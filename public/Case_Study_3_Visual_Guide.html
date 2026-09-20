@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study 3: Azure AKS Cloud-Native Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.9);
+      --border: rgba(255, 255, 255, 0.1);
+      --primary: #38bdf8;
+      --primary-glow: rgba(56, 189, 248, 0.2);
+      --accent: #2563eb;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --green: #34d399;
+      --yellow: #fbbf24;
+      --red: #f87171;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2.5rem 1rem;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 9999px;
+      background: rgba(37, 99, 235, 0.12);
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      color: #60a5fa;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #ffffff 20%, #93c5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.lead {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .toc {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .toc-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #60a5fa;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.5rem;
+    }
+    .toc-grid a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 0.375rem;
+      transition: all 0.15s;
+    }
+    .toc-grid a:hover {
+      background: rgba(37, 99, 235, 0.15);
+      color: #60a5fa;
+    }
+    .image-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
+    }
+    .image-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+      display: block;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .caption {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 2.25rem;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #60a5fa;
+      margin: 1.25rem 0 0.75rem 0;
+    }
+    p { margin-bottom: 0.85rem; color: #e2e8f0; }
+    ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #d1d5db;
+    }
+    li {
+      margin-bottom: 0.55rem;
+    }
+    strong { color: #fff; }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 0.2rem 0.45rem;
+      border-radius: 0.35rem;
+      font-size: 0.85rem;
+      color: #93c5fd;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    pre {
+      background: #050811;
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #e2e8f0;
+      margin: 1rem 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      line-height: 1.5;
+    }
+    .step-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 0.85rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .step-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #60a5fa;
+      margin-bottom: 1rem;
+    }
+    .step-num {
+      background: #2563eb;
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 0.95rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .ui-box {
+      background: rgba(37, 99, 235, 0.06);
+      border-left: 4px solid #2563eb;
+      padding: 1rem 1.25rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      margin: 0.75rem 0;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+    }
+    .warn-box {
+      background: rgba(248, 113, 113, 0.08);
+      border-left: 4px solid var(--red);
+      padding: 1rem 1.25rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      margin: 0.75rem 0;
+      font-size: 0.92rem;
+      color: #fca5a5;
+    }
+    .qna-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .qna-q {
+      font-weight: 700;
+      color: #fff;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+    .qna-a {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+    .checklist {
+      list-style: none;
+      margin-left: 0;
+    }
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .checklist input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #2563eb;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 3.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">Comprehensive Practice Guide</div>
+      <h1>Azure AKS Cloud-Native Platform</h1>
+      <p class="lead">Complete Beginner-Friendly Docker, Kubernetes &amp; AKS Guide with Architecture Diagrams, Portal Inspection Steps &amp; Interview Q&amp;A</p>
+    </header>
+
+    <!-- Visual Architecture Diagram Banner -->
+    <div class="image-card">
+      <img src="images/case_study_3_aks_platform.jpg" alt="Azure AKS Cloud-Native Architecture Diagram">
+      <div class="caption">
+        <strong>Figure 3.1</strong>: Production Cloud-Native Architecture with Docker Multi-Stage Builds, Azure Container Registry (ACR), Azure Kubernetes Service (AKS), Ingress, and Horizontal Pod Autoscaling (HPA).
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <div class="toc-grid">
+        <a href="#section-1">1. The Big Picture &amp; Analogy</a>
+        <a href="#section-2">2. Core Container &amp; K8s Concepts</a>
+        <a href="#section-3">3. Step-by-Step Azure Portal UI</a>
+        <a href="#section-4">4. Code Practice with Docker &amp; Kubectl</a>
+        <a href="#section-5">5. Cloud-Native GitOps Lifecycle</a>
+        <a href="#section-6">6. Real-World Problems &amp; Fixes</a>
+        <a href="#section-7">7. Interview Q&amp;A Cheat Sheet</a>
+        <a href="#section-8">8. Daily Revision Checklist</a>
+      </div>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section" id="section-1">
+      <h2>🚢 1. The Big Picture &amp; Real-World Analogy</h2>
+      <p>Imagine a massive, modern international shipping port:</p>
+      <ul>
+        <li><strong>The Cargo Container (Docker Container)</strong>:
+          In traditional VMs, moving software was like loading loose cargo boxes into trucks of all different shapes. Docker standardized steel containers: your code, runtime, libraries, and configurations are sealed inside an immutable box that runs identically on your laptop or inside Azure AKS.
+        </li>
+        <li><strong>The Secure Bonded Warehouse (Azure Container Registry - ACR)</strong>:
+          Before containers are placed onto ships, they are stored in a secure cloud warehouse. Only authorized port cranes can store or retrieve them.
+        </li>
+        <li><strong>The Master Robotic Port Dispatcher (Kubernetes / AKS)</strong>:
+          With thousands of containers moving, humans cannot manually organize them. Kubernetes handles the operations:
+          <ul>
+            <li><strong>Scheduler:</strong> Identifies which ship (Worker Node) has available deck space (CPU/RAM) and loads the container (Pod).</li>
+            <li><strong>Self-Healing:</strong> If a container crashes, the crane replaces it with a fresh replica immediately.</li>
+            <li><strong>Autoscaler (HPA):</strong> If orders surge during holiday sales, it deploys 10 identical container replicas in seconds.</li>
+          </ul>
+        </li>
+        <li><strong>The Customs Gate (Application Gateway / Ingress Controller)</strong>:
+          External internet users do not access worker nodes directly. They pass through a single secure customs gate that terminates HTTPS, verifies security rules, and routes traffic to the correct container.
+        </li>
+      </ul>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section" id="section-2">
+      <h2>🐳 2. Core Container &amp; Kubernetes Concepts Explained (Points-Based)</h2>
+      <ul>
+        <li><strong>Virtual Machines vs Containers</strong>:
+          A VM contains a full guest OS, kernel, and virtual drivers (gigabytes in size, minutes to boot). A container shares the host Linux kernel and isolates only the application process using Linux <em>cgroups</em> (resource limits) and <em>namespaces</em> (visibility). It starts in milliseconds and weighs only ~50MB.
+        </li>
+        <li><strong>Multi-Stage Dockerfile</strong>:
+          Stage 1 (Builder) installs heavy build tools and compilers. Stage 2 (Runtime) copies *only* the compiled application into a clean Alpine Linux image. This minimizes image size and removes attack tools hackers could exploit.
+        </li>
+        <li><strong>Non-Root Security Hardening</strong>:
+          By default, containers run as root (<code>UID 0</code>). If an attacker escapes the container, they could gain root privileges on the Azure host VM. Setting <code>USER 1001</code> and <code>securityContext: runAsNonRoot: true</code> protects against host compromise.
+        </li>
+        <li><strong>Control Plane vs Worker Nodes</strong>:
+          In AKS, Microsoft manages the Control Plane (API Server, etcd, Scheduler, Controller Manager) for free with high availability. You manage only the Worker Nodes and workloads.
+        </li>
+        <li><strong>Core Kubernetes Objects</strong>:
+          <ul>
+            <li><strong>Namespace:</strong> Logical cluster boundary (<code>cloud-platform</code>) for isolation.</li>
+            <li><strong>Pod:</strong> Smallest deployable unit; one or more containers sharing network and storage.</li>
+            <li><strong>Deployment:</strong> Manages Pod replicas, rolling updates, and self-healing.</li>
+            <li><strong>ClusterIP Service:</strong> Internal load balancer providing a stable virtual IP for healthy pods.</li>
+            <li><strong>Ingress:</strong> Layer 7 reverse proxy routing external HTTP/HTTPS traffic to internal services.</li>
+            <li><strong>Horizontal Pod Autoscaler (HPA):</strong> Scales pod replicas dynamically based on CPU/Memory load.</li>
+          </ul>
+        </li>
+        <li><strong>Health Probes</strong>:
+          <ul>
+            <li><strong>Liveness Probe (<code>/healthz</code>):</strong> Verifies the app is alive. If it fails, Kubernetes restarts the container.</li>
+            <li><strong>Readiness Probe (<code>/ready</code>):</strong> Verifies the app is ready for user traffic. If it fails, the Service stops sending traffic to that pod until it recovers.</li>
+          </ul>
+        </li>
+        <li><strong>Zero-Secret ACR Integration (<code>AcrPull</code>)</strong>:
+          AKS uses its Kubelet Managed Identity with the Azure RBAC role <code>AcrPull</code> on the ACR. The cluster pulls images automatically without storing passwords in Kubernetes secrets.
+        </li>
+      </ul>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section" id="section-3">
+      <h2>🖱️ 3. Step-by-Step Azure Portal (UI / GUI) Practice Guide</h2>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">A</span>
+          <span>Inspect the AKS Cluster &amp; Node Pools</span>
+        </div>
+        <ul>
+          <li>Go to <a href="https://portal.azure.com" target="_blank" style="color:var(--primary)">portal.azure.com</a> &rarr; Search <strong>"Kubernetes services"</strong> &rarr; Click <code>aks-aksplatform-prod</code>.</li>
+          <li>On the Overview page, observe the API server address and Kubernetes version (e.g. 1.29).</li>
+          <li>Click <strong>"Node pools"</strong> on the left menu: observe <code>systempool</code> running on Azure VM Scale Sets with auto-scaling rules.</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">B</span>
+          <span>View Pods, Deployments &amp; Live Logs</span>
+        </div>
+        <ul>
+          <li>On the left menu under <em>Kubernetes resources</em> &rarr; Click <strong>"Namespaces"</strong>: observe <code>cloud-platform</code>.</li>
+          <li>Click <strong>"Workloads"</strong>:
+            <div class="ui-box">
+              &bull; <strong>Deployments:</strong> Inspect <code>web-deployment</code> (3/3 ready).<br>
+              &bull; <strong>Pods:</strong> View the 3 active pod replicas, their assigned IPs, and worker nodes.<br>
+              &bull; <strong>Live Logs:</strong> Click any pod &rarr; Click <strong>"Logs"</strong> to view real-time application stdout/stderr streams!
+            </div>
+          </li>
+          <li>Click <strong>"Services and ingresses"</strong>: see <code>web-service</code> (ClusterIP) and <code>web-ingress</code>.</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">C</span>
+          <span>Monitor Performance in Container Insights</span>
+        </div>
+        <ul>
+          <li>Under <em>Monitoring</em> &rarr; Click <strong>"Insights"</strong>:
+            <div class="ui-box">
+              &bull; <strong>Cluster Tab:</strong> Overall CPU and Memory utilization trends.<br>
+              &bull; <strong>Nodes Tab:</strong> Resource consumption broken down node-by-node.<br>
+              &bull; <strong>Controllers Tab:</strong> Container restart counts and memory ceilings.
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">D</span>
+          <span>Inspect Azure Container Registry (ACR)</span>
+        </div>
+        <ul>
+          <li>Search <strong>"Container registries"</strong> &rarr; Click your ACR instance.</li>
+          <li>Under <em>Services</em> &rarr; Click <strong>"Repositories"</strong> &rarr; Click <code>webapp</code>: observe image tags (<code>v1.0.0</code>, <code>latest</code>, Git SHA) and manifest layers.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="section" id="section-4">
+      <h2>💻 4. Step-by-Step Code Practice with Docker, Kubectl &amp; PowerShell</h2>
+      <pre># 1. Navigate to Case Study 3 folder:
+cd "d:\MY_Portfolio\case study 3"
+
+# 2. Connect kubectl to your AKS cluster:
+az aks get-credentials --resource-group rg-aksplatform-prod --name aks-aksplatform-prod --overwrite-existing
+
+# 3. Verify node connectivity:
+kubectl get nodes -o wide
+
+# 4. Run automated build, push, and deployment:
+.\scripts\deploy.ps1 -ImageTag "v1.0.0"
+
+# 5. Inspect cluster health and logs:
+.\scripts\get-status.ps1
+
+# 6. Port-forward the web service to test in your local browser:
+kubectl port-forward svc/web-service 8080:80 -n cloud-platform
+# Open your browser to: http://localhost:8080
+
+# 7. Test HPA Auto-Scaling with simulated traffic load:
+kubectl run -i --tty load-generator --rm --image=busybox -n cloud-platform -- /bin/sh -c "while true; do wget -q -O- http://web-service; done"
+# Watch replicas scale up from 3 to 10:
+kubectl get hpa web-hpa -n cloud-platform -w
+
+# 8. Clean up after testing:
+.\scripts\destroy.ps1 -TeardownInfra</pre>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="section" id="section-5">
+      <h2>🚢 5. The Full Cloud-Native GitOps Deployment Lifecycle</h2>
+      <ol style="margin-left:1.5rem; color:#d1d5db;">
+        <li style="margin-bottom:0.75rem;">Developer pushes code changes in <code>app/src/server.js</code> to <code>main</code> branch.</li>
+        <li style="margin-bottom:0.75rem;">GitHub Actions (<code>build-and-deploy.yml</code>) triggers via passwordless OIDC.</li>
+        <li style="margin-bottom:0.75rem;">Docker executes multi-stage build &rarr; Tags image with Git SHA &rarr; Pushes to ACR.</li>
+        <li style="margin-bottom:0.75rem;">Workflow connects to AKS &rarr; Runs <code>kubectl set image</code> and applies manifests.</li>
+        <li style="margin-bottom:0.75rem;">Kubernetes performs zero-downtime <strong>RollingUpdate</strong>:
+          <pre>1. Creates new Pod with updated image
+2. Verifies Readiness Probe (/ready passes)
+3. Shifts user traffic to new Pod
+4. Gracefully terminates old Pod (30s grace period)</pre>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Section 6 -->
+    <div class="section" id="section-6">
+      <h2>🛠️ 6. Real-World Problems Encountered &amp; How to Fix Them</h2>
+      
+      <div class="warn-box">
+        <strong>Problem 1: ImagePullBackOff or ErrImagePull</strong><br>
+        <strong>What it means:</strong> AKS cannot pull the container image from the registry.<br>
+        <strong>Why:</strong> Misspelled image tag or missing <code>AcrPull</code> role assignment on AKS Kubelet identity.<br>
+        <strong>Fix:</strong> Verify image name with <code>kubectl describe pod &lt;pod-name&gt; -n cloud-platform</code>. Re-attach registry via CLI: <code>az aks update -n &lt;cluster&gt; -g &lt;rg&gt; --attach-acr &lt;acr-name&gt;</code>.
+      </div>
+
+      <div class="warn-box">
+        <strong>Problem 2: CrashLoopBackOff</strong><br>
+        <strong>What it means:</strong> Container starts, crashes immediately, and restarts in an exponential loop.<br>
+        <strong>Why:</strong> Application syntax error, missing environment variable, or failed liveness probe.<br>
+        <strong>Fix:</strong> View crash logs with <code>kubectl logs &lt;pod-name&gt; -n cloud-platform --previous</code>. If exit code is <code>137</code>, the container was killed by OOM (Out of Memory) &rarr; increase <code>resources.limits.memory</code>.
+      </div>
+
+      <div class="warn-box">
+        <strong>Problem 3: Pending Pods</strong><br>
+        <strong>What it means:</strong> Pod is created but cannot find a node with enough capacity.<br>
+        <strong>Fix:</strong> Inspect scheduler reason with <code>kubectl describe pod &lt;pod-name&gt; -n cloud-platform</code>. Scale node pool via <code>az aks scale --node-count 3</code>.
+      </div>
+    </div>
+
+    <!-- Section 7 -->
+    <div class="section" id="section-7">
+      <h2>🎯 7. Top Technical Interview Questions &amp; Answers</h2>
+
+      <div class="qna-card">
+        <div class="qna-q">Q1: What is the difference between Azure CNI and Kubenet in AKS?</div>
+        <div class="qna-a">
+          <strong>Answer:</strong><br>
+          In <strong>Kubenet</strong>, pods get internal non-routable IP addresses and nodes perform NAT for outbound traffic. In <strong>Azure CNI</strong>, every pod receives a real, routable IP address directly from the Azure VNet subnet, enabling direct communication with other Azure services, lower latency, and Azure Network Policy support.
+        </div>
+      </div>
+
+      <div class="qna-card">
+        <div class="qna-q">Q2: What is the difference between a Liveness Probe and a Readiness Probe?</div>
+        <div class="qna-a">
+          <strong>Answer:</strong><br>
+          A <strong>Liveness Probe</strong> checks if the container process is running. If it fails, Kubernetes restarts the container. A <strong>Readiness Probe</strong> checks if the app is ready to take client traffic. If it fails, Kubernetes removes the pod from the Service load balancer, but does <em>not</em> kill it.
+        </div>
+      </div>
+
+      <div class="qna-card">
+        <div class="qna-q">Q3: What happens when a container exceeds its Memory Limit vs its CPU Limit?</div>
+        <div class="qna-a">
+          <strong>Answer:</strong><br>
+          Memory is uncompressible: exceeding memory limit causes the Linux kernel OOM killer to immediately terminate the container with <strong>OOMKilled</strong> (exit code 137). CPU is compressible: exceeding CPU limit causes the CPU scheduler to throttle cycles, slowing down the application without killing it.
+        </div>
+      </div>
+
+      <div class="qna-card">
+        <div class="qna-q">Q4: What is the difference between HPA and Cluster Autoscaler?</div>
+        <div class="qna-a">
+          <strong>Answer:</strong><br>
+          <strong>HPA</strong> scales the number of Pod replicas based on CPU/memory load. <strong>Cluster Autoscaler</strong> scales the underlying Azure VM Worker Nodes when new pods cannot be scheduled due to insufficient node capacity.
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 8 -->
+    <div class="section" id="section-8">
+      <h2>✅ 8. Daily Revision Checklist</h2>
+      <ul class="checklist">
+        <li><input type="checkbox"> Explain the difference between a Docker Image and a Docker Container.</li>
+        <li><input type="checkbox"> Explain why multi-stage builds and non-root users are essential for security.</li>
+        <li><input type="checkbox"> Explain how Pods, Deployments, Services, and Ingress work together.</li>
+        <li><input type="checkbox"> Run <code>kubectl get pods -n cloud-platform -o wide</code> and explain the output columns.</li>
+        <li><input type="checkbox"> Know the difference between Exit Code 137 (OOMKilled) and Exit Code 1.</li>
+      </ul>
+    </div>
+
+    <footer>
+      <strong>Aakash Trivedi</strong> · Azure Cloud Engineer &amp; DevOps Specialist · <a href="https://aakashtrivedi-01.github.io/Cloud_portfolio_Aakash/" target="_blank" style="color:var(--primary)">Portfolio</a> · <a href="https://github.com/AAKASHTRIVEDI-01/Azure-AKS-Cloud-Native-Platform" target="_blank" style="color:var(--primary)">GitHub Repository</a>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study 2: Azure Infrastructure as Code (IaC) & CI/CD Pipeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.9);
+      --border: rgba(255, 255, 255, 0.1);
+      --primary: #c084fc;
+      --primary-glow: rgba(192, 132, 252, 0.2);
+      --accent: #a855f7;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --green: #34d399;
+      --yellow: #fbbf24;
+      --red: #f87171;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2.5rem 1rem;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 9999px;
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #ffffff 20%, #d8b4fe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.lead {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .toc {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .toc-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.5rem;
+    }
+    .toc-grid a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 0.375rem;
+      transition: all 0.15s;
+    }
+    .toc-grid a:hover {
+      background: rgba(168, 85, 247, 0.15);
+      color: var(--primary);
+    }
+    .image-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
+    }
+    .image-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+      display: block;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .caption {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 2.25rem;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 1.25rem 0 0.75rem 0;
+    }
+    p { margin-bottom: 0.85rem; color: #e2e8f0; }
+    ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #d1d5db;
+    }
+    li {
+      margin-bottom: 0.55rem;
+    }
+    strong { color: #fff; }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 0.2rem 0.45rem;
+      border-radius: 0.35rem;
+      font-size: 0.85rem;
+      color: #d8b4fe;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    pre {
+      background: #050811;
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #e2e8f0;
+      margin: 1rem 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      line-height: 1.5;
+    }
+    .step-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 0.85rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .step-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .step-num {
+      background: var(--accent);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 0.95rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .ui-box {
+      background: rgba(168, 85, 247, 0.06);
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.25rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      margin: 0.75rem 0;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+    }
+    .warn-box {
+      background: rgba(248, 113, 113, 0.08);
+      border-left: 4px solid var(--red);
+      padding: 1rem 1.25rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      margin: 0.75rem 0;
+      font-size: 0.92rem;
+      color: #fca5a5;
+    }
+    .qna-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .qna-q {
+      font-weight: 700;
+      color: #fff;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+    .qna-a {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+    .checklist {
+      list-style: none;
+      margin-left: 0;
+    }
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .checklist input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 3.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">Comprehensive Practice Guide</div>
+      <h1>Azure IaC &amp; CI/CD Pipeline</h1>
+      <p class="lead">Complete Beginner-Friendly Terraform, GitHub Actions &amp; Passwordless OIDC Guide with Architecture Diagrams, Portal Clicks &amp; Interview Q&amp;A</p>
+    </header>
+
+    <!-- Visual Architecture Diagram Banner -->
+    <div class="image-card">
+      <img src="images/case_study_2_pipeline.jpg" alt="Azure Infrastructure as Code CI/CD Pipeline Architecture">
+      <div class="caption">
+        <strong>Figure 2.1</strong>: Automated GitOps Pipeline using GitHub Actions, OIDC Token Federation with Entra ID, Remote State Blob Lease Locking, and Multi-Environment Protection Gates.
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <div class="toc-grid">
+        <a href="#section-1">1. The Big Picture &amp; Analogy</a>
+        <a href="#section-2">2. Core IaC &amp; CI/CD Concepts</a>
+        <a href="#section-3">3. Step-by-Step UI Setup Guide</a>
+        <a href="#section-4">4. Code Practice with Terraform</a>
+        <a href="#section-5">5. Full CI/CD GitOps Lifecycle</a>
+        <a href="#section-6">6. Real-World Problems &amp; Fixes</a>
+        <a href="#section-7">7. Interview Q&amp;A Cheat Sheet</a>
+        <a href="#section-8">8. Daily Revision Checklist</a>
+      </div>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section" id="section-1">
+      <h2>🏭 1. The Big Picture &amp; Real-World Analogy</h2>
+      <p>Imagine a modern, automated automobile manufacturing factory:</p>
+      <ul>
+        <li><strong>The Blueprint (Terraform Code - <code>.tf</code> files)</strong>:
+          Instead of assembling each car manually with tools (clicking in the Azure Portal), engineers draw precise engineering blueprints defining every chassis, engine, and cable. Anyone running this blueprint builds the exact same identical vehicle every single time.
+        </li>
+        <li><strong>The Central Inventory Book (Terraform State &amp; Azure Blob Storage)</strong>:
+          The factory keeps a digital ledger (<code>terraform.tfstate</code>) in a secure, encrypted cloud vault (Azure Blob Storage). It records every car built, its serial numbers, and exact configuration so Terraform knows never to rebuild parts that already exist.
+        </li>
+        <li><strong>The Robotic Lock (Blob Lease / State Locking)</strong>:
+          If two robotic arms attempt to weld the exact same door at the exact same millisecond, the machinery would collide. Azure Blob Lease locks the ledger exclusively for 60 seconds while an operation runs, preventing race conditions and corrupted state.
+        </li>
+        <li><strong>The Quality Inspector &amp; Assembly Line (GitHub Actions CI/CD)</strong>:
+          When an engineer submits an improvement via a Pull Request (PR):
+          <ul>
+            <li>Robot Inspector 1 checks code formatting and syntax (<code>terraform fmt</code> and <code>terraform validate</code>).</li>
+            <li>Robot Inspector 2 performs a simulation (<code>terraform plan</code>): <em>"Here is what will be added (+), modified (~), or deleted (-)."</em></li>
+            <li>When approved and merged into <code>main</code>, the assembly robot presents a temporary electronic badge (OIDC JWT token) to Azure and applies changes automatically without storing static passwords.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section" id="section-2">
+      <h2>⚙️ 2. Core IaC &amp; CI/CD Concepts Explained (Points-Based)</h2>
+      <ul>
+        <li><strong>Infrastructure as Code (IaC)</strong>:
+          Managing cloud infrastructure using version-controlled code files rather than manual interactive tools. Declarative syntax allows you to specify the desired end state, and the engine calculates the required changes.
+        </li>
+        <li><strong>Terraform State File (<code>terraform.tfstate</code>)</strong>:
+          A JSON file mapping your Terraform code definitions to real Azure Resource IDs. <em>Never delete or lose this file</em>—without it, Terraform loses track of real-world resources and fails with naming collisions.
+        </li>
+        <li><strong>Remote Backend (Azure Blob Storage)</strong>:
+          Storing state in an encrypted cloud container rather than locally on your laptop:
+          <ul>
+            <li><strong>Team Collaboration:</strong> All engineers share the exact same source of truth.</li>
+            <li><strong>Security:</strong> Encrypted at rest (TLS 1.2+ &amp; SSE).</li>
+            <li><strong>State Locking:</strong> Azure Blob leases block concurrent conflicting applies.</li>
+          </ul>
+        </li>
+        <li><strong>OpenID Connect (OIDC / Federated Identity)</strong>:
+          Traditional CI/CD uses Service Principal Client Secrets (passwords) stored in GitHub Secrets. These secrets expire, require manual rotation, and risk leakages. OIDC provides passwordless authentication: GitHub Actions generates a temporary cryptographic JWT token that Microsoft Entra ID validates on demand for a 1-hour access pass.
+        </li>
+        <li><strong>Multi-Environment Segmentation (Dev, Staging, Prod)</strong>:
+          Isolating infrastructure tiers using environment-specific <code>.tfvars</code> files. Reduces <strong>Blast Radius</strong> so bugs in <code>dev</code> never impact <code>production</code>.
+        </li>
+      </ul>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section" id="section-3">
+      <h2>🖱️ 3. Step-by-Step Azure Portal (UI) &amp; GitHub (UI) Setup Guide</h2>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">A</span>
+          <span>Create Remote State Storage in Azure Portal</span>
+        </div>
+        <ul>
+          <li>Go to <a href="https://portal.azure.com" target="_blank" style="color:var(--primary)">portal.azure.com</a> &rarr; Search <strong>"Storage accounts"</strong> &rarr; Click <strong>"+ Create"</strong>.</li>
+          <li>Resource Group: Click "Create new" &rarr; Name: <code>rg-tfstate-prod</code>.</li>
+          <li>Storage account name: <code>sttfstatepipeline...</code> (must be alphanumeric, lowercase, unique).</li>
+          <li>Region: <code>East US</code>, Performance: <code>Standard</code>, Redundancy: <code>LRS</code>.</li>
+          <li>Click <strong>"Review + create"</strong> &rarr; <strong>"Create"</strong>.</li>
+          <li>Once deployed, open the Storage Account &rarr; Click <strong>"Containers"</strong> on the left menu.</li>
+          <li>Click <strong>"+ Container"</strong> &rarr; Name: <code>tfstate</code> &rarr; Access level: <code>Private</code> &rarr; Click <strong>"Create"</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">B</span>
+          <span>Set Up Entra ID (Azure AD) OIDC (Passwordless!)</span>
+        </div>
+        <ul>
+          <li>Search <strong>"Microsoft Entra ID"</strong> in Azure Portal &rarr; Click <strong>"App registrations"</strong> &rarr; <strong>"+ New registration"</strong>.</li>
+          <li>Name: <code>github-actions-iac-pipeline</code> &rarr; Click <strong>"Register"</strong>.</li>
+          <li>Copy down:
+            <div class="ui-box">
+              &bull; <strong>Application (client) ID</strong><br>
+              &bull; <strong>Directory (tenant) ID</strong>
+            </div>
+          </li>
+          <li>On the left menu, click <strong>"Certificates &amp; secrets"</strong> &rarr; Select <strong>"Federated credentials"</strong> tab &rarr; Click <strong>"+ Add credential"</strong>.</li>
+          <li>Scenario: Select <em>"GitHub Actions deploying Azure resources"</em>:
+            <div class="ui-box">
+              &bull; <strong>Organization:</strong> <code>AAKASHTRIVEDI-01</code> (your GitHub username)<br>
+              &bull; <strong>Repository:</strong> <code>Azure-IaC-CICD-Pipeline</code><br>
+              &bull; <strong>Entity type:</strong> Branch &rarr; <code>main</code><br>
+              &bull; <strong>Name:</strong> <code>github-main-branch</code> &rarr; Click "Add".
+            </div>
+          </li>
+          <li>Grant Azure Role: Go to <strong>Subscriptions</strong> &rarr; <strong>Access control (IAM)</strong> &rarr; Click <strong>"+ Add" &rarr; "Add role assignment"</strong> &rarr; Role: <code>Contributor</code> &rarr; Assign to <code>github-actions-iac-pipeline</code>.</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">C</span>
+          <span>Configure Secrets &amp; Environments in GitHub Repository</span>
+        </div>
+        <ul>
+          <li>Open your repository: <a href="https://github.com/AAKASHTRIVEDI-01/Azure-IaC-CICD-Pipeline" target="_blank" style="color:var(--primary)">https://github.com/AAKASHTRIVEDI-01/Azure-IaC-CICD-Pipeline</a></li>
+          <li>Go to <strong>Settings</strong> &rarr; Expand <strong>"Secrets and variables"</strong> &rarr; Click <strong>"Actions"</strong>.</li>
+          <li>Add the following <strong>Repository secrets</strong>:
+            <div class="ui-box">
+              &bull; <code>AZURE_CLIENT_ID</code>: Your Application (client) ID<br>
+              &bull; <code>AZURE_TENANT_ID</code>: Your Directory (tenant) ID<br>
+              &bull; <code>AZURE_SUBSCRIPTION_ID</code>: Your Azure Subscription ID<br>
+              &bull; <code>TFSTATE_RG_NAME</code>: <code>rg-tfstate-prod</code><br>
+              &bull; <code>TFSTATE_STORAGE_ACCOUNT</code>: Your unique storage account name
+            </div>
+          </li>
+          <li>On the left menu, click <strong>"Environments"</strong> &rarr; Click <strong>"New environment"</strong>:
+            <div class="ui-box">
+              Name: <code>production</code> &rarr; Check <strong>"Required reviewers"</strong> &rarr; Add your GitHub user &rarr; Click <strong>"Save protection rules"</strong> (This creates the manual approval gate!).
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="section" id="section-4">
+      <h2>💻 4. Step-by-Step Code Practice with Terraform &amp; PowerShell</h2>
+      <p>All project files are organized in <code>Case study 2/</code>:</p>
+      <pre># 1. Navigate to Case Study 2 directory:
+cd "d:\MY_Portfolio\Case study 2"
+
+# 2. Log into Azure CLI:
+az login
+
+# 3. Bootstrap the remote state backend in Azure automatically:
+.\scripts\bootstrap-backend.ps1 -Environment "dev"
+
+# 4. Run the interactive deployment helper:
+.\scripts\deploy.ps1 -Environment "dev"
+# The script validates code formatting, runs terraform validate, plans, and prompts for confirmation.
+
+# 5. Practice manual Terraform commands:
+cd terraform
+terraform init -backend=false
+terraform validate
+terraform plan -var-file=environments/dev.tfvars
+cd ..
+
+# 6. Safe cleanup when finished testing:
+.\scripts\destroy.ps1 -Environment "dev"</pre>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="section" id="section-5">
+      <h2>🚀 5. The Full CI/CD GitOps Pipeline Lifecycle</h2>
+      <ol style="margin-left:1.5rem; color:#d1d5db;">
+        <li style="margin-bottom:0.75rem;"><strong>Developer creates a feature branch:</strong>
+          <pre>git checkout -b feature/add-database-subnet
+git commit -m "feat: add database tier"
+git push origin feature/add-database-subnet</pre>
+        </li>
+        <li style="margin-bottom:0.75rem;"><strong>Open Pull Request (PR) on GitHub:</strong>
+          GitHub Actions triggers <code>terraform-pr.yml</code>, runs <code>terraform fmt -check</code>, <code>terraform validate</code>, generates a dry-run execution plan, and posts an automated summary on the PR.
+        </li>
+        <li style="margin-bottom:0.75rem;"><strong>Peer Review &amp; Merge:</strong>
+          Team reviews the plan preview diff and merges the PR into <code>main</code>.
+        </li>
+        <li style="margin-bottom:0.75rem;"><strong>Automated Multi-Environment Deployment:</strong>
+          <code>terraform-deploy.yml</code> triggers &rarr; Uses passwordless OIDC to authenticate with Azure &rarr; Automatically applies changes to <code>dev</code> &rarr; Pauses at the <code>production</code> stage waiting for manual approval &rarr; Once approved, deploys to <code>production</code>.
+        </li>
+      </ol>
+    </div>
+
+    <!-- Section 6 -->
+    <div class="section" id="section-6">
+      <h2>🛠️ 6. Real-World Problems Encountered &amp; How to Fix Them</h2>
+      
+      <div class="warn-box">
+        <strong>Problem 1: State Lock Concurrency Conflict (HTTP 412)</strong><br>
+        <strong>Error:</strong> <code>Error acquiring the state lock: 412 Precondition Failed (LeaseAlreadyPresent)</code><br>
+        <strong>Why:</strong> A previous pipeline crashed abruptly or another engineer is running an apply.<br>
+        <strong>Solution:</strong> In Azure Portal, navigate to your Storage Account &rarr; Containers &rarr; <code>tfstate</code> &rarr; Right-click the <code>*.terraform.tfstate</code> blob &rarr; Click <strong>"Break Lease"</strong>.
+      </div>
+
+      <div class="warn-box">
+        <strong>Problem 2: OIDC Authentication Token Mismatch</strong><br>
+        <strong>Error:</strong> <code>AADSTS70021: No matching federated identity record found for subject...</code><br>
+        <strong>Why:</strong> The subject claim in Azure Entra ID does not match the exact branch name (e.g. Azure configured <code>refs/heads/main</code>, but workflow ran on <code>master</code>).<br>
+        <strong>Solution:</strong> Ensure repository name and branch name match letter-for-letter in Azure Federated Credentials.
+      </div>
+
+      <div class="warn-box">
+        <strong>Problem 3: Provider Deprecation Warnings</strong><br>
+        <strong>Error:</strong> <code>Warning: Argument is deprecated: enable_https_traffic_only has been superseded</code><br>
+        <strong>Solution:</strong> Update argument to modern syntax: <code>https_traffic_only_enabled = true</code> and pin provider versions in <code>versions.tf</code>.
+      </div>
+    </div>
+
+    <!-- Section 7 -->
+    <div class="section" id="section-7">
+      <h2>🎯 7. Top Technical Interview Questions &amp; Answers</h2>
+
+      <div class="qna-card">
+        <div class="qna-q">Q1: What is "Configuration Drift" and how do you detect and fix it?</div>
+        <div class="qna-a">
+          <strong>Answer:</strong><br>
+          Drift occurs when someone makes manual changes in the Azure Portal without updating Terraform code. We detect drift by running <code>terraform plan</code>. Terraform refreshes real-world cloud state against the state file and highlights discrepancies. We resolve drift by running <code>terraform apply</code> to overwrite manual edits back to the code standard, or by updating Terraform code to reflect intentional changes.
+        </div>
+      </div>
+
+      <div class="qna-card">
+        <div class="qna-q">Q2: Why is OIDC Workload Identity safer than storing Service Principal Client Secrets?</div>
+        <div class="qna-a">
+          <strong>Answer:</strong><br>
+          1. <strong>No Secret Expiration:</strong> Client secrets expire every few months, causing pipeline outages.<br>
+          2. <strong>Zero Credential Exfiltration:</strong> No passwords or tokens are stored in GitHub repository settings.<br>
+          3. <strong>Strict Claim Scoping:</strong> Azure only grants a short-lived (1-hour) token if the request originates from the exact repository, branch, or environment specified.
+        </div>
+      </div>
+
+      <div class="qna-card">
+        <div class="qna-q">Q3: What is "Blast Radius" and how do you contain it in Terraform?</div>
+        <div class="qna-a">
+          <strong>Answer:</strong><br>
+          Blast radius is the maximum potential damage a bad commit or failed run can cause. We contain it by modularizing code, separating environments (<code>dev</code>, <code>staging</code>, <code>prod</code>) into separate state files, and requiring automated PR plan reviews before merging.
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 8 -->
+    <div class="section" id="section-8">
+      <h2>✅ 8. Daily Revision Checklist</h2>
+      <ul class="checklist">
+        <li><input type="checkbox"> Explain the difference between <code>terraform plan</code> and <code>terraform apply</code>.</li>
+        <li><input type="checkbox"> Explain how Azure Blob Leases prevent state corruption during concurrent pipeline runs.</li>
+        <li><input type="checkbox"> Be able to explain how GitHub OIDC works in 4 simple bullet points.</li>
+        <li><input type="checkbox"> Open GitHub Actions tab and inspect workflow execution logs.</li>
+        <li><input type="checkbox"> Practice breaking down a Terraform module into <code>main.tf</code>, <code>variables.tf</code>, and <code>outputs.tf</code>.</li>
+      </ul>
+    </div>
+
+    <footer>
+      <strong>Aakash Trivedi</strong> · Azure Cloud Engineer &amp; DevOps Specialist · <a href="https://aakashtrivedi-01.github.io/Cloud_portfolio_Aakash/" target="_blank" style="color:var(--primary)">Portfolio</a> · <a href="https://github.com/AAKASHTRIVEDI-01/Azure-IaC-CICD-Pipeline" target="_blank" style="color:var(--primary)">GitHub Repository</a>
+    </footer>
+  </div>
+</body>
+</html>

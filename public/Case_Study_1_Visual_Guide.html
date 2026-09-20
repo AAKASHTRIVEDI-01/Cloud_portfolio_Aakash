@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study 1: Enterprise Azure Infrastructure (Hub & Spoke Architecture)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.9);
+      --border: rgba(255, 255, 255, 0.1);
+      --primary: #38bdf8;
+      --primary-glow: rgba(56, 189, 248, 0.2);
+      --accent: #0078d4;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --green: #34d399;
+      --yellow: #fbbf24;
+      --red: #f87171;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2.5rem 1rem;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(0, 120, 212, 0.07) 0%, transparent 40%);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #ffffff 20%, #93c5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.lead {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .toc {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .toc-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.5rem;
+    }
+    .toc-grid a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 0.375rem;
+      transition: all 0.15s;
+    }
+    .toc-grid a:hover {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--primary);
+    }
+    .image-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
+    }
+    .image-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+      display: block;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .caption {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 2.25rem;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 1.25rem 0 0.75rem 0;
+    }
+    p { margin-bottom: 0.85rem; color: #e2e8f0; }
+    ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #d1d5db;
+    }
+    li {
+      margin-bottom: 0.55rem;
+    }
+    strong { color: #fff; }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 0.2rem 0.45rem;
+      border-radius: 0.35rem;
+      font-size: 0.85rem;
+      color: #38bdf8;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    pre {
+      background: #050811;
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #e2e8f0;
+      margin: 1rem 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      line-height: 1.5;
+    }
+    .step-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 0.85rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .step-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .step-num {
+      background: var(--primary);
+      color: #090d16;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 0.95rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .ui-box {
+      background: rgba(56, 189, 248, 0.05);
+      border-left: 4px solid var(--primary);
+      padding: 1rem 1.25rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      margin: 0.75rem 0;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+    }
+    .warn-box {
+      background: rgba(248, 113, 113, 0.08);
+      border-left: 4px solid var(--red);
+      padding: 1rem 1.25rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      margin: 0.75rem 0;
+      font-size: 0.92rem;
+      color: #fca5a5;
+    }
+    .qna-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .qna-q {
+      font-weight: 700;
+      color: #fff;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+    .qna-a {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+    .checklist {
+      list-style: none;
+      margin-left: 0;
+    }
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .checklist input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 3.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">Comprehensive Practice Guide</div>
+      <h1>Enterprise Azure Infrastructure</h1>
+      <p class="lead">Complete Beginner-Friendly Hub-and-Spoke Study Guide with Architecture Diagrams, Portal UI Clicks, Code Commands &amp; Interview Q&amp;A</p>
+    </header>
+
+    <!-- Visual Architecture Diagram Banner -->
+    <div class="image-card">
+      <img src="images/case_study_1_architecture.jpg" alt="Enterprise Azure Hub and Spoke Architecture Diagram">
+      <div class="caption">
+        <strong>Figure 1.1</strong>: Enterprise Hub-and-Spoke Topology with Azure Firewall, VNet Peering, Application Gateway (WAF v2), Tiered Subnets, and Centralized Governance.
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <div class="toc-grid">
+        <a href="#section-1">1. The Big Picture &amp; Analogy</a>
+        <a href="#section-2">2. Core Cloud Concepts</a>
+        <a href="#section-3">3. Step-by-Step Azure Portal UI</a>
+        <a href="#section-4">4. Code Practice with Terraform</a>
+        <a href="#section-5">5. How Traffic Moves</a>
+        <a href="#section-6">6. Real-World Problems &amp; Fixes</a>
+        <a href="#section-7">7. Interview Q&amp;A Cheat Sheet</a>
+        <a href="#section-8">8. Daily Revision Checklist</a>
+      </div>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section" id="section-1">
+      <h2>🏢 1. The Big Picture &amp; Real-World Analogy</h2>
+      <p>Imagine a high-security corporate headquarters campus:</p>
+      <ul>
+        <li><strong>The Hub Virtual Network (Hub VNet)</strong>:
+          <ul>
+            <li>This is the main security entrance gate of the corporate campus.</li>
+            <li>Contains the security guards (<strong>Azure Firewall</strong>) who inspect everyone entering or leaving.</li>
+            <li>Contains the visitor pass desk (<strong>Azure Bastion</strong>) where authorized IT engineers can sign in securely without exposing building keys to the public.</li>
+            <li>Has a dedicated private terminal (<strong>GatewaySubnet</strong>) for underground shuttles connecting directly to your on-premises office data center (VPN / ExpressRoute).</li>
+          </ul>
+        </li>
+        <li><strong>The Spoke Virtual Network (Spoke VNet)</strong>:
+          <ul>
+            <li>This is the private office building where actual company work takes place.</li>
+            <li><em>Floor 1 (Web Tier - 10.1.1.0/24)</em>: Reception desk welcoming outside visitors (<strong>Application Gateway with Web Application Firewall</strong>).</li>
+            <li><em>Floor 2 (App Tier - 10.1.2.0/24)</em>: Private offices where employees run business operations (Virtual Machines / APIs). Direct outside visitors are strictly barred from entering.</li>
+            <li><em>Floor 3 (Database Tier - 10.1.3.0/24)</em>: The locked underground vault where money and customer records are kept (SQL/PostgreSQL Databases). Only Floor 2 employees can open this vault.</li>
+          </ul>
+        </li>
+        <li><strong>VNet Peering</strong>:
+          The private, enclosed skywalk connecting the security gate (Hub) directly to the office building (Spoke). No one ever walks on the open public street.
+        </li>
+        <li><strong>Route Tables (User-Defined Routes / UDR)</strong>:
+          A strict company policy saying: <em>"Whenever any employee sends anything to the outside world, you CANNOT jump out the window. You MUST walk through the security guards at the front gate (Azure Firewall) first."</em>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section" id="section-2">
+      <h2>☁️ 2. Core Cloud Concepts Explained (Points-Based)</h2>
+      <ul>
+        <li><strong>Virtual Network (VNet)</strong>:
+          An isolated private network in the Azure cloud, like having your own data center. An address space of <code>10.0.0.0/16</code> provides 65,536 private IP addresses.
+        </li>
+        <li><strong>Subnet</strong>:
+          A smaller partition of a VNet (e.g. <code>10.0.1.0/24</code> provides 256 IPs). Subnets help organize and isolate workloads into distinct security zones.
+        </li>
+        <li><strong>VNet Peering</strong>:
+          Connects two separate VNets using Microsoft's private high-speed backbone. Traffic never touches the public internet. Provides low latency, high bandwidth, and data is encrypted automatically.
+        </li>
+        <li><strong>Azure Firewall</strong>:
+          A fully managed, cloud-based network security service. Performs stateful packet inspection (remembers who initiated the connection) and filters traffic at both Layer 3/4 (IP &amp; Port) and Layer 7 (Application domain names / FQDNs like <code>*.ubuntu.com</code> or <code>*.microsoft.com</code>).
+        </li>
+        <li><strong>Route Table (UDR - User Defined Route)</strong>:
+          Overrides Azure's default routing. We create a route pointing destination <code>0.0.0.0/0</code> (the entire internet) to Next Hop Type <code>Virtual Appliance</code> with Next Hop IP <code>10.0.1.4</code> (Azure Firewall).
+        </li>
+        <li><strong>Network Security Group (NSG)</strong>:
+          A virtual packet firewall attached to subnets or NICs. Contains ordered rules (Priority 100 to 4096) that Allow or Deny traffic based on 5-tuple: Source IP, Source Port, Destination IP, Destination Port, and Protocol (TCP/UDP).
+        </li>
+        <li><strong>Application Gateway &amp; WAF v2</strong>:
+          A Layer 7 reverse proxy and load balancer. Inspects incoming HTTP/HTTPS requests before they reach your app. Web Application Firewall (WAF) blocks OWASP Top 10 exploits like SQL Injection (SQLi) and Cross-Site Scripting (XSS).
+        </li>
+        <li><strong>Azure Key Vault</strong>:
+          A hardware security module (HSM) backed vault in the cloud. Safely stores passwords, API tokens, connection strings, and SSL certificates so zero secrets are hardcoded in application code.
+        </li>
+        <li><strong>Log Analytics Workspace</strong>:
+          Central data store where diagnostic logs and telemetry from all resources are streamed for auditing and threat detection using KQL (Kusto Query Language).
+        </li>
+      </ul>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section" id="section-3">
+      <h2>🖱️ 3. Step-by-Step Azure Portal (UI / GUI) Practice Guide</h2>
+      <p>Follow these exact visual steps in the Azure Portal (<a href="https://portal.azure.com" target="_blank" style="color:var(--primary)">https://portal.azure.com</a>):</p>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">1</span>
+          <span>Create the Resource Group</span>
+        </div>
+        <ul>
+          <li>In the top search bar, type <strong>"Resource groups"</strong> and click it.</li>
+          <li>Click <strong>"+ Create"</strong>.</li>
+          <li>Select your Subscription.</li>
+          <li>Resource group name: <code>rg-enterprise-prod</code></li>
+          <li>Region: <code>East US</code> (or your preferred region).</li>
+          <li>Click <strong>"Review + create"</strong>, then <strong>"Create"</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">2</span>
+          <span>Create the Hub VNet &amp; Specialized Subnets</span>
+        </div>
+        <ul>
+          <li>Search <strong>"Virtual networks"</strong>, click <strong>"+ Create"</strong>.</li>
+          <li>Resource Group: <code>rg-enterprise-prod</code>, Name: <code>vnet-hub-prod</code>, Region: <code>East US</code>.</li>
+          <li>Click <strong>"Next: IP Addresses"</strong>. IPv4 address space: <code>10.0.0.0/16</code>.</li>
+          <li>Add the required subnets one by one:
+            <div class="ui-box">
+              &bull; Click "+ Add subnet" &rarr; Name: <code>AzureFirewallSubnet</code> (Exact spelling required!) &rarr; Starting address: <code>10.0.1.0/24</code>.<br>
+              &bull; Click "+ Add subnet" &rarr; Name: <code>AzureBastionSubnet</code> (Exact spelling required!) &rarr; Starting address: <code>10.0.2.0/24</code>.<br>
+              &bull; Click "+ Add subnet" &rarr; Name: <code>GatewaySubnet</code> (Exact spelling required!) &rarr; Starting address: <code>10.0.3.0/24</code>.<br>
+              &bull; Click "+ Add subnet" &rarr; Name: <code>snet-hub-management</code> &rarr; Starting address: <code>10.0.4.0/24</code>.
+            </div>
+          </li>
+          <li>Click <strong>"Review + create"</strong>, then <strong>"Create"</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">3</span>
+          <span>Create the Spoke VNet &amp; Workload Subnets</span>
+        </div>
+        <ul>
+          <li>Search <strong>"Virtual networks"</strong>, click <strong>"+ Create"</strong>.</li>
+          <li>Resource Group: <code>rg-enterprise-prod</code>, Name: <code>vnet-spoke-prod</code>, Address space: <code>10.1.0.0/16</code>.</li>
+          <li>Add tiered subnets:
+            <div class="ui-box">
+              &bull; Name: <code>snet-web</code> &rarr; <code>10.1.1.0/24</code><br>
+              &bull; Name: <code>snet-app</code> &rarr; <code>10.1.2.0/24</code><br>
+              &bull; Name: <code>snet-data</code> &rarr; <code>10.1.3.0/24</code>
+            </div>
+          </li>
+          <li>Click <strong>"Review + create"</strong>, then <strong>"Create"</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">4</span>
+          <span>Connect Hub &amp; Spoke with VNet Peering</span>
+        </div>
+        <ul>
+          <li>Open <code>vnet-hub-prod</code> &rarr; On the left menu, click <strong>"Peerings"</strong> &rarr; Click <strong>"+ Add"</strong>.</li>
+          <li>Peering link name: <code>hub-to-spoke</code>.</li>
+          <li>Under "Remote virtual network", select <code>vnet-spoke-prod</code>.</li>
+          <li>Remote peering link name: <code>spoke-to-hub</code>.</li>
+          <li>Check both boxes to allow traffic between both VNets &rarr; Click <strong>"Add"</strong>. Peering status will say <code>Connected</code>.</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">5</span>
+          <span>Deploy Azure Firewall</span>
+        </div>
+        <ul>
+          <li>Search <strong>"Firewalls"</strong> &rarr; Click <strong>"+ Create"</strong>.</li>
+          <li>Name: <code>afw-hub-prod</code>, Region: <code>East US</code>, SKU: <code>Standard</code>.</li>
+          <li>Virtual network: Select "Use existing" &rarr; Choose <code>vnet-hub-prod</code>.</li>
+          <li>Public IP: Click "Add new" &rarr; Name: <code>pip-afw-prod</code> &rarr; Click <strong>"Review + create"</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">6</span>
+          <span>Create User-Defined Route Table (UDR)</span>
+        </div>
+        <ul>
+          <li>Search <strong>"Route tables"</strong> &rarr; Click <strong>"+ Create"</strong> &rarr; Name: <code>rt-spoke-egress</code>.</li>
+          <li>Open <code>rt-spoke-egress</code> &rarr; Click <strong>"Routes"</strong> &rarr; Click <strong>"+ Add"</strong>.</li>
+          <li>Route name: <code>default-egress-to-firewall</code> &rarr; Destination: <code>0.0.0.0/0</code> &rarr; Next hop: <code>Virtual appliance</code> &rarr; Next hop IP: <code>10.0.1.4</code> (Firewall private IP).</li>
+          <li>On the left menu, click <strong>"Subnets"</strong> &rarr; Click <strong>"+ Associate"</strong> &rarr; Link to <code>snet-app</code> and <code>snet-data</code>.</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-header">
+          <span class="step-num">7</span>
+          <span>Configure Network Security Groups (NSGs)</span>
+        </div>
+        <ul>
+          <li>Create NSGs: <code>nsg-web</code>, <code>nsg-app</code>, and <code>nsg-data</code>.</li>
+          <li>In <code>nsg-app</code>: Add Inbound rule: Source: <code>10.1.1.0/24</code> (Web Subnet), Port: <code>80,443</code>, Action: <code>Allow</code>, Priority: <code>100</code>.</li>
+          <li>In <code>nsg-data</code>: Add Inbound rule: Source: <code>10.1.2.0/24</code> (App Subnet), Port: <code>1433,5432</code>, Action: <code>Allow</code>, Priority: <code>100</code>. Add Deny Internet rule: Priority <code>200</code>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="section" id="section-4">
+      <h2>💻 4. Step-by-Step Code Practice with Terraform &amp; PowerShell</h2>
+      <p>All automated infrastructure code is located in <code>Azure infra case study 1/</code>:</p>
+      <pre># 1. Open PowerShell and navigate to the project directory:
+cd "d:\MY_Portfolio\Azure infra case study 1"
+
+# 2. Log into Azure CLI:
+az login
+az account show
+
+# 3. Deploy using the automated PowerShell helper script:
+.\scripts\deploy.ps1
+# The script validates syntax, runs 'terraform fmt', generates plan, and prompts for confirmation.
+
+# 4. Or practice manual Terraform commands:
+cd terraform
+terraform init
+terraform plan -out=tfplan
+terraform apply tfplan
+
+# 5. Inspect deployed outputs:
+terraform output
+
+# 6. Clean up when finished practicing to avoid cloud bills:
+cd ..
+.\scripts\destroy.ps1</pre>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="section" id="section-5">
+      <h2>🔄 5. How Traffic Moves (Step-by-Step Flows)</h2>
+      
+      <h3>Flow 1: When an External User Visits Your Website</h3>
+      <ul>
+        <li>1. User types your domain into their browser &rarr; Resolves to Application Gateway Public IP.</li>
+        <li>2. Application Gateway terminates HTTPS, checks WAF rules (OWASP Top 10).</li>
+        <li>3. If clean, Gateway forwards request over VNet Peering to App Tier (<code>10.1.2.0/24</code>).</li>
+        <li>4. App Tier VM processes request and queries Database Tier (<code>10.1.3.0/24</code>) on port 1433/5432.</li>
+        <li>5. Database NSG verifies: <em>"Is request from 10.1.2.0/24? Yes &rarr; Allow."</em></li>
+        <li>6. Database returns data &rarr; App VM responds back to Application Gateway &rarr; User sees page.</li>
+      </ul>
+
+      <h3>Flow 2: When an Application Server Downloads OS Updates</h3>
+      <ul>
+        <li>1. App Server requests: <code>https://security.ubuntu.com/updates</code>.</li>
+        <li>2. Spoke Route Table intercepts: <em>"0.0.0.0/0 route forces traffic to 10.0.1.4 (Firewall)."</em></li>
+        <li>3. Packet travels across VNet Peering to Azure Firewall.</li>
+        <li>4. Azure Firewall checks Application Rules: <em>"Is *.ubuntu.com allowed? Yes."</em></li>
+        <li>5. Azure Firewall performs NAT, downloads update from Internet, and returns it to VM.</li>
+      </ul>
+    </div>
+
+    <!-- Section 6 -->
+    <div class="section" id="section-6">
+      <h2>🛠️ 6. Real-World Problems Encountered &amp; How to Fix Them</h2>
+      
+      <div class="warn-box">
+        <strong>Problem 1: Asymmetric Routing on Ingress Traffic</strong><br>
+        <strong>What happens:</strong> You apply a route table (<code>0.0.0.0/0 &rarr; Azure Firewall</code>) to ALL subnets, including the Application Gateway subnet. Incoming web requests time out.<br>
+        <strong>Why:</strong> External clients send packets directly to the Application Gateway Public IP. The gateway tries to send response packets back, but the route table forces them through the Azure Firewall. The firewall drops them because it never saw the initial SYN handshake packet.<br>
+        <strong>Solution:</strong> NEVER attach the <code>0.0.0.0/0</code> route to the Application Gateway subnet. Only attach it to the backend App and Database subnets.
+      </div>
+
+      <div class="warn-box">
+        <strong>Problem 2: Zero-Trust NSG Blocking Health Probes</strong><br>
+        <strong>What happens:</strong> Application Gateway displays "Backend server unhealthy - HTTP 502".<br>
+        <strong>Why:</strong> Applying aggressive deny rules on App subnets inadvertently blocks health probe packets sent by the gateway.<br>
+        <strong>Solution:</strong> Add a high-priority Inbound Allow rule for service tag <code>AzureLoadBalancer</code> and ports <code>65200-65535</code> for <code>GatewayManager</code> before your deny rules.
+      </div>
+    </div>
+
+    <!-- Section 7 -->
+    <div class="section" id="section-7">
+      <h2>🎯 7. Top Technical Interview Questions &amp; Answers</h2>
+
+      <div class="qna-card">
+        <div class="qna-q">Q1: Why do enterprises use Hub-and-Spoke instead of a single flat network?</div>
+        <div class="qna-a">
+          <strong>Answer:</strong><br>
+          1. <strong>Cost Efficiency:</strong> Rather than paying for separate firewalls, VPN gateways, and ExpressRoutes for every project, you centralize perimeter tools in one Hub.<br>
+          2. <strong>Security Isolation:</strong> Each department gets its own Spoke. If one Spoke is compromised, attackers cannot reach other Spokes because Spokes cannot communicate without passing through the central firewall.
+        </div>
+      </div>
+
+      <div class="qna-card">
+        <div class="qna-q">Q2: What is the difference between Network Security Groups (NSGs) and Azure Firewall?</div>
+        <div class="qna-a">
+          <strong>Answer:</strong><br>
+          NSGs operate at Layer 4 (filtering simple IP addresses and port numbers). Azure Firewall operates up to Layer 7 (inspecting domain names like <code>*.github.com</code>, TLS termination, and stateful application rules). Best practice is Defense-in-Depth: use both together.
+        </div>
+      </div>
+
+      <div class="qna-card">
+        <div class="qna-q">Q3: What does the route "0.0.0.0/0" with Next Hop "Virtual Appliance" do?</div>
+        <div class="qna-a">
+          <strong>Answer:</strong><br>
+          <code>0.0.0.0/0</code> represents the default route (the entire internet). Specifying Next Hop <code>Virtual Appliance</code> overrides Azure's default direct internet egress and forces every outbound packet through the private IP of Azure Firewall (<code>10.0.1.4</code>) for inspection and logging.
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 8 -->
+    <div class="section" id="section-8">
+      <h2>✅ 8. Daily Revision Checklist</h2>
+      <ul class="checklist">
+        <li><input type="checkbox"> Draw the Hub-and-Spoke network topology on paper from memory.</li>
+        <li><input type="checkbox"> Explain the difference between Hub VNet (<code>10.0.0.0/16</code>) and Spoke VNet (<code>10.1.0.0/16</code>).</li>
+        <li><input type="checkbox"> Explain why <code>AzureFirewallSubnet</code> cannot have an NSG attached.</li>
+        <li><input type="checkbox"> Be able to explain Asymmetric Routing in 3 clear sentences.</li>
+        <li><input type="checkbox"> Run <code>terraform plan</code> and explain what each module provisions.</li>
+      </ul>
+    </div>
+
+    <footer>
+      <strong>Aakash Trivedi</strong> · Azure Cloud Engineer &amp; Infrastructure Specialist · <a href="https://aakashtrivedi-01.github.io/Cloud_portfolio_Aakash/" target="_blank" style="color:var(--primary)">Portfolio</a> · <a href="https://github.com/AAKASHTRIVEDI-01/Enterprise-Azure-Infrastructure" target="_blank" style="color:var(--primary)">GitHub Repository</a>
+    </footer>
+  </div>
+</body>
+</html>
