@@ -46,7 +46,7 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
         {/* Title */}
         <div className="mb-5 pr-10">
           <div className="flex items-center gap-2">
-            <span className="eyebrow text-azure-600">Project Overview</span>
+            <span className="eyebrow text-azure-700">Project Overview</span>
           </div>
           <h2 className="mt-2 font-display text-xl font-bold leading-tight text-slate-900 sm:text-2xl">
             {study.title}
@@ -61,7 +61,7 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
           {study.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-[#EBF5FA] px-2.5 py-0.5 text-xs font-semibold text-azure-700"
+              className="rounded-full bg-[#EAF2F8] px-2.5 py-0.5 text-xs font-semibold text-azure-700"
             >
               {tag}
             </span>
@@ -73,13 +73,13 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
           {/* Challenges */}
           <div className="rounded-xl border border-slate-200/80 bg-[#F8FAFC] p-4">
             <div className="mb-2.5 flex items-center gap-2">
-              <AlertCircle className="h-4 w-4 text-azure-600" />
+              <AlertCircle className="h-4 w-4 text-azure-700" />
               <h3 className="font-display text-xs font-bold uppercase tracking-wider text-slate-900">Challenges</h3>
             </div>
             <ul className="space-y-1.5 text-xs text-slate-600">
               {(study.problemPoints || [study.problem]).map((pt, idx) => (
                 <li key={idx} className="flex items-start gap-1.5">
-                  <span className="text-azure-600 font-bold">•</span>
+                  <span className="text-azure-700 font-bold">•</span>
                   <span>{pt}</span>
                 </li>
               ))}
@@ -89,7 +89,7 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
           {/* Solutions / Objectives */}
           <div className="rounded-xl border border-slate-200/80 bg-[#F8FAFC] p-4">
             <div className="mb-2.5 flex items-center gap-2">
-              <Target className="h-4 w-4 text-azure-600" />
+              <Target className="h-4 w-4 text-azure-700" />
               <h3 className="font-display text-xs font-bold uppercase tracking-wider text-slate-900">Architecture Goals</h3>
             </div>
             <ul className="space-y-1.5 text-xs text-slate-600">
@@ -107,13 +107,13 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
         {study.whatIBuilt && study.whatIBuilt.length > 0 && (
           <div className="mt-5 rounded-xl border border-slate-200/80 bg-[#F8FAFC] p-4">
             <div className="mb-2.5 flex items-center gap-2">
-              <Wrench className="h-4 w-4 text-azure-600" />
+              <Wrench className="h-4 w-4 text-azure-700" />
               <h3 className="font-display text-xs font-bold uppercase tracking-wider text-slate-900">Implementation Highlights</h3>
             </div>
             <ul className="grid gap-2 sm:grid-cols-2">
               {study.whatIBuilt.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-xs text-slate-700">
-                  <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-none text-azure-600" />
+                  <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-none text-azure-700" />
                   <span>{item}</span>
                 </li>
               ))}

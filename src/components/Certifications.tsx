@@ -86,7 +86,7 @@ export default function Certifications() {
         <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
           <div className="flex items-center gap-2">
             <span className="eyebrow text-azure-700">Credentials</span>
-            <span className="h-px w-12 bg-azure-500/30" />
+            <span className="h-px w-12 bg-azure-700/30" />
           </div>
           <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
             Certifications &amp; credentials.
@@ -103,7 +103,7 @@ export default function Certifications() {
             <div>
               <div className="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
                 <div className="flex items-start gap-3.5">
-                  <div className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-[#EBF5FA] text-azure-600">
+                  <div className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700">
                     <Award className="h-6 w-6" />
                   </div>
                   <div>
@@ -155,7 +155,7 @@ export default function Certifications() {
                         key={domain.title}
                         className="flex items-start gap-2.5 rounded-lg p-2 transition-colors hover:bg-slate-50"
                       >
-                        <DomainIcon className="h-4 w-4 text-azure-600 flex-none mt-0.5" />
+                        <DomainIcon className="h-4 w-4 text-azure-700 flex-none mt-0.5" />
                         <div>
                           <div className="text-xs font-bold text-slate-900">{domain.title}</div>
                           <p className="text-[11px] text-slate-600 leading-relaxed">{domain.desc}</p>

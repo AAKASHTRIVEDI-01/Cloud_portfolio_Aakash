@@ -66,7 +66,7 @@ export default function Navbar() {
             <img src={atLogo} alt="Aakash Trivedi" className="h-full w-full object-cover" />
           </div>
           <div className="flex flex-col">
-            <span className="font-display text-sm font-bold tracking-tight text-slate-900 group-hover:text-azure-600 transition-colors">
+            <span className="font-display text-sm font-bold tracking-tight text-slate-900 group-hover:text-azure-700 transition-colors">
               Aakash Trivedi
             </span>
             <span className="hidden sm:inline-block text-[11px] text-slate-500 font-medium">
@@ -85,13 +85,13 @@ export default function Navbar() {
                 href={link.href}
                 className={`relative px-3.5 py-1.5 text-xs font-medium transition-all duration-200 rounded-lg ${
                   isActive
-                    ? 'text-azure-600 bg-blue-50/80 font-semibold'
+                    ? 'text-azure-700 bg-[#EAF2F8] font-semibold'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70'
                 }`}
               >
                 <span>{link.label}</span>
                 {isActive && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-[2px] rounded-full bg-azure-600" />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-[2px] rounded-full bg-azure-700" />
                 )}
               </a>
             );
@@ -132,11 +132,11 @@ export default function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   className={`flex items-center gap-2.5 rounded-lg px-3 py-2 text-xs font-medium transition-colors ${
                     isActive
-                      ? 'bg-blue-50 text-azure-600 font-semibold'
+                      ? 'bg-[#EAF2F8] text-azure-700 font-semibold'
                       : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'
                   }`}
                 >
-                  <Icon className="h-4 w-4 text-azure-600" />
+                  <Icon className="h-4 w-4 text-azure-700" />
                   <span>{link.label}</span>
                 </a>
               );
@@ -149,7 +149,7 @@ export default function Navbar() {
                 href="https://linkedin.com/in/aakashtrivedi1003"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-azure-600"
+                className="hover:text-azure-700"
               >
                 <Linkedin className="h-4 w-4" />
               </a>

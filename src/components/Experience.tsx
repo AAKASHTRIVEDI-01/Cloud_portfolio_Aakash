@@ -76,8 +76,8 @@ export default function Experience() {
     <section id="experience" className="relative mx-auto max-w-5xl px-6 py-12 sm:py-16">
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="flex items-center gap-2">
-          <span className="eyebrow text-azure-600">Experience</span>
-          <span className="h-px w-12 bg-azure-500/30" />
+          <span className="eyebrow text-azure-700">Experience</span>
+          <span className="h-px w-12 bg-azure-700/30" />
         </div>
         <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
           Professional background.
@@ -114,7 +114,7 @@ function TimelineItem({
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       {/* Node */}
-      <div className="absolute -left-[33px] sm:-left-[41px] top-1.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-azure-600 bg-white text-azure-600 shadow-xs">
+      <div className="absolute -left-[33px] sm:-left-[41px] top-1.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-azure-700 bg-white text-azure-700 shadow-xs">
         <Briefcase className="h-3 w-3" />
       </div>
 
@@ -157,7 +157,7 @@ function TimelineItem({
             const BIcon = b.icon;
             return (
               <li key={idx} className="flex items-start gap-2.5 text-xs leading-relaxed text-slate-600">
-                <BIcon className="h-3.5 w-3.5 flex-none mt-0.5 text-azure-600" />
+                <BIcon className="h-3.5 w-3.5 flex-none mt-0.5 text-azure-700" />
                 <span>{b.text}</span>
               </li>
             );
@@ -169,7 +169,7 @@ function TimelineItem({
           {exp.skills.map((skill) => (
             <span
               key={skill}
-              className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-medium text-slate-700 hover:bg-[#EBF5FA] hover:text-azure-700 transition-colors"
+              className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-medium text-slate-700 hover:bg-[#EAF2F8] hover:text-azure-700 transition-colors"
             >
               {skill}
             </span>

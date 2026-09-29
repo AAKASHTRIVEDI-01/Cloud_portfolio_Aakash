@@ -76,8 +76,8 @@ export default function About() {
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         {/* Section Header */}
         <div className="flex items-center gap-2">
-          <span className="eyebrow text-azure-600">About Me</span>
-          <span className="h-px w-12 bg-azure-500/30" />
+          <span className="eyebrow text-azure-700">About Me</span>
+          <span className="h-px w-12 bg-azure-700/30" />
         </div>
 
         <div className="mt-6 grid gap-8 lg:grid-cols-12 lg:gap-10">
@@ -102,7 +102,7 @@ export default function About() {
                       key={idx}
                       className="group flex items-start gap-3.5 rounded-xl border border-slate-200/80 bg-white p-3.5 shadow-xs transition-all duration-200 hover:border-azure-300 hover:shadow-sm"
                     >
-                      <div className="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-[#EBF5FA] text-azure-600 transition-colors group-hover:bg-azure-600 group-hover:text-white">
+                      <div className="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-[#EAF2F8] text-azure-700 transition-colors group-hover:bg-azure-700 group-hover:text-white">
                         <Icon className="h-4 w-4" />
                       </div>
                       <div>
@@ -126,7 +126,7 @@ export default function About() {
                   className="flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-5 sm:p-6 shadow-xs transition-all duration-200 hover:border-azure-300 hover:shadow-sm"
                 >
                   <div>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EBF5FA] text-azure-600">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700">
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="mt-4 font-display text-sm sm:text-base font-bold text-slate-900">
@@ -150,7 +150,7 @@ export default function About() {
           {CORE_STACK.map((tech) => (
             <span
               key={tech}
-              className="rounded-full border border-slate-200 bg-white px-3.5 py-1 text-xs font-medium text-slate-700 shadow-2xs transition-colors hover:border-azure-400 hover:bg-[#EBF5FA] hover:text-azure-700"
+              className="rounded-full border border-slate-200 bg-white px-3.5 py-1 text-xs font-medium text-slate-700 shadow-2xs transition-colors hover:border-azure-400 hover:bg-[#EAF2F8] hover:text-azure-700"
             >
               {tech}
             </span>

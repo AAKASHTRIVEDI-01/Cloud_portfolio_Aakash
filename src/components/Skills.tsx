@@ -123,8 +123,8 @@ export default function Skills() {
       {/* Section Header */}
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="flex items-center gap-2">
-          <span className="eyebrow text-azure-600">Skills &amp; Tools</span>
-          <span className="h-px w-12 bg-azure-500/30" />
+          <span className="eyebrow text-azure-700">Skills &amp; Tools</span>
+          <span className="h-px w-12 bg-azure-700/30" />
         </div>
         <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
           Technical skills &amp; tools.
@@ -204,7 +204,7 @@ export default function Skills() {
               >
                 {/* Category Header */}
                 <div className="flex items-center gap-2.5 border-b border-slate-100 pb-3.5">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#EBF5FA] text-azure-600">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#EAF2F8] text-azure-700">
                     <GroupIcon className="h-4 w-4" />
                   </div>
                   <h3 className="font-display text-sm sm:text-base font-bold text-slate-900">
@@ -222,9 +222,9 @@ export default function Skills() {
                     return (
                       <div
                         key={skill.name}
-                        className="group inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-[#F8FAFC] px-4 py-2 text-xs font-semibold text-slate-700 shadow-2xs transition-all duration-200 hover:border-azure-400 hover:bg-[#EBF5FA] hover:text-azure-700 hover:shadow-xs"
+                        className="group inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-[#F8FAFC] px-4 py-2 text-xs font-semibold text-slate-700 shadow-2xs transition-all duration-200 hover:border-azure-400 hover:bg-[#EAF2F8] hover:text-azure-700 hover:shadow-xs"
                       >
-                        <SkillIcon className="h-3.5 w-3.5 text-azure-600 group-hover:text-azure-700 transition-colors" />
+                        <SkillIcon className="h-3.5 w-3.5 text-azure-700 group-hover:text-azure-800 transition-colors" />
                         <span>{skill.name}</span>
                       </div>
                     );

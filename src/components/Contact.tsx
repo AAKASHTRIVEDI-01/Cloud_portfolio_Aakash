@@ -22,8 +22,8 @@ export default function Contact() {
     <section id="contact" className="relative mx-auto max-w-5xl px-6 pt-12 pb-16 sm:pt-16 sm:pb-20">
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="flex items-center gap-2">
-          <span className="eyebrow text-azure-600">Get In Touch</span>
-          <span className="h-px w-12 bg-azure-500/30" />
+          <span className="eyebrow text-azure-700">Get In Touch</span>
+          <span className="h-px w-12 bg-azure-700/30" />
         </div>
 
         <div className="mt-4 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
@@ -47,7 +47,7 @@ export default function Contact() {
               </>
             ) : (
               <>
-                <Copy className="h-3.5 w-3.5 text-azure-600" />
+                <Copy className="h-3.5 w-3.5 text-azure-700" />
                 <span>Copy Email</span>
               </>
             )}
@@ -59,7 +59,7 @@ export default function Contact() {
           {/* Email */}
           <div className="flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-5 shadow-xs transition-all hover:border-azure-300 hover:shadow-sm">
             <div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EBF5FA] text-azure-600">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700">
                 <Mail className="h-4 w-4" />
               </div>
               <h3 className="mt-4 font-display text-sm font-bold text-slate-900">Direct Email</h3>
@@ -68,7 +68,7 @@ export default function Contact() {
             <div className="mt-5">
               <a
                 href={`mailto:${email}?subject=Inquiry%20-%20Cloud%20Engineering`}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-azure-600 hover:text-azure-700"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-azure-700 hover:text-azure-800"
               >
                 <span>Send Email</span>
                 <Send className="h-3 w-3" />
@@ -79,7 +79,7 @@ export default function Contact() {
           {/* LinkedIn */}
           <div className="flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-5 shadow-xs transition-all hover:border-azure-300 hover:shadow-sm">
             <div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EBF5FA] text-azure-600">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700">
                 <Linkedin className="h-4 w-4" />
               </div>
               <h3 className="mt-4 font-display text-sm font-bold text-slate-900">LinkedIn</h3>
@@ -90,7 +90,7 @@ export default function Contact() {
                 href="https://linkedin.com/in/aakashtrivedi1003"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-azure-600 hover:text-azure-700"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-azure-700 hover:text-azure-800"
               >
                 <span>Connect</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />
@@ -101,7 +101,7 @@ export default function Contact() {
           {/* Resume Download */}
           <div className="flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-5 shadow-xs transition-all hover:border-azure-300 hover:shadow-sm">
             <div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EBF5FA] text-azure-600">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700">
                 <FileText className="h-4 w-4" />
               </div>
               <h3 className="mt-4 font-display text-sm font-bold text-slate-900">Curriculum Vitae</h3>
@@ -111,7 +111,7 @@ export default function Contact() {
               <a
                 href={resumeUrl}
                 download="Aakash_Trivedi_Resume.pdf"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-azure-600 hover:text-azure-700"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-azure-700 hover:text-azure-800"
               >
                 <span>Download PDF</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />
@@ -126,7 +126,7 @@ export default function Contact() {
 
           <button
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 text-xs text-slate-600 transition-colors hover:text-azure-600 font-medium"
+            className="inline-flex items-center gap-1.5 text-xs text-slate-600 transition-colors hover:text-azure-700 font-medium"
           >
             <span>Back to top</span>
             <ArrowUp className="h-3.5 w-3.5" />
