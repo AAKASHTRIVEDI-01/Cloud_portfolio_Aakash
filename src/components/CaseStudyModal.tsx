@@ -28,16 +28,16 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
     <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-4 sm:p-6 md:p-10">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-ink-950/80 backdrop-blur-md animate-fade-in"
+        className="fixed inset-0 bg-slate-900/50 backdrop-blur-md animate-fade-in"
         onClick={onClose}
       />
 
       {/* Panel */}
-      <div className="relative z-10 my-auto w-full max-w-3xl animate-scale-in rounded-2xl border border-white/10 bg-ink-900/98 p-6 shadow-2xl shadow-black/70 sm:p-8">
+      <div className="relative z-10 my-auto w-full max-w-3xl animate-scale-in rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl sm:p-8">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 text-gray-400 transition-colors hover:border-azure-400 hover:text-white"
+          className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 text-slate-400 transition-colors hover:border-azure-400 hover:text-slate-900 hover:bg-slate-50"
           aria-label="Close"
         >
           <X className="h-4 w-4" />
@@ -46,12 +46,12 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
         {/* Title */}
         <div className="mb-5 pr-10">
           <div className="flex items-center gap-2">
-            <span className="eyebrow text-azure-400">Project Overview</span>
+            <span className="eyebrow text-azure-600">Project Overview</span>
           </div>
-          <h2 className="mt-2 font-display text-xl font-bold leading-tight text-white sm:text-2xl">
+          <h2 className="mt-2 font-display text-xl font-bold leading-tight text-slate-900 sm:text-2xl">
             {study.title}
           </h2>
-          <p className="mt-2 text-xs leading-relaxed text-gray-300 sm:text-sm">
+          <p className="mt-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
             {study.description}
           </p>
         </div>
@@ -61,7 +61,7 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
           {study.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-md border border-azure-500/20 bg-azure-500/[0.06] px-2.5 py-0.5 text-xs font-medium text-azure-200"
+              className="rounded-full bg-[#EBF5FA] px-2.5 py-0.5 text-xs font-semibold text-azure-700"
             >
               {tag}
             </span>
@@ -71,70 +71,72 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
         {/* Structured Problem & Solution: Point Cards */}
         <div className="grid gap-4 sm:grid-cols-2">
           {/* Challenges */}
-          <div className="rounded-xl border border-white/8 bg-white/[0.02] p-4">
+          <div className="rounded-xl border border-slate-200/80 bg-[#F8FAFC] p-4">
             <div className="mb-2.5 flex items-center gap-2">
-              <AlertCircle className="h-4 w-4 text-azure-400" />
-              <h3 className="font-display text-xs font-bold uppercase tracking-wider text-white">Challenges</h3>
+              <AlertCircle className="h-4 w-4 text-azure-600" />
+              <h3 className="font-display text-xs font-bold uppercase tracking-wider text-slate-900">Challenges</h3>
             </div>
-            <ul className="space-y-1.5 text-xs text-gray-300">
+            <ul className="space-y-1.5 text-xs text-slate-600">
               {(study.problemPoints || [study.problem]).map((pt, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-azure-400" />
-                  <span className="leading-relaxed">{pt}</span>
+                <li key={idx} className="flex items-start gap-1.5">
+                  <span className="text-azure-600 font-bold">•</span>
+                  <span>{pt}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Solutions */}
-          <div className="rounded-xl border border-white/8 bg-white/[0.02] p-4">
+          {/* Solutions / Objectives */}
+          <div className="rounded-xl border border-slate-200/80 bg-[#F8FAFC] p-4">
             <div className="mb-2.5 flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-              <h3 className="font-display text-xs font-bold uppercase tracking-wider text-white">Solutions Built</h3>
+              <Target className="h-4 w-4 text-azure-600" />
+              <h3 className="font-display text-xs font-bold uppercase tracking-wider text-slate-900">Architecture Goals</h3>
             </div>
-            <ul className="space-y-1.5 text-xs text-gray-300">
+            <ul className="space-y-1.5 text-xs text-slate-600">
               {(study.solutionPoints || [study.solution]).map((pt, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-emerald-400" />
-                  <span className="leading-relaxed">{pt}</span>
+                <li key={idx} className="flex items-start gap-1.5">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span>{pt}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        {/* Key Technical Deliverables */}
-        <div className="mt-5 rounded-xl border border-white/8 bg-white/[0.02] p-4">
-          <div className="mb-2.5 flex items-center gap-2">
-            <Wrench className="h-4 w-4 text-azure-400" />
-            <h3 className="font-display text-xs font-bold uppercase tracking-wider text-white">Deliverables</h3>
+        {/* What I Built */}
+        {study.whatIBuilt && study.whatIBuilt.length > 0 && (
+          <div className="mt-5 rounded-xl border border-slate-200/80 bg-[#F8FAFC] p-4">
+            <div className="mb-2.5 flex items-center gap-2">
+              <Wrench className="h-4 w-4 text-azure-600" />
+              <h3 className="font-display text-xs font-bold uppercase tracking-wider text-slate-900">Implementation Highlights</h3>
+            </div>
+            <ul className="grid gap-2 sm:grid-cols-2">
+              {study.whatIBuilt.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-xs text-slate-700">
+                  <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-none text-azure-600" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="grid gap-2 sm:grid-cols-2">
-            {study.whatIBuilt.map((item, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-xs text-gray-300">
-                <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-none text-azure-400" />
-                <span className="leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        )}
 
-        {/* Key Technologies */}
-        <div className="mt-5">
-          <h3 className="mb-2 font-display text-[11px] font-semibold uppercase tracking-wider text-gray-400">
-            Technologies Used
-          </h3>
-          <div className="flex flex-wrap gap-1.5">
-            {study.keyTechnologies.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-md border border-white/8 bg-white/[0.02] px-2.5 py-0.5 text-xs text-gray-300"
-              >
-                {tech}
-              </span>
-            ))}
+        {/* Key Takeaways */}
+        {study.keyTakeaways && study.keyTakeaways.length > 0 && (
+          <div className="mt-5 border-t border-slate-100 pt-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Key Operational Outcomes:</h4>
+            <div className="flex flex-wrap gap-2">
+              {study.keyTakeaways.map((outcome, idx) => (
+                <span
+                  key={idx}
+                  className="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-700 font-medium"
+                >
+                  {outcome}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

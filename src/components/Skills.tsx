@@ -42,11 +42,11 @@ const SKILL_GROUPS: SkillGroup[] = [
     icon: Network,
     skills: [
       { name: 'Virtual Networks (VNets)', icon: Network },
-      { name: 'Azure Virtual Machines (VMs)', icon: Server },
+      { name: 'Azure Virtual Machines', icon: Server },
       { name: 'Network Security Groups (NSGs)', icon: ShieldCheck },
       { name: 'Azure Load Balancers', icon: Layers },
-      { name: 'Azure Blob & Storage Accounts', icon: HardDrive },
-      { name: 'Azure Backup & Recovery Services', icon: RotateCcw },
+      { name: 'Storage Accounts & Blob', icon: HardDrive },
+      { name: 'Backup & Recovery Services', icon: RotateCcw },
     ],
   },
   {
@@ -55,7 +55,7 @@ const SKILL_GROUPS: SkillGroup[] = [
     category: 'Security',
     icon: ShieldCheck,
     skills: [
-      { name: 'Microsoft Entra ID (Azure AD)', icon: KeyRound },
+      { name: 'Microsoft Entra ID', icon: KeyRound },
       { name: 'Role-Based Access Control (RBAC)', icon: ShieldCheck },
       { name: 'Azure Key Vault', icon: Lock },
       { name: 'Azure Policy & Governance', icon: FileCheck },
@@ -67,12 +67,12 @@ const SKILL_GROUPS: SkillGroup[] = [
     category: 'DevOps & IaC',
     icon: GitBranch,
     skills: [
-      { name: 'Terraform (IaC)', icon: Code2 },
-      { name: 'Azure Bicep / ARM Templates', icon: Code2 },
-      { name: 'Azure DevOps CI/CD Pipelines', icon: Workflow },
+      { name: 'Terraform', icon: Code2 },
+      { name: 'Azure Bicep & ARM', icon: Code2 },
+      { name: 'Azure DevOps Pipelines', icon: Workflow },
       { name: 'GitHub Actions Workflows', icon: GitBranch },
       { name: 'Azure CLI & PowerShell', icon: Terminal },
-      { name: 'Git & Version Control', icon: GitBranch },
+      { name: 'Git Version Control', icon: GitBranch },
     ],
   },
   {
@@ -82,8 +82,8 @@ const SKILL_GROUPS: SkillGroup[] = [
     icon: Activity,
     skills: [
       { name: 'Azure Monitor & Metrics', icon: Activity },
-      { name: 'Log Analytics & KQL (Basics)', icon: Terminal },
-      { name: 'Docker Containerization', icon: Boxes },
+      { name: 'Log Analytics & KQL', icon: Terminal },
+      { name: 'Docker Containers', icon: Boxes },
     ],
   },
 ];
@@ -123,27 +123,27 @@ export default function Skills() {
       {/* Section Header */}
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="flex items-center gap-2">
-          <span className="eyebrow text-azure-400">Skills &amp; Technologies</span>
+          <span className="eyebrow text-azure-600">Skills &amp; Tools</span>
           <span className="h-px w-12 bg-azure-500/30" />
         </div>
-        <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
-          Core technical competencies.
+        <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+          Technical skills &amp; tools.
         </h2>
-        <p className="mt-2 text-sm text-gray-400 max-w-xl">
-          Realistic, hands-on technologies I work with daily across enterprise Azure environments.
+        <p className="mt-2 text-sm text-slate-600 max-w-xl">
+          Technologies and tools I use daily to build, secure, and manage enterprise Azure infrastructure.
         </p>
 
         {/* Filter & Search Bar */}
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           {/* Tabs */}
-          <div className="flex flex-wrap items-center gap-1.5 rounded-xl border border-white/8 bg-white/[0.02] p-1 text-xs">
+          <div className="flex flex-wrap items-center gap-1.5 rounded-full bg-slate-200/70 p-1 text-xs">
             <button
               type="button"
               onClick={() => setActiveTab('all')}
-              className={`rounded-lg px-3 py-1.5 font-medium transition-all ${
+              className={`rounded-full px-3.5 py-1.5 font-medium transition-all ${
                 activeTab === 'all'
-                  ? 'bg-azure-600 text-white shadow-sm'
-                  : 'text-gray-400 hover:text-white hover:bg-white/[0.04]'
+                  ? 'bg-azure-600 text-white shadow-xs font-semibold'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-white/60'
               }`}
             >
               All ({TOTAL_SKILLS_COUNT})
@@ -153,10 +153,10 @@ export default function Skills() {
                 key={g.id}
                 type="button"
                 onClick={() => setActiveTab(g.id)}
-                className={`rounded-lg px-3 py-1.5 font-medium transition-all ${
+                className={`rounded-full px-3.5 py-1.5 font-medium transition-all ${
                   activeTab === g.id
-                    ? 'bg-white/10 text-white shadow-sm'
-                    : 'text-gray-400 hover:text-white hover:bg-white/[0.04]'
+                    ? 'bg-azure-600 text-white shadow-xs font-semibold'
+                    : 'text-slate-700 hover:text-slate-900 hover:bg-white/60'
                 }`}
               >
                 {g.category}
@@ -164,21 +164,21 @@ export default function Skills() {
             ))}
           </div>
 
-          {/* Quick Search */}
+          {/* Search */}
           <div className="relative min-w-[200px]">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-500" />
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search skills..."
-              className="w-full rounded-xl border border-white/10 bg-black/40 pl-9 pr-8 py-1.5 text-xs text-white placeholder-gray-500 transition-all focus:border-azure-400/50 focus:outline-none"
+              className="w-full rounded-full border border-slate-200 bg-white pl-9 pr-8 py-1.5 text-xs text-slate-900 placeholder-slate-400 shadow-2xs transition-all focus:border-azure-500 focus:outline-none"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700"
                 aria-label="Clear search"
               >
                 <X className="h-3 w-3" />
@@ -188,10 +188,10 @@ export default function Skills() {
         </div>
       </div>
 
-      {/* Skills Clean Grid (Chips / Badges - No Long Explanations) */}
-      <div className="mt-8 space-y-6">
+      {/* Skills Groups */}
+      <div className="mt-8 space-y-5">
         {filteredGroups.length === 0 ? (
-          <div className="py-12 text-center text-sm text-gray-500">
+          <div className="py-12 text-center text-sm text-slate-500">
             No skills found matching "{searchQuery}"
           </div>
         ) : (
@@ -200,31 +200,31 @@ export default function Skills() {
             return (
               <div
                 key={group.id}
-                className="glass-card rounded-2xl p-5 sm:p-6 transition-all"
+                className="rounded-2xl border border-slate-200/80 bg-white p-5 sm:p-6 shadow-xs transition-all hover:shadow-sm"
               >
                 {/* Category Header */}
-                <div className="flex items-center gap-2.5 border-b border-white/5 pb-3.5">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-azure-500/30 bg-azure-500/10 text-azure-400">
+                <div className="flex items-center gap-2.5 border-b border-slate-100 pb-3.5">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#EBF5FA] text-azure-600">
                     <GroupIcon className="h-4 w-4" />
                   </div>
-                  <h3 className="font-display text-sm sm:text-base font-semibold text-white">
+                  <h3 className="font-display text-sm sm:text-base font-bold text-slate-900">
                     {group.title}
                   </h3>
-                  <span className="ml-auto text-xs text-gray-500 font-mono">
-                    {group.skills.length}
+                  <span className="ml-auto text-xs text-slate-500 font-medium">
+                    {group.skills.length} skills
                   </span>
                 </div>
 
-                {/* Skill Chips (Compact, Clean, Straightforward) */}
-                <div className="mt-4 flex flex-wrap gap-2">
+                {/* Skill Chips (Clean white cards with subtle shadow, NO harsh dark borders) */}
+                <div className="mt-4 flex flex-wrap gap-2.5">
                   {group.skills.map((skill) => {
                     const SkillIcon = skill.icon;
                     return (
                       <div
                         key={skill.name}
-                        className="group inline-flex items-center gap-2 rounded-xl border border-white/8 bg-white/[0.03] px-3.5 py-2 text-xs font-medium text-gray-200 transition-all hover:border-azure-400/40 hover:bg-azure-500/[0.08] hover:text-white"
+                        className="group inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-[#F8FAFC] px-4 py-2 text-xs font-semibold text-slate-700 shadow-2xs transition-all duration-200 hover:border-azure-400 hover:bg-[#EBF5FA] hover:text-azure-700 hover:shadow-xs"
                       >
-                        <SkillIcon className="h-3.5 w-3.5 text-azure-400 group-hover:text-azure-300 transition-colors" />
+                        <SkillIcon className="h-3.5 w-3.5 text-azure-600 group-hover:text-azure-700 transition-colors" />
                         <span>{skill.name}</span>
                       </div>
                     );

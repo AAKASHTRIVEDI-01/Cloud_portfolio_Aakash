@@ -14,13 +14,13 @@ export default function App() {
   const [activeStudy, setActiveStudy] = useState<CaseStudy | null>(null);
 
   return (
-    <div className="relative min-h-screen bg-ink-950 text-gray-200 overflow-x-hidden selection:bg-azure-500/30 selection:text-white">
+    <div className="relative min-h-screen bg-[#F8FAFC] text-slate-800 overflow-x-hidden selection:bg-azure-500/20 selection:text-azure-700">
       {/* Ambient background grid pattern & subtle Azure light */}
-      <div className="pointer-events-none fixed inset-0 z-0 bg-grid-pattern opacity-25" />
+      <div className="pointer-events-none fixed inset-0 z-0 bg-grid-pattern opacity-60" />
       
-      {/* Subtle DIVADSGN-style radial glow rings */}
-      <div className="pointer-events-none fixed -top-32 left-1/2 -translate-x-1/2 z-0 h-[600px] w-[800px] rounded-full bg-azure-600/[0.07] blur-[140px]" />
-      <div className="pointer-events-none fixed top-[45%] left-1/2 -translate-x-1/2 z-0 h-[700px] w-[900px] rounded-full bg-azure-500/[0.04] blur-[160px]" />
+      {/* Soft Microsoft Fluent radial glow rings */}
+      <div className="pointer-events-none fixed -top-32 left-1/2 -translate-x-1/2 z-0 h-[600px] w-[800px] rounded-full bg-blue-100/60 blur-[140px]" />
+      <div className="pointer-events-none fixed top-[45%] left-1/2 -translate-x-1/2 z-0 h-[700px] w-[900px] rounded-full bg-sky-100/50 blur-[160px]" />
 
       {/* Main Content */}
       <div className="relative z-10">
