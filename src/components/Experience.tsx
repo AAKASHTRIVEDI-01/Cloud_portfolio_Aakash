@@ -34,7 +34,7 @@ const EXPERIENCE: ExperienceItem[] = [
     skills: ['Azure VMs', 'RBAC & Entra ID', 'Azure DevOps', 'GitHub Actions', 'CI/CD Pipelines', 'IaC'],
     bullets: [
       {
-        text: 'Managed, provisioned, and monitored Azure Virtual Machines for production and staging enterprise workloads.',
+        text: 'Provisioned, monitored, and optimized Azure Virtual Machines for enterprise client workloads.',
         icon: Server,
       },
       {
@@ -42,11 +42,11 @@ const EXPERIENCE: ExperienceItem[] = [
         icon: ShieldCheck,
       },
       {
-        text: 'Designed and executed automated CI/CD build & deployment pipelines using Azure DevOps and GitHub Actions.',
+        text: 'Designed and deployed automated CI/CD build & deployment pipelines using Azure DevOps and GitHub Actions.',
         icon: Workflow,
       },
       {
-        text: 'Standardized Git workflows, automated code reviews, branch policies, and multi-tier environment configurations.',
+        text: 'Standardized Git workflows, branch policies, automated reviews, and multi-tier environment configurations.',
         icon: GitBranch,
       },
     ],
@@ -60,15 +60,15 @@ const EXPERIENCE: ExperienceItem[] = [
     skills: ['JavaScript', 'HTML5 & CSS3', 'Responsive UI', 'Technical Mentoring'],
     bullets: [
       {
-        text: 'Built and optimized modern responsive web applications using HTML, CSS, and modern JavaScript.',
+        text: 'Engineered responsive web applications and interactive components using HTML5, modern CSS, and JavaScript.',
         icon: Code2,
       },
       {
-        text: 'Organized and led technical training workshops for students on modern web technologies and development tools.',
+        text: 'Conducted technical training workshops for students on modern web technologies and development practices.',
         icon: Users,
       },
       {
-        text: 'Delivered engaging presentations and live demonstrations, establishing collaborative development practices.',
+        text: 'Delivered technical demonstrations and code reviews, establishing collaborative Git workflows.',
         icon: Sparkles,
       },
     ],
@@ -82,13 +82,13 @@ export default function Experience() {
     <section id="experience" className="relative mx-auto max-w-6xl px-6 py-12 sm:py-16">
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="flex items-center gap-2">
-          <span className="eyebrow text-gold-400">Experience</span>
-          <span className="h-px w-12 bg-gold-500/30" />
+          <span className="eyebrow text-sunset-400">Experience</span>
+          <span className="h-px w-12 bg-sunset-500/30" />
         </div>
         <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl">
           Professional track record.
         </h2>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-400 sm:text-base">
+        <p className="mt-2.5 max-w-2xl text-sm leading-relaxed text-gray-400 sm:text-base">
           Enterprise consulting, production cloud infrastructure management, and systems automation.
         </p>
       </div>
@@ -120,28 +120,28 @@ function TimelineItem({
       style={{ transitionDelay: `${index * 120}ms` }}
     >
       {/* Timeline Node */}
-      <div className="absolute -left-[35px] sm:-left-[51px] top-1 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border-2 border-gold-500/50 bg-ink-900 shadow-[0_0_12px_rgba(212,175,55,0.3)]">
-        <Briefcase className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-gold-400" />
+      <div className="absolute -left-[35px] sm:-left-[51px] top-1 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border-2 border-sunset-400 bg-ink-950 shadow-[0_0_14px_rgba(244,63,94,0.35)]">
+        <Briefcase className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-sunset-400" />
       </div>
 
       {/* Card */}
-      <div className="glass-card group rounded-2xl p-6 sm:p-7 hover:border-gold-500/30 transition-all duration-300">
+      <div className="glass-card group rounded-2xl p-6 sm:p-7 hover:border-aurora-500/40 transition-all duration-300">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="flex items-center gap-2.5">
-              <h3 className="font-display text-lg font-bold text-white group-hover:text-gold-300 transition-colors">
+              <h3 className="font-display text-lg font-bold text-white group-hover:text-sunset-300 transition-colors">
                 {exp.role}
               </h3>
               {exp.current && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-400 border border-emerald-500/25">
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-300 border border-emerald-500/30">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
-                  Current
+                  Current Role
                 </span>
               )}
             </div>
-            <div className="mt-1 flex flex-wrap items-center gap-3 text-sm font-medium text-gold-300">
+            <div className="mt-1 flex flex-wrap items-center gap-3 text-sm font-medium text-sunset-300">
               <div className="flex items-center gap-1.5">
-                <Building2 className="h-4 w-4 text-gold-400/80" />
+                <Building2 className="h-4 w-4 text-sunset-400" />
                 <span>{exp.company}</span>
               </div>
               {exp.location && (
@@ -154,19 +154,19 @@ function TimelineItem({
           </div>
 
           <div className="inline-flex items-center gap-1.5 rounded-lg border border-white/8 bg-white/[0.02] px-3 py-1 text-xs text-gray-400">
-            <Calendar className="h-3.5 w-3.5 text-gray-500" />
+            <Calendar className="h-3.5 w-3.5 text-gray-400" />
             <span>{exp.duration}</span>
           </div>
         </div>
 
         {/* Bullets with Individual Icons */}
-        <ul className="mt-5 space-y-3 border-t border-white/5 pt-4">
+        <ul className="mt-5 space-y-2.5 border-t border-white/5 pt-4">
           {exp.bullets.map((b, idx) => {
             const BIcon = b.icon;
             return (
               <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm leading-relaxed text-gray-300">
                 <div className="flex h-5 w-5 flex-none items-center justify-center rounded-md border border-white/10 bg-white/[0.03] mt-0.5">
-                  <BIcon className="h-3 w-3 text-gold-400" />
+                  <BIcon className="h-3 w-3 text-sunset-400" />
                 </div>
                 <span>{b.text}</span>
               </li>

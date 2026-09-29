@@ -10,7 +10,9 @@ import {
   Linkedin,
   Mail,
   GitBranch,
-  MapPin,
+  CheckCircle2,
+  Lock,
+  Zap,
 } from 'lucide-react';
 import profileImage from '../assets/profile.jpeg';
 
@@ -24,14 +26,15 @@ export default function Hero() {
     >
       {/* Ambient background glows */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/4 h-[550px] w-[750px] -translate-x-1/2 rounded-full bg-gold-600/[0.08] blur-[140px]" />
-        <div className="absolute right-1/4 top-1/2 h-[350px] w-[450px] rounded-full bg-azure-500/[0.05] blur-[120px]" />
+        <div className="absolute left-1/2 top-1/4 h-[550px] w-[750px] -translate-x-1/2 rounded-full bg-aurora-600/[0.14] blur-[150px]" />
+        <div className="absolute right-1/4 top-1/2 h-[350px] w-[450px] rounded-full bg-sunset-500/[0.10] blur-[130px]" />
+        <div className="absolute left-1/4 top-1/3 h-[300px] w-[350px] rounded-full bg-cyan-500/[0.08] blur-[120px]" />
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center">
         {/* Architecture & Engineering Status Badge */}
         <div
-          className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-gold-500/30 bg-gold-500/[0.08] px-4 py-1.5 text-xs font-semibold text-gold-300 shadow-lg shadow-gold-950/40 animate-fade-in opacity-0 backdrop-blur-md"
+          className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-aurora-500/30 bg-aurora-500/[0.08] px-4 py-1.5 text-xs font-semibold text-aurora-300 shadow-lg shadow-aurora-950/40 animate-fade-in opacity-0 backdrop-blur-md"
           style={{ animationDelay: '0.05s' }}
         >
           <span className="relative flex h-2 w-2">
@@ -41,13 +44,13 @@ export default function Hero() {
           <span className="tracking-wide">Enterprise Azure Architecture &amp; DevOps Engineering</span>
         </div>
 
-        {/* Profile Photo with Glow Ring */}
+        {/* Profile Photo with Aurora/Sunset Glow Ring */}
         <div
           className="relative mb-6 animate-fade-in opacity-0"
           style={{ animationDelay: '0.15s' }}
         >
-          <div className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-gold-500/40 via-azure-500/20 to-gold-400/50 opacity-75 blur-md animate-pulse-glow" />
-          <div className="relative h-32 w-32 sm:h-36 sm:w-36 overflow-hidden rounded-full border-2 border-gold-400/50 bg-ink-900 shadow-2xl shadow-gold-900/40">
+          <div className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-sunset-500 via-aurora-500 to-cyan-400 opacity-80 blur-md animate-pulse-glow" />
+          <div className="relative h-32 w-32 sm:h-36 sm:w-36 overflow-hidden rounded-full border-2 border-white/20 bg-ink-900 shadow-2xl shadow-aurora-950/60">
             <img
               src={profileImage}
               alt="Aakash Trivedi"
@@ -69,24 +72,43 @@ export default function Hero() {
           className="mt-3.5 font-display text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl animate-fade-up opacity-0"
           style={{ animationDelay: '0.35s' }}
         >
-          <span className="gradient-text-gold">Azure Cloud Engineer</span>{' '}
-          <span className="text-gray-400 font-normal">&amp; Infrastructure Specialist</span>
+          <span className="gradient-text-sunset">Azure Cloud Engineer</span>{' '}
+          <span className="text-gray-300 font-normal">&amp; Infrastructure Specialist</span>
         </h2>
 
-        {/* Tagline / Value Proposition */}
-        <p
-          className="mt-5 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg animate-fade-up opacity-0"
+        {/* High-Impact Data Points (Replaces lengthy descriptive paragraphs) */}
+        <div
+          className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2.5 max-w-2xl w-full text-left animate-fade-up opacity-0"
           style={{ animationDelay: '0.45s' }}
         >
-          Designing and deploying secure, high-availability enterprise cloud platforms with a strong
-          focus on <strong className="font-semibold text-white">Azure Infrastructure</strong>,{' '}
-          <strong className="font-semibold text-white">IaC (Bicep/Terraform)</strong>, and{' '}
-          <strong className="font-semibold text-white">Automated CI/CD DevOps Pipelines</strong>.
-        </p>
+          <div className="flex items-start gap-2.5 rounded-xl border border-white/8 bg-white/[0.025] p-3 backdrop-blur-sm transition-all hover:border-sunset-400/40 hover:bg-white/[0.04]">
+            <Zap className="h-4 w-4 text-sunset-400 flex-none mt-0.5" />
+            <div>
+              <div className="text-xs font-semibold text-white">Azure Infrastructure</div>
+              <p className="text-[11px] text-gray-400 leading-tight mt-0.5">High-availability, hub-spoke topologies &amp; hybrid VNets</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-2.5 rounded-xl border border-white/8 bg-white/[0.025] p-3 backdrop-blur-sm transition-all hover:border-aurora-400/40 hover:bg-white/[0.04]">
+            <Lock className="h-4 w-4 text-aurora-400 flex-none mt-0.5" />
+            <div>
+              <div className="text-xs font-semibold text-white">Zero-Trust &amp; RBAC</div>
+              <p className="text-[11px] text-gray-400 leading-tight mt-0.5">Microsoft Entra ID, Azure Key Vault &amp; Policy governance</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-2.5 rounded-xl border border-white/8 bg-white/[0.025] p-3 backdrop-blur-sm transition-all hover:border-cyan-400/40 hover:bg-white/[0.04]">
+            <GitBranch className="h-4 w-4 text-cyan-400 flex-none mt-0.5" />
+            <div>
+              <div className="text-xs font-semibold text-white">IaC &amp; CI/CD Pipelines</div>
+              <p className="text-[11px] text-gray-400 leading-tight mt-0.5">Repeatable deployments via Terraform, Bicep &amp; DevOps</p>
+            </div>
+          </div>
+        </div>
 
         {/* Live Architecture & Operations Telemetry Pill */}
         <div
-          className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3 rounded-2xl border border-white/10 bg-black/40 px-4 py-2 backdrop-blur-md animate-fade-up opacity-0 text-[11px] font-mono text-gray-400 shadow-inner"
+          className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3 rounded-2xl border border-white/10 bg-black/50 px-4 py-2 backdrop-blur-md animate-fade-up opacity-0 text-[11px] font-mono text-gray-300 shadow-inner"
           style={{ animationDelay: '0.5s' }}
         >
           <div className="flex items-center gap-1.5 text-emerald-400">
@@ -94,12 +116,12 @@ export default function Hero() {
             <span>AZ-REGION: Production / Global</span>
           </div>
           <span className="text-white/20 hidden sm:inline">•</span>
-          <div className="flex items-center gap-1.5 text-azure-400">
+          <div className="flex items-center gap-1.5 text-cyan-400">
             <Terminal className="h-3.5 w-3.5" />
             <span>IaC: Terraform &amp; Bicep</span>
           </div>
           <span className="text-white/20 hidden sm:inline">•</span>
-          <div className="flex items-center gap-1.5 text-gold-400">
+          <div className="flex items-center gap-1.5 text-sunset-400">
             <ShieldCheck className="h-3.5 w-3.5" />
             <span>Zero-Trust &amp; RBAC</span>
           </div>
@@ -112,13 +134,13 @@ export default function Hero() {
         >
           <a
             href="#certifications"
-            className="inline-flex items-center gap-2 rounded-xl border border-gold-500/30 bg-gold-500/[0.08] px-3.5 py-1.5 text-xs font-semibold text-gold-300 transition-all duration-200 hover:border-gold-400 hover:bg-gold-500/15 hover:shadow-[0_0_12px_rgba(212,175,55,0.2)]"
+            className="inline-flex items-center gap-2 rounded-xl border border-sunset-500/30 bg-sunset-500/[0.08] px-3.5 py-1.5 text-xs font-semibold text-sunset-300 transition-all duration-200 hover:border-sunset-400 hover:bg-sunset-500/15 hover:shadow-[0_0_14px_rgba(244,63,94,0.3)]"
           >
-            <ShieldCheck className="h-4 w-4 text-gold-400" />
-            <span>AZ-104 Certified (Primary)</span>
+            <ShieldCheck className="h-4 w-4 text-sunset-400" />
+            <span>AZ-104 Certified (Associate)</span>
           </a>
           <div className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-gray-300">
-            <Cloud className="h-4 w-4 text-azure-400" />
+            <Cloud className="h-4 w-4 text-cyan-400" />
             <span>2+ Years Cloud Experience</span>
           </div>
           <div className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-gray-300">
@@ -126,7 +148,7 @@ export default function Hero() {
             <span>IaC &amp; CI/CD Pipelines</span>
           </div>
           <div className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-gray-300">
-            <Boxes className="h-4 w-4 text-violet-400" />
+            <Boxes className="h-4 w-4 text-aurora-400" />
             <span>Containers &amp; AKS</span>
           </div>
         </div>
@@ -138,7 +160,7 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="group flex items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-gold-950/50 transition-all duration-300 hover:shadow-gold-900/60 hover:brightness-110 hover:-translate-y-0.5"
+            className="group flex items-center gap-2 rounded-xl bg-gradient-to-r from-sunset-500 via-sunset-coral to-aurora-600 px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-sunset-950/50 transition-all duration-300 hover:shadow-sunset-900/60 hover:brightness-110 hover:-translate-y-0.5"
           >
             <FolderGit2 className="h-4 w-4 transition-transform group-hover:scale-110" />
             <span>Explore Architecture Projects</span>
@@ -147,9 +169,9 @@ export default function Hero() {
           <a
             href={resumeUrl}
             download="Aakash_Trivedi_Resume.pdf"
-            className="group flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-gray-200 backdrop-blur-sm transition-all duration-300 hover:border-gold-500/40 hover:bg-gold-500/[0.06] hover:text-gold-300 hover:-translate-y-0.5"
+            className="group flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-gray-200 backdrop-blur-sm transition-all duration-300 hover:border-aurora-400/50 hover:bg-aurora-500/[0.08] hover:text-white hover:-translate-y-0.5"
           >
-            <FileText className="h-4 w-4 transition-transform group-hover:scale-110 text-gray-400 group-hover:text-gold-400" />
+            <FileText className="h-4 w-4 transition-transform group-hover:scale-110 text-gray-400 group-hover:text-aurora-300" />
             <span>Technical Profile (PDF)</span>
           </a>
         </div>
@@ -161,10 +183,10 @@ export default function Hero() {
         >
           <a
             href="mailto:aakashtrivedi2003@gmail.com"
-            className="group inline-flex items-center gap-2 rounded-xl border border-gold-500/30 bg-gold-500/[0.06] px-3.5 py-2 font-medium text-gold-300 transition-all hover:border-gold-400 hover:bg-gold-500/15 hover:shadow-[0_0_14px_rgba(212,175,55,0.2)]"
+            className="group inline-flex items-center gap-2 rounded-xl border border-sunset-500/30 bg-sunset-500/[0.06] px-3.5 py-2 font-medium text-sunset-300 transition-all hover:border-sunset-400 hover:bg-sunset-500/15 hover:shadow-[0_0_14px_rgba(244,63,94,0.25)]"
             title="Email: aakashtrivedi2003@gmail.com"
           >
-            <Mail className="h-3.5 w-3.5 text-gold-400 transition-transform group-hover:scale-110" />
+            <Mail className="h-3.5 w-3.5 text-sunset-400 transition-transform group-hover:scale-110" />
             <span className="font-mono text-xs">aakashtrivedi2003@gmail.com</span>
           </a>
 
@@ -172,9 +194,9 @@ export default function Hero() {
             href="https://linkedin.com/in/aakashtrivedi1003"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2 font-medium text-gray-300 transition-all hover:border-azure-400/50 hover:bg-azure-500/10 hover:text-azure-300"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2 font-medium text-gray-300 transition-all hover:border-cyan-400/50 hover:bg-cyan-500/10 hover:text-cyan-300"
           >
-            <Linkedin className="h-3.5 w-3.5 text-azure-400" />
+            <Linkedin className="h-3.5 w-3.5 text-cyan-400" />
             <span>LinkedIn</span>
           </a>
 
@@ -182,7 +204,7 @@ export default function Hero() {
             href="https://github.com/AAKASHTRIVEDI-01"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2 font-medium text-gray-300 transition-all hover:border-white/30 hover:bg-white/[0.06] hover:text-white"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2 font-medium text-gray-300 transition-all hover:border-aurora-400/50 hover:bg-aurora-500/10 hover:text-aurora-300"
           >
             <Github className="h-3.5 w-3.5 text-gray-400" />
             <span>GitHub</span>
@@ -197,11 +219,11 @@ export default function Hero() {
       >
         <a
           href="#about"
-          className="flex flex-col items-center gap-1.5 text-xs font-medium text-gray-500 transition-colors hover:text-gold-400"
+          className="flex flex-col items-center gap-1.5 text-xs font-medium text-gray-500 transition-colors hover:text-sunset-400"
           aria-label="Scroll down to About section"
         >
           <span>Explore</span>
-          <ArrowDown className="h-4 w-4 animate-bounce text-gold-400/70" />
+          <ArrowDown className="h-4 w-4 animate-bounce text-sunset-400/70" />
         </a>
       </div>
     </section>

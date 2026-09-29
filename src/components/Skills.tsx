@@ -6,26 +6,18 @@ import {
   GitBranch,
   Boxes,
   Network,
-  Route,
-  Globe,
   Flame,
   Layers,
-  HardDrive,
-  Database,
   KeyRound,
   Lock,
-  FileCheck,
   RotateCcw,
   Terminal,
   LineChart,
   Bell,
   Code2,
-  DollarSign,
-  FileCode2,
   Box,
   Workflow,
   GitPullRequest,
-  Zap,
   Server,
   Archive,
   Cpu,
@@ -66,12 +58,12 @@ const SKILL_GROUPS: SkillGroup[] = [
     title: 'Core Azure Infrastructure',
     category: 'Architecture & Security',
     icon: ShieldCheck,
-    accentColor: 'azure',
-    accentBadge: 'text-azure-400 bg-azure-500/10 border-azure-500/30',
-    borderHover: 'hover:border-azure-500/40',
-    glowClass: 'hover:shadow-[0_0_28px_rgba(2,132,199,0.14)]',
-    iconBg: 'bg-azure-500/10 text-azure-400',
-    iconColor: 'text-azure-400',
+    accentColor: 'cyan',
+    accentBadge: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/30',
+    borderHover: 'hover:border-cyan-400/40',
+    glowClass: 'hover:shadow-[0_0_28px_rgba(6,182,212,0.14)]',
+    iconBg: 'bg-cyan-500/10 text-cyan-400',
+    iconColor: 'text-cyan-400',
     description: 'Enterprise virtual networking, compute scaling, identity governance, and high availability.',
     skills: [
       {
@@ -119,7 +111,7 @@ const SKILL_GROUPS: SkillGroup[] = [
     icon: Activity,
     accentColor: 'emerald',
     accentBadge: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-    borderHover: 'hover:border-emerald-500/40',
+    borderHover: 'hover:border-emerald-400/40',
     glowClass: 'hover:shadow-[0_0_28px_rgba(16,185,129,0.14)]',
     iconBg: 'bg-emerald-500/10 text-emerald-400',
     iconColor: 'text-emerald-400',
@@ -162,12 +154,12 @@ const SKILL_GROUPS: SkillGroup[] = [
     title: 'Automation & IaC',
     category: 'DevOps & Pipelines',
     icon: GitBranch,
-    accentColor: 'gold',
-    accentBadge: 'text-gold-400 bg-gold-500/10 border-gold-500/30',
-    borderHover: 'hover:border-gold-500/40',
-    glowClass: 'hover:shadow-[0_0_28px_rgba(212,175,55,0.14)]',
-    iconBg: 'bg-gold-500/10 text-gold-400',
-    iconColor: 'text-gold-400',
+    accentColor: 'sunset',
+    accentBadge: 'text-sunset-400 bg-sunset-500/10 border-sunset-500/30',
+    borderHover: 'hover:border-sunset-400/40',
+    glowClass: 'hover:shadow-[0_0_28px_rgba(244,63,94,0.14)]',
+    iconBg: 'bg-sunset-500/10 text-sunset-400',
+    iconColor: 'text-sunset-400',
     description: 'Automating immutable infrastructure provisioning and continuous software delivery.',
     skills: [
       {
@@ -201,12 +193,12 @@ const SKILL_GROUPS: SkillGroup[] = [
     title: 'Containers & Cloud-Native',
     category: 'Modern Workloads',
     icon: Boxes,
-    accentColor: 'violet',
-    accentBadge: 'text-violet-400 bg-violet-500/10 border-violet-500/30',
-    borderHover: 'hover:border-violet-500/40',
+    accentColor: 'aurora',
+    accentBadge: 'text-aurora-400 bg-aurora-500/10 border-aurora-500/30',
+    borderHover: 'hover:border-aurora-400/40',
     glowClass: 'hover:shadow-[0_0_28px_rgba(139,92,246,0.14)]',
-    iconBg: 'bg-violet-500/10 text-violet-400',
-    iconColor: 'text-violet-400',
+    iconBg: 'bg-aurora-500/10 text-aurora-400',
+    iconColor: 'text-aurora-400',
     description: 'Containerizing microservices and managing orchestrated Kubernetes clusters.',
     skills: [
       {
@@ -280,65 +272,65 @@ export default function Skills() {
       {/* Section Header */}
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="flex items-center gap-2">
-          <span className="eyebrow text-gold-400">Technical Skills</span>
-          <span className="h-px w-12 bg-gold-500/30" />
+          <span className="eyebrow text-sunset-400">Technical Skills</span>
+          <span className="h-px w-12 bg-sunset-500/30" />
         </div>
         <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl">
           Cloud architecture &amp; engineering toolkit.
         </h2>
         <p className="mt-2.5 max-w-2xl text-sm leading-relaxed text-gray-400 sm:text-base">
-          Production competencies spanning the Microsoft Azure ecosystem, Infrastructure as Code, continuous delivery, and enterprise observability.
+          Production competencies spanning Microsoft Azure, Infrastructure as Code, continuous delivery, and enterprise observability.
         </p>
 
         {/* Executive Competency Highlights Bar */}
         <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-          <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-gold-500/25 hover:bg-white/[0.03]">
+          <div className="rounded-xl border border-white/8 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-cyan-400/30 hover:bg-white/[0.04]">
             <div className="flex items-center gap-2">
-              <Cloud className="h-4 w-4 text-azure-400" />
+              <Cloud className="h-4 w-4 text-cyan-400" />
               <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Ecosystem</span>
             </div>
             <div className="mt-1 text-lg font-bold text-white sm:text-xl">Azure Native</div>
-            <p className="mt-0.5 text-[11px] text-gray-500">Core enterprise cloud platform</p>
+            <p className="mt-0.5 text-[11px] text-gray-400">Core enterprise cloud platform</p>
           </div>
 
-          <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-gold-500/25 hover:bg-white/[0.03]">
+          <div className="rounded-xl border border-white/8 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-aurora-400/30 hover:bg-white/[0.04]">
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 text-gold-400" />
+              <CheckCircle2 className="h-4 w-4 text-aurora-400" />
               <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Core Stack</span>
             </div>
             <div className="mt-1 text-lg font-bold text-white sm:text-xl">{TOTAL_SKILLS_COUNT} Core Skills</div>
-            <p className="mt-0.5 text-[11px] text-gray-500">Curated across 4 cloud pillars</p>
+            <p className="mt-0.5 text-[11px] text-gray-400">Curated across 4 cloud pillars</p>
           </div>
 
-          <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-gold-500/25 hover:bg-white/[0.03]">
+          <div className="rounded-xl border border-white/8 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-emerald-400/30 hover:bg-white/[0.04]">
             <div className="flex items-center gap-2">
               <GitBranch className="h-4 w-4 text-emerald-400" />
               <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Automation</span>
             </div>
             <div className="mt-1 text-lg font-bold text-white sm:text-xl">IaC &amp; CI/CD</div>
-            <p className="mt-0.5 text-[11px] text-gray-500">Terraform, Bicep, Pipelines</p>
+            <p className="mt-0.5 text-[11px] text-gray-400">Terraform, Bicep, Pipelines</p>
           </div>
 
-          <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-gold-500/25 hover:bg-white/[0.03]">
+          <div className="rounded-xl border border-white/8 bg-white/[0.02] p-3.5 sm:p-4 backdrop-blur-sm transition-all hover:border-sunset-400/30 hover:bg-white/[0.04]">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="h-4 w-4 text-gold-400" />
+              <ShieldCheck className="h-4 w-4 text-sunset-400" />
               <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Certification</span>
             </div>
             <div className="mt-1 text-lg font-bold text-white sm:text-xl">AZ-104 Validated</div>
-            <p className="mt-0.5 text-[11px] text-gray-500">Azure Administrator Associate</p>
+            <p className="mt-0.5 text-[11px] text-gray-400">Azure Administrator Associate</p>
           </div>
         </div>
 
         {/* Interactive Filter & Search Controls */}
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           {/* Domain Tabs */}
-          <div className="flex flex-wrap items-center gap-1.5 rounded-xl border border-white/5 bg-white/[0.02] p-1 text-xs">
+          <div className="flex flex-wrap items-center gap-1.5 rounded-xl border border-white/8 bg-white/[0.02] p-1 text-xs">
             <button
               type="button"
               onClick={() => setActiveTab('all')}
               className={`rounded-lg px-3 py-1.5 font-medium transition-all ${
                 activeTab === 'all'
-                  ? 'bg-gold-500/20 text-gold-300 shadow-sm border border-gold-500/30'
+                  ? 'bg-gradient-to-r from-sunset-500/20 to-aurora-500/20 text-white shadow-sm border border-sunset-400/40'
                   : 'text-gray-400 hover:text-white hover:bg-white/[0.04]'
               }`}
             >
@@ -368,7 +360,7 @@ export default function Skills() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search skills (e.g. Terraform, KQL)..."
-              className="w-full rounded-xl border border-white/10 bg-black/40 pl-9 pr-8 py-1.5 text-xs text-white placeholder-gray-500 backdrop-blur-sm transition-all focus:border-gold-500/50 focus:outline-none focus:ring-1 focus:ring-gold-500/30"
+              className="w-full rounded-xl border border-white/10 bg-black/40 pl-9 pr-8 py-1.5 text-xs text-white placeholder-gray-500 backdrop-blur-sm transition-all focus:border-aurora-400/60 focus:outline-none focus:ring-1 focus:ring-aurora-400/40"
             />
             {searchQuery && (
               <button
@@ -396,7 +388,7 @@ export default function Skills() {
                 setSearchQuery('');
                 setActiveTab('all');
               }}
-              className="mt-3 rounded-lg border border-gold-500/30 bg-gold-500/10 px-3 py-1 text-xs text-gold-300 hover:bg-gold-500/20"
+              className="mt-3 rounded-lg border border-aurora-500/30 bg-aurora-500/10 px-3 py-1 text-xs text-aurora-300 hover:bg-aurora-500/20"
             >
               Reset Filters
             </button>
@@ -447,7 +439,7 @@ function SkillCard({
                   {group.category}
                 </span>
               </div>
-              <h3 className="mt-1 font-display text-base font-bold text-white transition-colors group-hover:text-gold-300 sm:text-lg">
+              <h3 className="mt-1 font-display text-base font-bold text-white transition-colors group-hover:text-sunset-300 sm:text-lg">
                 {group.title}
               </h3>
             </div>
@@ -462,7 +454,7 @@ function SkillCard({
           {group.description}
         </p>
 
-        {/* Clean, Simplistic Skills List (No white borders, high readability) */}
+        {/* Clean, Point-Based Skills List */}
         <div className="mt-4 space-y-1.5">
           {group.skills.map((skill) => {
             const SkillIcon = skill.icon;
@@ -477,12 +469,12 @@ function SkillCard({
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-xs sm:text-sm font-semibold text-white group-hover/item:text-gold-300 transition-colors">
+                      <span className="text-xs sm:text-sm font-semibold text-white group-hover/item:text-sunset-300 transition-colors">
                         {skill.name}
                       </span>
                       {skill.learning ? (
-                        <span className="inline-flex items-center gap-1 rounded bg-gold-500/15 px-1.5 py-0.5 text-[10px] font-medium text-gold-300">
-                          <Sparkles className="h-2.5 w-2.5 text-gold-400" />
+                        <span className="inline-flex items-center gap-1 rounded bg-aurora-500/15 border border-aurora-500/30 px-1.5 py-0.5 text-[10px] font-medium text-aurora-300">
+                          <Sparkles className="h-2.5 w-2.5 text-aurora-400" />
                           Active Focus
                         </span>
                       ) : null}

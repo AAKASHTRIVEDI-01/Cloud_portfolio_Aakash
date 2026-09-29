@@ -7,9 +7,7 @@ import {
   ExternalLink,
   CheckCircle2,
   ShieldCheck,
-  Calendar,
   Sparkles,
-  Cloud,
   KeyRound,
   HardDrive,
   Cpu,
@@ -68,10 +66,10 @@ export interface ExamCompetency {
 const VALIDATED_COMPETENCIES: ExamCompetency[] = [
   {
     title: 'Manage Azure Identities & Governance',
-    desc: 'Microsoft Entra ID, RBAC role assignments, Privileged Identity Management (PIM), and Azure Policy enforcement.',
+    desc: 'Microsoft Entra ID, RBAC role assignments, Privileged Identity Management (PIM), and Azure Policy.',
     icon: KeyRound,
-    iconBg: 'bg-azure-500/10',
-    iconColor: 'text-azure-400',
+    iconBg: 'bg-cyan-500/10',
+    iconColor: 'text-cyan-400',
     tag: 'Identity & PIM',
   },
   {
@@ -86,24 +84,24 @@ const VALIDATED_COMPETENCIES: ExamCompetency[] = [
     title: 'Deploy & Manage Azure Compute Resources',
     desc: 'Virtual Machines, ARM/Bicep template provisioning, VM scale sets, and Azure Site Recovery (ASR).',
     icon: Cpu,
-    iconBg: 'bg-violet-500/10',
-    iconColor: 'text-violet-400',
+    iconBg: 'bg-aurora-500/10',
+    iconColor: 'text-aurora-400',
     tag: 'Compute & Scaling',
   },
   {
     title: 'Configure & Manage Virtual Networking',
-    desc: 'VNets, subnets, global peering, user-defined routes (UDR), NSGs, Azure Firewall, and Application Gateway WAF.',
+    desc: 'VNets, subnets, global peering, user-defined routes (UDR), NSGs, Azure Firewall, and App Gateway WAF.',
     icon: Network,
-    iconBg: 'bg-azure-500/10',
+    iconBg: 'bg-azure-400/10',
     iconColor: 'text-azure-400',
     tag: 'Virtual Networks',
   },
   {
     title: 'Monitor & Maintain Azure Resources',
-    desc: 'Azure Monitor platform telemetry, Log Analytics KQL queries, action group alerting, and Recovery Services vaults.',
+    desc: 'Azure Monitor platform telemetry, Log Analytics KQL queries, action group alerting, and Recovery Services.',
     icon: Activity,
-    iconBg: 'bg-gold-500/10',
-    iconColor: 'text-gold-400',
+    iconBg: 'bg-sunset-500/10',
+    iconColor: 'text-sunset-400',
     tag: 'Ops & Telemetry',
   },
 ];
@@ -119,31 +117,31 @@ export default function Certifications() {
       {/* Section Header */}
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="flex items-center gap-2">
-          <span className="eyebrow text-gold-400">Certifications &amp; Badges</span>
-          <span className="h-px w-12 bg-gold-500/30" />
+          <span className="eyebrow text-sunset-400">Certifications &amp; Badges</span>
+          <span className="h-px w-12 bg-sunset-500/30" />
         </div>
         <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl">
           Cloud credentials &amp; certifications.
         </h2>
         <p className="mt-2.5 max-w-2xl text-sm leading-relaxed text-gray-400 sm:text-base">
-          Industry-recognized credentials validating primary Microsoft Azure enterprise architecture alongside foundational multi-cloud training.
+          Industry-recognized credentials validating primary Microsoft Azure enterprise architecture alongside multi-cloud training.
         </p>
       </div>
 
       {/* Main 2-Column Credential Showcase */}
       <div className="mt-8 sm:mt-10 grid gap-6 lg:grid-cols-12">
         {/* Left Column: Primary Credential & Core Competencies (7 cols) */}
-        <div className="lg:col-span-7 flex flex-col justify-between rounded-2xl border border-gold-500/25 bg-white/[0.02] p-6 sm:p-7 backdrop-blur-sm shadow-xl shadow-black/20 hover:border-gold-500/40 transition-all duration-300">
+        <div className="lg:col-span-7 flex flex-col justify-between rounded-2xl border border-aurora-500/25 bg-white/[0.02] p-6 sm:p-7 backdrop-blur-sm shadow-xl shadow-black/20 hover:border-aurora-500/40 transition-all duration-300">
           <div>
             {/* Header */}
             <div className="flex flex-wrap items-start justify-between gap-4 border-b border-white/8 pb-5">
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 flex-none items-center justify-center rounded-xl border border-gold-500/30 bg-gold-500/10 shadow-[0_0_16px_rgba(212,175,55,0.15)]">
-                  <Award className="h-6 w-6 text-gold-400" />
+                <div className="flex h-12 w-12 flex-none items-center justify-center rounded-xl border border-sunset-500/30 bg-sunset-500/10 shadow-[0_0_16px_rgba(244,63,94,0.2)]">
+                  <Award className="h-6 w-6 text-sunset-400" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2.5">
-                    <span className="font-mono text-sm font-bold text-gold-400 tracking-wider">
+                    <span className="font-mono text-sm font-bold text-sunset-400 tracking-wider">
                       {primaryCert.code}
                     </span>
                     <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-300">
@@ -164,7 +162,7 @@ export default function Certifications() {
             {/* Official Verification Metadata Banner */}
             <div className="mt-4.5 grid grid-cols-2 gap-3 sm:grid-cols-3 rounded-xl border border-white/5 bg-white/[0.02] p-3.5 text-xs">
               <div>
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 block">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 block">
                   Credential ID
                 </span>
                 <span className="font-mono text-gray-200 font-medium text-xs break-all">
@@ -172,7 +170,7 @@ export default function Certifications() {
                 </span>
               </div>
               <div>
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 block">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 block">
                   Cert Number
                 </span>
                 <span className="font-mono text-gray-200 font-medium text-xs">
@@ -180,7 +178,7 @@ export default function Certifications() {
                 </span>
               </div>
               <div className="col-span-2 sm:col-span-1">
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 block">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 block">
                   Earned Date
                 </span>
                 <span className="text-gray-200 font-medium text-xs">
@@ -189,14 +187,14 @@ export default function Certifications() {
               </div>
             </div>
 
-            {/* Validated Competency Areas */}
+            {/* Validated Competency Areas (Point-Based) */}
             <div className="mt-5">
               <div className="flex items-center justify-between">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-gold-400 flex items-center gap-1.5">
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-sunset-400 flex items-center gap-1.5">
                   <ShieldCheck className="h-4 w-4" />
                   <span>AZ-104 Exam Competencies</span>
                 </h4>
-                <span className="text-[11px] font-mono text-gray-500">5 Exam Pillars</span>
+                <span className="text-[11px] font-mono text-gray-400">5 Exam Pillars</span>
               </div>
 
               <div className="mt-3 space-y-1.5">
@@ -214,7 +212,7 @@ export default function Certifications() {
                           <CompIcon className={`h-3.5 w-3.5 ${comp.iconColor}`} />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <span className="text-xs sm:text-sm font-semibold text-white group-hover/comp:text-gold-300 transition-colors">
+                          <span className="text-xs sm:text-sm font-semibold text-white group-hover/comp:text-sunset-300 transition-colors">
                             {comp.title}
                           </span>
                           <p className="mt-0.5 text-[11px] sm:text-xs leading-relaxed text-gray-400 group-hover/comp:text-gray-300">
@@ -235,7 +233,7 @@ export default function Certifications() {
 
           {/* Action Footer */}
           <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-white/8 pt-4">
-            <div className="flex items-center gap-1.5 text-xs text-gold-400">
+            <div className="flex items-center gap-1.5 text-xs text-sunset-400">
               <ShieldCheck className="h-4 w-4" />
               <span className="font-medium">Microsoft Verified Credential</span>
             </div>
@@ -243,20 +241,20 @@ export default function Certifications() {
             <button
               type="button"
               onClick={() => setSelectedCert(primaryCert)}
-              className="inline-flex items-center gap-2 rounded-xl border border-gold-500/40 bg-gold-500/10 px-4 py-2 text-xs font-semibold text-gold-300 transition-all hover:bg-gold-500/20 hover:border-gold-400 shadow-sm"
+              className="inline-flex items-center gap-2 rounded-xl border border-sunset-500/40 bg-sunset-500/10 px-4 py-2 text-xs font-semibold text-sunset-300 transition-all hover:bg-sunset-500/20 hover:border-sunset-400 hover:text-white shadow-sm"
             >
-              <Eye className="h-3.5 w-3.5 text-gold-400" />
+              <Eye className="h-3.5 w-3.5 text-sunset-400" />
               <span>Inspect Certificate (Full Resolution)</span>
             </button>
           </div>
         </div>
 
-        {/* Right Column: Interactive Certificate Preview & Roadmap (5 cols) */}
+        {/* Right Column: Certificate Preview & AWS Badge (5 cols) */}
         <div className="lg:col-span-5 flex flex-col gap-6">
           {/* Certificate Preview Card */}
           <div
             onClick={() => setSelectedCert(primaryCert)}
-            className="group/cert cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-3.5 backdrop-blur-sm transition-all duration-300 hover:border-gold-500/40 hover:shadow-[0_0_24px_rgba(212,175,55,0.12)]"
+            className="group/cert cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-3.5 backdrop-blur-sm transition-all duration-300 hover:border-aurora-400/50 hover:shadow-[0_0_24px_rgba(139,92,246,0.18)]"
           >
             <div className="relative overflow-hidden rounded-xl border border-white/10 bg-black">
               <img
@@ -266,8 +264,8 @@ export default function Certifications() {
                 loading="lazy"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 backdrop-blur-[2px] transition-opacity duration-200 group-hover/cert:opacity-100">
-                <span className="inline-flex items-center gap-2 rounded-xl border border-gold-500/50 bg-ink-900/95 px-4 py-2 text-xs font-semibold text-gold-300 shadow-2xl">
-                  <Eye className="h-4 w-4 text-gold-400" />
+                <span className="inline-flex items-center gap-2 rounded-xl border border-aurora-500/50 bg-ink-900/95 px-4 py-2 text-xs font-semibold text-aurora-300 shadow-2xl">
+                  <Eye className="h-4 w-4 text-aurora-400" />
                   Click to inspect full size
                 </span>
               </div>
@@ -275,7 +273,7 @@ export default function Certifications() {
 
             <div className="mt-3 flex items-center justify-between px-1 text-xs text-gray-400">
               <span className="flex items-center gap-1.5">
-                <Sparkles className="h-3.5 w-3.5 text-gold-400" />
+                <Sparkles className="h-3.5 w-3.5 text-sunset-400" />
                 <span>Official Microsoft Transcript Artifact</span>
               </span>
               <span className="font-mono text-[11px] text-gray-500">Preview</span>
@@ -283,7 +281,7 @@ export default function Certifications() {
           </div>
 
           {/* AWS Academy Cloud Foundations Badge Card */}
-          <div className="flex-1 rounded-2xl border border-white/8 bg-white/[0.02] p-5 sm:p-6 backdrop-blur-sm transition-all hover:border-amber-500/30 shadow-lg shadow-black/20">
+          <div className="flex-1 rounded-2xl border border-white/8 bg-white/[0.02] p-5 sm:p-6 backdrop-blur-sm transition-all hover:border-amber-500/40 shadow-lg shadow-black/20">
             <div className="flex items-center justify-between border-b border-white/8 pb-3.5">
               <div className="flex items-center gap-2.5">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-amber-500/30 bg-amber-500/10">
@@ -302,11 +300,11 @@ export default function Certifications() {
               </span>
             </div>
 
-            {/* Badge Preview & Content */}
+            {/* Badge Preview & Content Points */}
             <div className="mt-4 flex flex-col sm:flex-row items-center sm:items-start gap-4">
               <div
                 onClick={() => setSelectedCert(awsCert)}
-                className="group/badge relative flex-none cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/60 p-2 transition-all hover:border-amber-500/50 hover:shadow-[0_0_20px_rgba(245,158,11,0.15)]"
+                className="group/badge relative flex-none cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/60 p-2 transition-all hover:border-amber-500/50 hover:shadow-[0_0_20px_rgba(245,158,11,0.2)]"
                 title="Click to view full badge"
               >
                 <img
@@ -343,7 +341,7 @@ export default function Certifications() {
                     <span>View Official Badge</span>
                   </button>
                   <span className="text-gray-600 text-xs">•</span>
-                  <span className="text-[11px] text-gray-500">Multi-Cloud Foundation</span>
+                  <span className="text-[11px] text-gray-400">Multi-Cloud Foundation</span>
                 </div>
               </div>
             </div>
@@ -372,7 +370,6 @@ function CertModal({
     };
     document.addEventListener('keydown', onKeyDown);
     document.body.style.overflow = 'hidden';
-
     return () => {
       document.removeEventListener('keydown', onKeyDown);
       document.body.style.overflow = '';
@@ -388,18 +385,18 @@ function CertModal({
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-ink-900/85 backdrop-blur-md animate-fade-in"
+        className="fixed inset-0 bg-ink-950/85 backdrop-blur-md animate-fade-in"
         onClick={onClose}
       />
 
       {/* Modal Container */}
-      <div className="relative z-10 my-auto flex max-h-[92vh] w-full max-w-4xl flex-col rounded-2xl border border-gold-500/20 bg-ink-800/95 p-5 shadow-2xl shadow-black/70 animate-scale-in sm:p-7">
+      <div className="relative z-10 my-auto flex max-h-[92vh] w-full max-w-4xl flex-col rounded-2xl border border-aurora-500/25 bg-ink-900/98 p-5 shadow-2xl shadow-black/70 animate-scale-in sm:p-7">
         {/* Header */}
         <div className="mb-4 flex items-center justify-between gap-4 border-b border-white/8 pb-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="eyebrow text-gold-400">{cert.code}</span>
-              <span className="rounded-full bg-gold-500/15 px-2 py-0.5 text-[10px] font-semibold text-gold-300">
+              <span className="eyebrow text-sunset-400">{cert.code}</span>
+              <span className="rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 text-[10px] font-semibold text-emerald-300">
                 Verified
               </span>
             </div>
@@ -413,7 +410,7 @@ function CertModal({
               href={cert.image}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.02] px-3 py-1.5 text-xs text-gray-300 transition-colors hover:border-gold-500/40 hover:text-gold-300"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.02] px-3 py-1.5 text-xs text-gray-300 transition-colors hover:border-aurora-400 hover:text-white"
               title="Open full resolution in new tab"
             >
               <ExternalLink className="h-3.5 w-3.5" />
@@ -422,7 +419,7 @@ function CertModal({
             <button
               type="button"
               onClick={onClose}
-              className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 text-gray-400 transition-colors hover:border-gold-500/40 hover:text-gold-300"
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 text-gray-400 transition-colors hover:border-sunset-400 hover:text-white"
               aria-label="Close modal"
             >
               <X className="h-4 w-4" />
@@ -446,30 +443,30 @@ function CertModal({
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             {cert.credentialId && (
               <span>
-                <strong className="font-medium text-gray-500">ID:</strong>{' '}
+                <strong className="font-medium text-gray-400">ID:</strong>{' '}
                 <span className="font-mono text-gray-200">{cert.credentialId}</span>
               </span>
             )}
             {cert.certificationNumber && (
               <span>
-                <strong className="font-medium text-gray-500">Cert #:</strong>{' '}
+                <strong className="font-medium text-gray-400">Cert #:</strong>{' '}
                 <span className="font-mono text-gray-200">{cert.certificationNumber}</span>
               </span>
             )}
             {cert.issueDate && (
               <span>
-                <strong className="font-medium text-gray-500">Earned:</strong>{' '}
+                <strong className="font-medium text-gray-400">Earned:</strong>{' '}
                 <span className="text-gray-200">{cert.issueDate}</span>
               </span>
             )}
             {!cert.credentialId && (
               <span>
-                <strong className="font-medium text-gray-500">Issuer:</strong>{' '}
+                <strong className="font-medium text-gray-400">Issuer:</strong>{' '}
                 <span className="text-gray-200">{cert.issuer}</span>
               </span>
             )}
           </div>
-          <div className="flex items-center gap-1.5 text-gold-400">
+          <div className="flex items-center gap-1.5 text-emerald-400">
             <ShieldCheck className="h-4 w-4" />
             <span className="font-medium">Verified Credential</span>
           </div>

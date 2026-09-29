@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  background-color: #07090A;
+  background-color: #06070D;
   color: #E2E8F0;
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -18,19 +18,19 @@ body {
 /* Background grid pattern */
 .bg-grid-pattern {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
 /* Background dots pattern */
 .bg-dots-pattern {
-  background-image: radial-gradient(rgba(212, 175, 55, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(139, 92, 246, 0.15) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
 ::selection {
-  background: rgba(212, 175, 55, 0.35);
+  background: rgba(139, 92, 246, 0.4);
   color: #ffffff;
 }
 
@@ -38,35 +38,36 @@ body {
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #07090A;
+  background: #06070D;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(212, 175, 55, 0.25);
+  background: rgba(139, 92, 246, 0.35);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 175, 55, 0.45);
+  background: rgba(244, 63, 94, 0.6);
 }
 
 /* Modern Glass Utilities */
 .glass-panel {
-  background: rgba(16, 20, 23, 0.70);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(10, 13, 24, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-card {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  border-color: rgba(212, 175, 55, 0.35);
-  background: linear-gradient(180deg, rgba(212, 175, 55, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
+  border-color: rgba(167, 139, 250, 0.4);
+  background: linear-gradient(180deg, rgba(139, 92, 246, 0.06) 0%, rgba(244, 63, 94, 0.02) 100%);
+  box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.15);
 }
 
 .reveal {
@@ -88,15 +89,38 @@ body {
   font-weight: 700;
 }
 
-.gradient-text-gold {
-  background: linear-gradient(135deg, #FFF6D6 0%, #D4AF37 50%, #A6831B 100%);
+/* Modern Aurora & Sunset Gradient Text */
+.gradient-text-aurora {
+  background: linear-gradient(135deg, #FFFFFF 0%, #C4B5FD 40%, #8B5CF6 80%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-sunset {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FDA4AF 35%, #F43F5E 75%, #FB923C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #FFFFFF 0%, #67E8F9 50%, #06B6D4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-silver {
-  background: linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Legacy alias for smooth transition */
+.gradient-text-gold {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FDA4AF 40%, #FB7185 70%, #FB923C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
