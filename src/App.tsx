@@ -14,15 +14,13 @@ export default function App() {
   const [activeStudy, setActiveStudy] = useState<CaseStudy | null>(null);
 
   return (
-    <div className="relative min-h-screen bg-ink-950 text-gray-200 overflow-x-hidden selection:bg-aurora-500/40 selection:text-white">
-      {/* Ambient background grid pattern & multi-tone aurora lights */}
-      <div className="pointer-events-none fixed inset-0 z-0 bg-grid-pattern opacity-30" />
+    <div className="relative min-h-screen bg-ink-950 text-gray-200 overflow-x-hidden selection:bg-azure-500/30 selection:text-white">
+      {/* Ambient background grid pattern & subtle Azure light */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-grid-pattern opacity-25" />
       
-      {/* Ambient Aurora Glow Spheres */}
-      <div className="pointer-events-none fixed -top-40 left-1/2 -translate-x-1/2 z-0 h-[650px] w-[850px] rounded-full bg-aurora-600/[0.14] blur-[150px] animate-aurora-flow" />
-      <div className="pointer-events-none fixed top-[30%] -left-32 z-0 h-[500px] w-[500px] rounded-full bg-cyan-500/[0.08] blur-[140px]" />
-      <div className="pointer-events-none fixed top-[60%] -right-32 z-0 h-[550px] w-[550px] rounded-full bg-sunset-500/[0.09] blur-[150px]" />
-      <div className="pointer-events-none fixed bottom-0 left-1/3 z-0 h-[450px] w-[600px] rounded-full bg-aurora-700/[0.10] blur-[140px]" />
+      {/* Subtle DIVADSGN-style radial glow rings */}
+      <div className="pointer-events-none fixed -top-32 left-1/2 -translate-x-1/2 z-0 h-[600px] w-[800px] rounded-full bg-azure-600/[0.07] blur-[140px]" />
+      <div className="pointer-events-none fixed top-[45%] left-1/2 -translate-x-1/2 z-0 h-[700px] w-[900px] rounded-full bg-azure-500/[0.04] blur-[160px]" />
 
       {/* Main Content */}
       <div className="relative z-10">

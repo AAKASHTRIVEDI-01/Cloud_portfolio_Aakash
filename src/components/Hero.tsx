@@ -1,19 +1,4 @@
-import {
-  ArrowDown,
-  FileText,
-  FolderGit2,
-  ShieldCheck,
-  Cloud,
-  Terminal,
-  Boxes,
-  Github,
-  Linkedin,
-  Mail,
-  GitBranch,
-  CheckCircle2,
-  Lock,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight, FileText, Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import profileImage from '../assets/profile.jpeg';
 
 export default function Hero() {
@@ -22,35 +7,27 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[82vh] sm:min-h-[86vh] items-center justify-center overflow-hidden px-6 pt-8 pb-12 sm:pt-12 sm:pb-16"
+      className="relative flex min-h-[80vh] sm:min-h-[84vh] items-center justify-center overflow-hidden px-6 pt-10 pb-16 sm:pt-16 sm:pb-20"
     >
-      {/* Ambient background glows */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/4 h-[550px] w-[750px] -translate-x-1/2 rounded-full bg-aurora-600/[0.14] blur-[150px]" />
-        <div className="absolute right-1/4 top-1/2 h-[350px] w-[450px] rounded-full bg-sunset-500/[0.10] blur-[130px]" />
-        <div className="absolute left-1/4 top-1/3 h-[300px] w-[350px] rounded-full bg-cyan-500/[0.08] blur-[120px]" />
-      </div>
-
-      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center">
-        {/* Architecture & Engineering Status Badge */}
+      <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center">
+        {/* Clean Status Badge */}
         <div
-          className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-aurora-500/30 bg-aurora-500/[0.08] px-4 py-1.5 text-xs font-semibold text-aurora-300 shadow-lg shadow-aurora-950/40 animate-fade-in opacity-0 backdrop-blur-md"
+          className="mb-7 inline-flex items-center gap-2 rounded-full border border-azure-500/25 bg-azure-500/[0.08] px-4 py-1 text-xs font-medium text-azure-300 backdrop-blur-md animate-fade-in opacity-0"
           style={{ animationDelay: '0.05s' }}
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
           </span>
-          <span className="tracking-wide">Enterprise Azure Architecture &amp; DevOps Engineering</span>
+          <span>AZ-104 Certified • Azure Cloud Engineer</span>
         </div>
 
-        {/* Profile Photo with Aurora/Sunset Glow Ring */}
+        {/* Profile Photo */}
         <div
           className="relative mb-6 animate-fade-in opacity-0"
           style={{ animationDelay: '0.15s' }}
         >
-          <div className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-sunset-500 via-aurora-500 to-cyan-400 opacity-80 blur-md animate-pulse-glow" />
-          <div className="relative h-32 w-32 sm:h-36 sm:w-36 overflow-hidden rounded-full border-2 border-white/20 bg-ink-900 shadow-2xl shadow-aurora-950/60">
+          <div className="relative h-28 w-28 sm:h-32 sm:w-32 overflow-hidden rounded-full border-2 border-azure-400/40 bg-ink-900 shadow-xl shadow-azure-950/50">
             <img
               src={profileImage}
               alt="Aakash Trivedi"
@@ -61,7 +38,7 @@ export default function Hero() {
 
         {/* Name */}
         <h1
-          className="font-display text-5xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl animate-fade-up opacity-0"
+          className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl animate-fade-up opacity-0"
           style={{ animationDelay: '0.25s' }}
         >
           Aakash Trivedi
@@ -69,144 +46,79 @@ export default function Hero() {
 
         {/* Professional Title */}
         <h2
-          className="mt-3.5 font-display text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl animate-fade-up opacity-0"
+          className="mt-3 text-lg font-semibold tracking-tight text-gray-200 sm:text-xl md:text-2xl animate-fade-up opacity-0"
           style={{ animationDelay: '0.35s' }}
         >
-          <span className="gradient-text-sunset">Azure Cloud Engineer</span>{' '}
-          <span className="text-gray-300 font-normal">&amp; Infrastructure Specialist</span>
+          <span className="gradient-text-azure">Azure Cloud Engineer</span>{' '}
+          <span className="text-gray-400 font-normal">&amp; Infrastructure Specialist</span>
         </h2>
 
-        {/* High-Impact Data Points (Replaces lengthy descriptive paragraphs) */}
-        <div
-          className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2.5 max-w-2xl w-full text-left animate-fade-up opacity-0"
+        {/* Clean, Human Value Proposition (DIVADSGN style) */}
+        <p
+          className="mt-5 max-w-xl text-sm leading-relaxed text-gray-300 sm:text-base animate-fade-up opacity-0"
           style={{ animationDelay: '0.45s' }}
         >
-          <div className="flex items-start gap-2.5 rounded-xl border border-white/8 bg-white/[0.025] p-3 backdrop-blur-sm transition-all hover:border-sunset-400/40 hover:bg-white/[0.04]">
-            <Zap className="h-4 w-4 text-sunset-400 flex-none mt-0.5" />
-            <div>
-              <div className="text-xs font-semibold text-white">Azure Infrastructure</div>
-              <p className="text-[11px] text-gray-400 leading-tight mt-0.5">High-availability, hub-spoke topologies &amp; hybrid VNets</p>
-            </div>
-          </div>
+          Designing and maintaining secure, reliable Azure cloud infrastructure with hands-on focus on
+          virtual networks, Terraform automation, and CI/CD pipelines.
+        </p>
 
-          <div className="flex items-start gap-2.5 rounded-xl border border-white/8 bg-white/[0.025] p-3 backdrop-blur-sm transition-all hover:border-aurora-400/40 hover:bg-white/[0.04]">
-            <Lock className="h-4 w-4 text-aurora-400 flex-none mt-0.5" />
-            <div>
-              <div className="text-xs font-semibold text-white">Zero-Trust &amp; RBAC</div>
-              <p className="text-[11px] text-gray-400 leading-tight mt-0.5">Microsoft Entra ID, Azure Key Vault &amp; Policy governance</p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-2.5 rounded-xl border border-white/8 bg-white/[0.025] p-3 backdrop-blur-sm transition-all hover:border-cyan-400/40 hover:bg-white/[0.04]">
-            <GitBranch className="h-4 w-4 text-cyan-400 flex-none mt-0.5" />
-            <div>
-              <div className="text-xs font-semibold text-white">IaC &amp; CI/CD Pipelines</div>
-              <p className="text-[11px] text-gray-400 leading-tight mt-0.5">Repeatable deployments via Terraform, Bicep &amp; DevOps</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Live Architecture & Operations Telemetry Pill */}
+        {/* Clean CTA Buttons (DIVADSGN style) */}
         <div
-          className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3 rounded-2xl border border-white/10 bg-black/50 px-4 py-2 backdrop-blur-md animate-fade-up opacity-0 text-[11px] font-mono text-gray-300 shadow-inner"
-          style={{ animationDelay: '0.5s' }}
-        >
-          <div className="flex items-center gap-1.5 text-emerald-400">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>AZ-REGION: Production / Global</span>
-          </div>
-          <span className="text-white/20 hidden sm:inline">•</span>
-          <div className="flex items-center gap-1.5 text-cyan-400">
-            <Terminal className="h-3.5 w-3.5" />
-            <span>IaC: Terraform &amp; Bicep</span>
-          </div>
-          <span className="text-white/20 hidden sm:inline">•</span>
-          <div className="flex items-center gap-1.5 text-sunset-400">
-            <ShieldCheck className="h-3.5 w-3.5" />
-            <span>Zero-Trust &amp; RBAC</span>
-          </div>
-        </div>
-
-        {/* Key Competency Badges with Icons */}
-        <div
-          className="mt-6 flex flex-wrap justify-center gap-2.5 sm:gap-3 animate-fade-up opacity-0"
+          className="mt-8 flex flex-col items-center gap-3 sm:flex-row animate-fade-up opacity-0"
           style={{ animationDelay: '0.55s' }}
         >
           <a
-            href="#certifications"
-            className="inline-flex items-center gap-2 rounded-xl border border-sunset-500/30 bg-sunset-500/[0.08] px-3.5 py-1.5 text-xs font-semibold text-sunset-300 transition-all duration-200 hover:border-sunset-400 hover:bg-sunset-500/15 hover:shadow-[0_0_14px_rgba(244,63,94,0.3)]"
-          >
-            <ShieldCheck className="h-4 w-4 text-sunset-400" />
-            <span>AZ-104 Certified (Associate)</span>
-          </a>
-          <div className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-gray-300">
-            <Cloud className="h-4 w-4 text-cyan-400" />
-            <span>2+ Years Cloud Experience</span>
-          </div>
-          <div className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-gray-300">
-            <GitBranch className="h-4 w-4 text-emerald-400" />
-            <span>IaC &amp; CI/CD Pipelines</span>
-          </div>
-          <div className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-gray-300">
-            <Boxes className="h-4 w-4 text-aurora-400" />
-            <span>Containers &amp; AKS</span>
-          </div>
-        </div>
-
-        {/* CTA Buttons */}
-        <div
-          className="mt-7 flex flex-col items-center gap-3 sm:flex-row animate-fade-up opacity-0"
-          style={{ animationDelay: '0.65s' }}
-        >
-          <a
             href="#projects"
-            className="group flex items-center gap-2 rounded-xl bg-gradient-to-r from-sunset-500 via-sunset-coral to-aurora-600 px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-sunset-950/50 transition-all duration-300 hover:shadow-sunset-900/60 hover:brightness-110 hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-azure-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-azure-600/30 transition-all duration-200 hover:bg-azure-500 hover:shadow-azure-500/40 hover:-translate-y-0.5"
           >
-            <FolderGit2 className="h-4 w-4 transition-transform group-hover:scale-110" />
-            <span>Explore Architecture Projects</span>
+            <span>Explore Projects</span>
+            <ArrowRight className="h-4 w-4" />
           </a>
 
           <a
             href={resumeUrl}
             download="Aakash_Trivedi_Resume.pdf"
-            className="group flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-gray-200 backdrop-blur-sm transition-all duration-300 hover:border-aurora-400/50 hover:bg-aurora-500/[0.08] hover:text-white hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-gray-300 backdrop-blur-sm transition-all duration-200 hover:border-azure-400/40 hover:bg-white/[0.08] hover:text-white hover:-translate-y-0.5"
           >
-            <FileText className="h-4 w-4 transition-transform group-hover:scale-110 text-gray-400 group-hover:text-aurora-300" />
-            <span>Technical Profile (PDF)</span>
+            <FileText className="h-4 w-4 text-gray-400" />
+            <span>Download Resume</span>
           </a>
         </div>
 
-        {/* Clean, Prominent Contact Details Row */}
+        {/* Clean, Minimal Social Links */}
         <div
-          className="mt-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs animate-fade-up opacity-0"
-          style={{ animationDelay: '0.72s' }}
+          className="mt-8 flex items-center justify-center gap-4 text-xs text-gray-400 animate-fade-up opacity-0"
+          style={{ animationDelay: '0.65s' }}
         >
           <a
             href="mailto:aakashtrivedi2003@gmail.com"
-            className="group inline-flex items-center gap-2 rounded-xl border border-sunset-500/30 bg-sunset-500/[0.06] px-3.5 py-2 font-medium text-sunset-300 transition-all hover:border-sunset-400 hover:bg-sunset-500/15 hover:shadow-[0_0_14px_rgba(244,63,94,0.25)]"
-            title="Email: aakashtrivedi2003@gmail.com"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-azure-400"
           >
-            <Mail className="h-3.5 w-3.5 text-sunset-400 transition-transform group-hover:scale-110" />
-            <span className="font-mono text-xs">aakashtrivedi2003@gmail.com</span>
+            <Mail className="h-4 w-4 text-azure-400" />
+            <span>aakashtrivedi2003@gmail.com</span>
           </a>
+
+          <span className="text-white/20">•</span>
 
           <a
             href="https://linkedin.com/in/aakashtrivedi1003"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2 font-medium text-gray-300 transition-all hover:border-cyan-400/50 hover:bg-cyan-500/10 hover:text-cyan-300"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-azure-400"
           >
-            <Linkedin className="h-3.5 w-3.5 text-cyan-400" />
+            <Linkedin className="h-4 w-4" />
             <span>LinkedIn</span>
           </a>
+
+          <span className="text-white/20">•</span>
 
           <a
             href="https://github.com/AAKASHTRIVEDI-01"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2 font-medium text-gray-300 transition-all hover:border-aurora-400/50 hover:bg-aurora-500/10 hover:text-aurora-300"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
           >
-            <Github className="h-3.5 w-3.5 text-gray-400" />
+            <Github className="h-4 w-4" />
             <span>GitHub</span>
           </a>
         </div>
@@ -215,15 +127,15 @@ export default function Hero() {
       {/* Subtle Scroll indicator */}
       <div
         className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-fade-in opacity-0"
-        style={{ animationDelay: '1s' }}
+        style={{ animationDelay: '0.9s' }}
       >
         <a
           href="#about"
-          className="flex flex-col items-center gap-1.5 text-xs font-medium text-gray-500 transition-colors hover:text-sunset-400"
-          aria-label="Scroll down to About section"
+          className="flex flex-col items-center gap-1 text-xs text-gray-500 transition-colors hover:text-azure-400"
+          aria-label="Scroll down to About"
         >
-          <span>Explore</span>
-          <ArrowDown className="h-4 w-4 animate-bounce text-sunset-400/70" />
+          <span>Scroll</span>
+          <ArrowDown className="h-3.5 w-3.5 animate-bounce text-azure-400/80" />
         </a>
       </div>
     </section>

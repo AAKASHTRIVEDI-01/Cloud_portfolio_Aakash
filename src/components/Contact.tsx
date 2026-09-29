@@ -19,149 +19,146 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative mx-auto max-w-6xl px-6 pt-12 pb-12 sm:pt-16 sm:pb-16">
+    <section id="contact" className="relative mx-auto max-w-5xl px-6 pt-12 pb-16 sm:pt-16 sm:pb-20">
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="flex items-center gap-2">
-          <span className="eyebrow text-sunset-400">Get In Touch</span>
-          <span className="h-px w-12 bg-sunset-500/30" />
+          <span className="eyebrow text-azure-400">Get In Touch</span>
+          <span className="h-px w-12 bg-azure-500/30" />
         </div>
 
-        <div className="mt-4 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+        <div className="mt-4 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <div>
-            <h2 className="font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl">
-              Let's connect &amp; collaborate.
+            <h2 className="font-display text-2xl font-bold leading-tight text-white sm:text-3xl">
+              Let's connect.
             </h2>
-            <p className="mt-2.5 max-w-xl text-sm leading-relaxed text-gray-400 sm:text-base">
-              Specializing in enterprise cloud architecture, automated CI/CD pipelines, and high-availability Azure environments. Always keen to connect for technical discussions and knowledge sharing.
+            <p className="mt-2 max-w-lg text-sm text-gray-400">
+              Open to discussions regarding Azure cloud infrastructure, DevOps roles, or engineering collaboration.
             </p>
           </div>
 
           <button
             onClick={copyEmail}
-            className="inline-flex items-center gap-2 self-start rounded-xl border border-sunset-500/40 bg-sunset-500/10 px-4 py-2 text-xs font-semibold text-sunset-300 transition-all duration-300 hover:bg-sunset-500/20 hover:border-sunset-400 hover:text-white"
+            className="inline-flex items-center gap-2 self-start rounded-full border border-azure-500/30 bg-azure-500/10 px-4 py-2 text-xs font-semibold text-azure-300 transition-all hover:bg-azure-500/20 hover:text-white"
           >
             {copied ? (
               <>
-                <Check className="h-4 w-4 text-emerald-400" />
-                <span>Email Copied to Clipboard!</span>
+                <Check className="h-3.5 w-3.5 text-emerald-400" />
+                <span>Copied to Clipboard!</span>
               </>
             ) : (
               <>
-                <Copy className="h-4 w-4 text-sunset-400" />
-                <span>Copy Email Address</span>
+                <Copy className="h-3.5 w-3.5 text-azure-400" />
+                <span>Copy Email</span>
               </>
             )}
           </button>
         </div>
 
         {/* Contact Cards Grid */}
-        <div className="mt-8 sm:mt-10 grid gap-5 sm:grid-cols-3">
-          {/* Email Card */}
-          <div className="glass-card group flex flex-col justify-between rounded-2xl p-6 transition-all duration-300 hover:border-sunset-500/40 hover:shadow-[0_0_24px_rgba(244,63,94,0.16)]">
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          {/* Email */}
+          <div className="glass-card flex flex-col justify-between rounded-2xl p-5 transition-all hover:border-azure-400/40">
             <div>
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-sunset-500/30 bg-sunset-500/[0.08] transition-colors group-hover:border-sunset-400 group-hover:bg-sunset-500/20">
-                <Mail className="h-5 w-5 text-sunset-400" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-azure-500/30 bg-azure-500/10 text-azure-400">
+                <Mail className="h-4 w-4" />
               </div>
-              <h3 className="mt-4 font-display text-base font-bold text-white">Email Address</h3>
-              <p className="mt-1 text-xs text-gray-400">Direct technical inquiries &amp; feedback</p>
-              <p className="mt-3 font-mono text-xs text-gray-200 break-all">{email}</p>
+              <h3 className="mt-4 font-display text-sm font-bold text-white">Direct Email</h3>
+              <p className="mt-1 font-mono text-xs text-gray-300 break-all">{email}</p>
             </div>
-            <div className="mt-6 flex items-center gap-2">
+            <div className="mt-5">
               <a
-                href={`mailto:${email}?subject=Technical%20Inquiry%20-%20Cloud%20Architecture`}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-sunset-400 transition-colors group-hover:text-sunset-300"
+                href={`mailto:${email}?subject=Inquiry%20-%20Cloud%20Engineering`}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-azure-400 hover:text-azure-300"
               >
-                <span>Send Direct Email</span>
-                <Send className="h-3.5 w-3.5" />
+                <span>Send Email</span>
+                <Send className="h-3 w-3" />
               </a>
             </div>
           </div>
 
-          {/* LinkedIn Card */}
-          <div className="glass-card group flex flex-col justify-between rounded-2xl p-6 transition-all duration-300 hover:border-cyan-500/40 hover:shadow-[0_0_24px_rgba(6,182,212,0.16)]">
+          {/* LinkedIn */}
+          <div className="glass-card flex flex-col justify-between rounded-2xl p-5 transition-all hover:border-azure-400/40">
             <div>
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-500/[0.08] transition-colors group-hover:border-cyan-400 group-hover:bg-cyan-500/20">
-                <Linkedin className="h-5 w-5 text-cyan-400" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-azure-500/30 bg-azure-500/10 text-azure-400">
+                <Linkedin className="h-4 w-4" />
               </div>
-              <h3 className="mt-4 font-display text-base font-bold text-white">LinkedIn Network</h3>
-              <p className="mt-1 text-xs text-gray-400">Professional network &amp; tech updates</p>
-              <p className="mt-3 text-xs text-gray-200 font-mono">/in/aakashtrivedi1003</p>
+              <h3 className="mt-4 font-display text-sm font-bold text-white">LinkedIn</h3>
+              <p className="mt-1 text-xs text-gray-400">Professional network &amp; updates</p>
             </div>
-            <div className="mt-6">
+            <div className="mt-5">
               <a
                 href="https://linkedin.com/in/aakashtrivedi1003"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 transition-colors group-hover:text-cyan-300"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-azure-400 hover:text-azure-300"
               >
-                <span>Connect on LinkedIn</span>
+                <span>Connect</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </a>
             </div>
           </div>
 
-          {/* GitHub Card */}
-          <div className="glass-card group flex flex-col justify-between rounded-2xl p-6 transition-all duration-300 hover:border-aurora-500/40 hover:shadow-[0_0_24px_rgba(139,92,246,0.16)]">
+          {/* GitHub */}
+          <div className="glass-card flex flex-col justify-between rounded-2xl p-5 transition-all hover:border-white/20">
             <div>
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-aurora-500/30 bg-aurora-500/[0.08] transition-colors group-hover:border-aurora-400 group-hover:bg-aurora-500/20">
-                <Github className="h-5 w-5 text-aurora-300" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-gray-300">
+                <Github className="h-4 w-4" />
               </div>
-              <h3 className="mt-4 font-display text-base font-bold text-white">GitHub Repositories</h3>
-              <p className="mt-1 text-xs text-gray-400">Cloud templates, IaC &amp; open source code</p>
-              <p className="mt-3 text-xs text-gray-200 font-mono">/AAKASHTRIVEDI-01</p>
+              <h3 className="mt-4 font-display text-sm font-bold text-white">GitHub</h3>
+              <p className="mt-1 text-xs text-gray-400">Cloud code &amp; IaC templates</p>
             </div>
-            <div className="mt-6">
+            <div className="mt-5">
               <a
                 href="https://github.com/AAKASHTRIVEDI-01"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-aurora-300 transition-colors group-hover:text-white"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-gray-300 hover:text-white"
               >
-                <span>Explore Repositories</span>
+                <span>View Repositories</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Technical Profile Summary Banner */}
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 rounded-2xl border border-aurora-500/25 bg-gradient-to-r from-aurora-500/[0.08] via-sunset-500/[0.05] to-transparent p-6 sm:flex-row sm:p-7 backdrop-blur-sm">
-          <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 flex-none items-center justify-center rounded-xl border border-sunset-500/30 bg-sunset-500/10">
-              <FileText className="h-6 w-6 text-sunset-400" />
+        {/* Resume Banner */}
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-white/8 bg-white/[0.02] p-5 sm:flex-row">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl border border-azure-500/30 bg-azure-500/10 text-azure-400">
+              <FileText className="h-5 w-5" />
             </div>
             <div>
-              <h4 className="font-display text-base font-bold text-white">
-                Technical Profile &amp; Credentials Summary
+              <h4 className="font-display text-sm font-bold text-white">
+                Technical Resume (PDF)
               </h4>
-              <p className="text-xs text-gray-400 sm:text-sm">
-                A comprehensive overview of enterprise architectures, Azure credentials, and engineering skills.
+              <p className="text-xs text-gray-400">
+                A concise summary of my Azure cloud experience, certifications, and skills.
               </p>
             </div>
           </div>
           <a
             href={resumeUrl}
             download="Aakash_Trivedi_Resume.pdf"
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sunset-500 via-sunset-coral to-aurora-600 px-5 py-2.5 text-xs font-semibold text-white shadow-lg shadow-sunset-950/50 transition-all hover:brightness-110"
+            className="inline-flex items-center gap-2 rounded-full bg-azure-600 px-5 py-2 text-xs font-semibold text-white shadow transition-all hover:bg-azure-500"
           >
-            <FileText className="h-4 w-4" />
-            <span>Download Profile PDF</span>
+            <FileText className="h-3.5 w-3.5" />
+            <span>Download Resume</span>
           </a>
         </div>
 
         {/* Footer */}
-        <div className="mt-20 flex flex-col items-center justify-between gap-4 border-t border-white/8 pt-8 text-center sm:flex-row sm:text-left">
+        <div className="mt-16 flex flex-col items-center justify-between gap-3 border-t border-white/8 pt-6 text-center sm:flex-row sm:text-left">
           <p className="text-xs text-gray-500">
-            © {new Date().getFullYear()} <span className="text-gray-300 font-medium">Aakash Trivedi</span>. Azure Cloud Engineer &amp; Infrastructure Specialist.
+            © {new Date().getFullYear()} Aakash Trivedi. Azure Cloud Engineer.
           </p>
 
           <button
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-400 transition-colors hover:text-sunset-300"
-            aria-label="Scroll to top of page"
+            className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-azure-400 transition-colors"
+            aria-label="Scroll to top"
           >
             <span>Back to top</span>
-            <ArrowUp className="h-3.5 w-3.5" />
+            <ArrowUp className="h-3 w-3" />
           </button>
         </div>
       </div>
