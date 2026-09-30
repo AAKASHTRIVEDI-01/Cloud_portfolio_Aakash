@@ -8,6 +8,7 @@ import Certifications from '@/components/Certifications';
 import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
 import CaseStudyModal from '@/components/CaseStudyModal';
+import WaveBackground from '@/components/WaveBackground';
 import type { CaseStudy } from '@/data/caseStudies';
 
 export default function App() {
@@ -15,8 +16,11 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#F8FAFC] text-slate-800 overflow-x-hidden selection:bg-azure-500/20 selection:text-azure-700">
-      {/* Ambient background grid pattern & subtle Azure light */}
-      <div className="pointer-events-none fixed inset-0 z-0 bg-grid-pattern opacity-60" />
+      {/* Dynamic Azure Wave Graphics & Ambient Lighting */}
+      <WaveBackground />
+
+      {/* Ambient background grid pattern */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-grid-pattern opacity-40" />
       
 
 
@@ -26,10 +30,10 @@ export default function App() {
         <main>
           <Hero />
           <About />
-          <Skills />
-          <Certifications />
-          <Projects onOpenStudy={setActiveStudy} />
           <Experience />
+          <Skills />
+          <Projects onOpenStudy={setActiveStudy} />
+          <Certifications />
           <Contact />
         </main>
         <CaseStudyModal study={activeStudy} onClose={() => setActiveStudy(null)} />
