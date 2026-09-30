@@ -97,3 +97,72 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Fluid Azure Wave Animations */
+@keyframes waveDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-15px, 10px, 0) scale(1.025);
+  }
+  100% {
+    transform: translate3d(15px, -8px, 0) scale(0.985);
+  }
+}
+
+@keyframes waveFloatSlow {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-20px, 14px, 0) scale(1.03) rotate(0.6deg);
+  }
+  100% {
+    transform: translate3d(20px, -10px, 0) scale(0.98) rotate(-0.6deg);
+  }
+}
+
+@keyframes waveFloatReverse {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(22px, -12px, 0) scale(1.02) rotate(-0.8deg);
+  }
+  100% {
+    transform: translate3d(-18px, 12px, 0) scale(0.97) rotate(0.8deg);
+  }
+}
+
+@keyframes wavePulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.04);
+  }
+}
+
+.animate-wave-drift {
+  animation: waveDrift 16s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-wave-slow {
+  animation: waveFloatSlow 20s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-wave-reverse {
+  animation: waveFloatReverse 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-wave-pulse {
+  animation: wavePulse 10s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
