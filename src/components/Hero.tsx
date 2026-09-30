@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto max-w-5xl w-full">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-center">
           {/* Left Column: Text & CTAs (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col items-center text-center lg:items-start lg:text-left order-2 lg:order-1">
+          <div className="lg:col-span-7 flex flex-col items-center text-center lg:items-start lg:text-left order-2 lg:order-1 relative">
             {/* Status Badge in Soft Ice Blue with Deep Azure Text */}
             <div
               className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-[#EAF2F8] px-3.5 py-1 text-xs font-semibold text-azure-700 shadow-2xs animate-fade-in opacity-0"
@@ -35,16 +35,16 @@ export default function Hero() {
 
             {/* Professional Title with Darker, Richer Azure Highlight */}
             <h2
-              className="mt-3 text-lg font-semibold tracking-tight text-slate-700 sm:text-xl md:text-2xl animate-fade-up opacity-0"
+              className="mt-3 text-lg font-semibold tracking-tight text-slate-800 sm:text-xl md:text-2xl animate-fade-up opacity-0"
               style={{ animationDelay: '0.25s' }}
             >
               <span className="text-azure-700 font-bold">Azure Cloud Engineer</span>{' '}
-              <span className="text-slate-500 font-normal">&amp; Infrastructure Specialist</span>
+              <span className="text-slate-600 font-medium">&amp; Infrastructure Specialist</span>
             </h2>
 
             {/* Human Value Proposition */}
             <p
-              className="mt-4 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base animate-fade-up opacity-0"
+              className="mt-4 max-w-xl text-sm leading-relaxed text-slate-700 sm:text-base animate-fade-up opacity-0 font-normal"
               style={{ animationDelay: '0.35s' }}
             >
               Designing and administering secure, high-availability Azure cloud infrastructure with hands-on focus on
@@ -76,7 +76,7 @@ export default function Hero() {
 
             {/* Clean Social Links with Deep Azure Icons */}
             <div
-              className="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-slate-500 animate-fade-up opacity-0"
+              className="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-slate-600 animate-fade-up opacity-0"
               style={{ animationDelay: '0.55s' }}
             >
               <a
@@ -95,7 +95,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 transition-colors hover:text-azure-700 font-medium"
               >
-                <Linkedin className="h-4 w-4 text-slate-500 hover:text-azure-700 transition-colors" />
+                <Linkedin className="h-4 w-4 text-slate-600 hover:text-azure-700 transition-colors" />
                 <span>LinkedIn</span>
               </a>
 
@@ -107,7 +107,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 transition-colors hover:text-slate-900 font-medium"
               >
-                <Github className="h-4 w-4 text-slate-500 hover:text-slate-900 transition-colors" />
+                <Github className="h-4 w-4 text-slate-600 hover:text-slate-900 transition-colors" />
                 <span>GitHub</span>
               </a>
             </div>
