@@ -1,4 +1,4 @@
-import {
+﻿import {
   Network,
   ShieldCheck,
   Cpu,
@@ -36,7 +36,7 @@ const HIGHLIGHTS = [
   {
     icon: Server,
     title: '2+ Years Hands-On Azure Experience',
-    desc: 'Administering 20–30 production virtual machines, storage accounts, and backup vaults across client environments.',
+    desc: 'Administering 20-30 production virtual machines, storage accounts, and backup vaults across client environments.',
   },
   {
     icon: Network,
@@ -100,7 +100,7 @@ export default function About() {
                   return (
                     <div
                       key={idx}
-                      className="group flex items-start gap-3.5 rounded-xl border border-slate-200/80 bg-white p-3.5 shadow-xs transition-all duration-200 hover:border-azure-300 hover:shadow-sm"
+                      className="group flex items-start gap-3.5 rounded-xl border border-slate-20-300 hover:shadow-sm"
                     >
                       <div className="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-[#EAF2F8] text-azure-700 transition-colors group-hover:bg-azure-700 group-hover:text-white">
                         <Icon className="h-4 w-4" />
@@ -123,7 +123,7 @@ export default function About() {
               return (
                 <div
                   key={cap.title}
-                  className="flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-5 sm:p-6 shadow-xs transition-all duration-200 hover:border-azure-300 hover:shadow-sm"
+                  className="flex flex-col justify-between rounded-2xl border border-slate-20-300 hover:shadow-sm"
                 >
                   <div>
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700">
