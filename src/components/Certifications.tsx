@@ -88,10 +88,10 @@ export default function Certifications() {
             <span className="eyebrow text-azure-700">Credentials</span>
             <span className="h-px w-12 bg-azure-700/30" />
           </div>
-          <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+          <h2 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
             Certifications &amp; credentials.
           </h2>
-          <p className="mt-2 text-sm text-slate-600 max-w-xl">
+          <p className="mt-4 text-lg font-medium text-slate-700 max-w-2xl">
             Industry-recognized credentials validating enterprise Azure administration and cloud fundamentals.
           </p>
         </div>

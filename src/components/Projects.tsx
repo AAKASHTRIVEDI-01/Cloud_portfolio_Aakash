@@ -22,10 +22,10 @@ export default function Projects({ onOpenStudy }: ProjectsProps) {
           <span className="eyebrow text-azure-700">Featured Work</span>
           <span className="h-px w-12 bg-azure-700/30" />
         </div>
-        <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+        <h2 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
           Cloud infrastructure projects.
         </h2>
-        <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-600">
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-700 font-medium">
           Hands-on cloud environments built with a focus on virtual networking, automation, and security.
         </p>
       </div>
@@ -64,48 +64,48 @@ function ProjectCard({
   return (
     <div
       ref={ref}
-      className="reveal visible group flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-6 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-azure-300 hover:shadow-md"
+      className="reveal visible group flex flex-col justify-between rounded-3xl border-2 border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-azure-400 hover:shadow-xl cursor-pointer"
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       <div>
         {/* Top bar */}
         <div className="flex items-center justify-between">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700">
-            <Icon className="h-5 w-5" />
+          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#EAF2F8] text-azure-700 transition-colors group-hover:bg-azure-700 group-hover:text-white shadow-sm">
+            <Icon className="h-7 w-7" />
           </div>
-          <span className="rounded-full bg-[#EAF2F8] px-2.5 py-0.5 text-[10px] font-semibold text-azure-700">
+          <span className="rounded-full bg-[#EAF2F8] px-3.5 py-1 text-xs font-bold text-azure-700">
             Azure Spec
           </span>
         </div>
 
         {/* Title */}
-        <h3 className="mt-5 font-display text-base font-bold text-slate-900 transition-colors duration-200 group-hover:text-azure-700">
+        <h3 className="mt-6 font-display text-xl font-extrabold text-slate-900 transition-colors duration-200 group-hover:text-azure-700">
           {study.title}
         </h3>
 
         {/* One Liner */}
-        <p className="mt-1.5 text-xs leading-relaxed text-slate-600">
+        <p className="mt-3 text-sm font-medium leading-relaxed text-slate-700">
           {study.oneLiner}
         </p>
 
         {/* Deliverables Points */}
         {study.whatIBuilt && study.whatIBuilt.length > 0 && (
-          <ul className="mt-4 space-y-1.5 border-t border-slate-100 pt-3">
+          <ul className="mt-5 space-y-2 border-t-2 border-slate-100 pt-4">
             {study.whatIBuilt.slice(0, 3).map((item, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-xs text-slate-700">
-                <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-none text-azure-700" />
-                <span className="line-clamp-1">{item}</span>
+              <li key={idx} className="flex items-start gap-3 text-sm font-medium text-slate-700">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 flex-none text-azure-700" />
+                <span className="line-clamp-2">{item}</span>
               </li>
             ))}
           </ul>
         )}
 
         {/* Tags */}
-        <div className="mt-4 flex flex-wrap gap-1.5">
+        <div className="mt-6 flex flex-wrap gap-2">
           {study.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-medium text-slate-700 hover:bg-[#EAF2F8] hover:text-azure-700 transition-colors"
+              className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-bold text-slate-700 hover:bg-[#EAF2F8] hover:text-azure-700 hover:border-azure-200 transition-colors"
             >
               {tag}
             </span>

@@ -34,28 +34,28 @@ export default function Skills() {
           <span className="eyebrow text-azure-700">Skills &amp; Tools</span>
           <span className="h-px w-12 bg-azure-700/30" />
         </div>
-        <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+        <h2 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
           Technical Skills
         </h2>
         
         {/* Compact Bulleted Layout */}
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-sm">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-10 rounded-3xl border-2 border-slate-200 bg-white p-8 sm:p-12 shadow-sm">
           {skillGroups.map((group) => {
             const GroupIcon = group.icon;
             return (
               <div key={group.title}>
-                <div className="flex items-center gap-2.5 mb-3">
-                  <div className="flex h-7 w-7 items-center justify-center rounded bg-[#EAF2F8] text-azure-700">
-                    <GroupIcon className="h-4 w-4" />
+                <div className="flex items-center gap-3.5 mb-5">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700 shadow-sm">
+                    <GroupIcon className="h-5 w-5" />
                   </div>
-                  <h3 className="font-display text-sm font-bold text-slate-900">
+                  <h3 className="font-display text-lg font-extrabold text-slate-900">
                     {group.title}
                   </h3>
                 </div>
-                <ul className="space-y-1.5 pl-9">
+                <ul className="space-y-3 pl-14">
                   {group.skills.map((skill) => (
-                    <li key={skill} className="relative text-sm text-slate-700 flex items-start">
-                      <span className="absolute left-[-16px] top-[7px] h-1.5 w-1.5 rounded-full bg-azure-500/80" />
+                    <li key={skill} className="relative text-base font-semibold text-slate-700 flex items-start">
+                      <span className="absolute left-[-20px] top-[9px] h-2 w-2 rounded-full bg-azure-500" />
                       {skill}
                     </li>
                   ))}

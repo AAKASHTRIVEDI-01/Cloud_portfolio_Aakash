@@ -27,7 +27,7 @@ export default function Hero() {
 
             {/* Name */}
             <h1
-              className="font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl animate-fade-up opacity-0 leading-tight"
+              className="font-display text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl animate-fade-up opacity-0 leading-tight"
               style={{ animationDelay: '0.15s' }}
             >
               Aakash Trivedi
@@ -35,16 +35,16 @@ export default function Hero() {
 
             {/* Professional Title with Darker, Richer Azure Highlight */}
             <h2
-              className="mt-3 text-lg font-semibold tracking-tight text-slate-800 sm:text-xl md:text-2xl animate-fade-up opacity-0"
+              className="mt-4 text-xl font-bold tracking-tight text-slate-800 sm:text-2xl md:text-3xl animate-fade-up opacity-0"
               style={{ animationDelay: '0.25s' }}
             >
-              <span className="text-azure-700 font-bold">Azure Cloud Engineer</span>{' '}
-              <span className="text-slate-600 font-medium">&amp; Infrastructure Specialist</span>
+              <span className="text-azure-700">Azure Cloud Engineer</span>{' '}
+              <span className="text-slate-700">&amp; Infrastructure Specialist</span>
             </h2>
 
             {/* Human Value Proposition */}
             <p
-              className="mt-4 max-w-xl text-sm leading-relaxed text-slate-700 sm:text-base animate-fade-up opacity-0 font-normal"
+              className="mt-5 max-w-xl text-lg leading-relaxed text-slate-700 sm:text-xl animate-fade-up opacity-0 font-medium"
               style={{ animationDelay: '0.35s' }}
             >
               Designing and administering secure, high-availability Azure cloud infrastructure with hands-on focus on
@@ -53,23 +53,23 @@ export default function Hero() {
 
             {/* Clean Microsoft Buttons with Darker Royal Azure CTA */}
             <div
-              className="mt-7 flex flex-col sm:flex-row items-center gap-3 animate-fade-up opacity-0 w-full sm:w-auto"
+              className="mt-8 flex flex-col sm:flex-row items-center gap-4 animate-fade-up opacity-0 w-full sm:w-auto"
               style={{ animationDelay: '0.45s' }}
             >
               <a
                 href="#projects"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-azure-600 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/15 transition-all duration-200 hover:bg-azure-700 hover:shadow-lg hover:shadow-blue-900/20 hover:-translate-y-0.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-azure-600 px-8 py-4 text-base font-bold text-white shadow-md shadow-blue-900/15 transition-all duration-300 hover:bg-azure-700 hover:shadow-lg hover:shadow-blue-900/20 hover:-translate-y-1"
               >
                 <span>Explore Projects</span>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-5 w-5" />
               </a>
 
               <a
                 href={resumeUrl}
                 download="Aakash_Trivedi_Resume.pdf"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-2xs transition-all duration-200 hover:bg-slate-50 hover:border-slate-400 hover:text-slate-900 hover:-translate-y-0.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-800 shadow-sm transition-all duration-300 hover:bg-slate-50 hover:border-slate-400 hover:text-slate-900 hover:-translate-y-1 hover:shadow-md"
               >
-                <FileText className="h-4 w-4 text-slate-500" />
+                <FileText className="h-5 w-5 text-slate-600" />
                 <span>Download Resume</span>
               </a>
             </div>

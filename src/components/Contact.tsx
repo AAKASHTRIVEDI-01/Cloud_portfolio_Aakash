@@ -26,28 +26,28 @@ export default function Contact() {
           <span className="h-px w-12 bg-azure-700/30" />
         </div>
 
-        <div className="mt-4 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+        <div className="mt-6 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <div>
-            <h2 className="font-display text-2xl font-bold leading-tight text-slate-900 sm:text-3xl">
+            <h2 className="font-display text-4xl font-extrabold leading-tight text-slate-900 sm:text-5xl">
               Let's connect.
             </h2>
-            <p className="mt-2 max-w-lg text-sm text-slate-600">
+            <p className="mt-4 max-w-xl text-lg font-medium text-slate-700">
               Open to discussions regarding Azure cloud infrastructure, DevOps roles, or engineering collaboration.
             </p>
           </div>
 
           <button
             onClick={copyEmail}
-            className="inline-flex items-center gap-2 self-start rounded-lg border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-2xs transition-all hover:bg-slate-50 hover:border-slate-400"
+            className="inline-flex items-center gap-2 self-start rounded-xl border-2 border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800 shadow-sm transition-all hover:bg-slate-50 hover:border-slate-400 hover:-translate-y-0.5"
           >
             {copied ? (
               <>
-                <Check className="h-3.5 w-3.5 text-emerald-600" />
+                <Check className="h-4 w-4 text-emerald-600" />
                 <span className="text-emerald-700">Copied to Clipboard!</span>
               </>
             ) : (
               <>
-                <Copy className="h-3.5 w-3.5 text-azure-700" />
+                <Copy className="h-4 w-4 text-azure-700" />
                 <span>Copy Email</span>
               </>
             )}
@@ -55,66 +55,66 @@ export default function Contact() {
         </div>
 
         {/* Contact Cards Grid */}
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-3">
           {/* Email */}
-          <div className="flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-5 shadow-xs transition-all hover:border-azure-300 hover:shadow-sm">
+          <div className="flex flex-col justify-between rounded-3xl border-2 border-slate-200 bg-white p-7 shadow-sm transition-all hover:-translate-y-1.5 hover:border-azure-400 hover:shadow-lg cursor-pointer">
             <div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700">
-                <Mail className="h-4 w-4" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700 shadow-sm">
+                <Mail className="h-6 w-6" />
               </div>
-              <h3 className="mt-4 font-display text-sm font-bold text-slate-900">Direct Email</h3>
-              <p className="mt-1 text-xs text-slate-600 break-all font-medium">{email}</p>
+              <h3 className="mt-5 font-display text-lg font-extrabold text-slate-900">Direct Email</h3>
+              <p className="mt-2 text-sm text-slate-700 break-all font-semibold">{email}</p>
             </div>
-            <div className="mt-5">
+            <div className="mt-6">
               <a
                 href={`mailto:${email}?subject=Inquiry%20-%20Cloud%20Engineering`}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-azure-700 hover:text-azure-800"
+                className="inline-flex items-center gap-2 text-sm font-bold text-azure-700 hover:text-azure-800"
               >
                 <span>Send Email</span>
-                <Send className="h-3 w-3" />
+                <Send className="h-4 w-4" />
               </a>
             </div>
           </div>
 
           {/* LinkedIn */}
-          <div className="flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-5 shadow-xs transition-all hover:border-azure-300 hover:shadow-sm">
+          <div className="flex flex-col justify-between rounded-3xl border-2 border-slate-200 bg-white p-7 shadow-sm transition-all hover:-translate-y-1.5 hover:border-azure-400 hover:shadow-lg cursor-pointer">
             <div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700">
-                <Linkedin className="h-4 w-4" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700 shadow-sm">
+                <Linkedin className="h-6 w-6" />
               </div>
-              <h3 className="mt-4 font-display text-sm font-bold text-slate-900">LinkedIn</h3>
-              <p className="mt-1 text-xs text-slate-500 font-medium">Professional network &amp; updates</p>
+              <h3 className="mt-5 font-display text-lg font-extrabold text-slate-900">LinkedIn</h3>
+              <p className="mt-2 text-sm text-slate-600 font-medium">Professional network &amp; updates</p>
             </div>
-            <div className="mt-5">
+            <div className="mt-6">
               <a
                 href="https://linkedin.com/in/aakashtrivedi1003"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-azure-700 hover:text-azure-800"
+                className="inline-flex items-center gap-1.5 text-sm font-bold text-azure-700 hover:text-azure-800"
               >
                 <span>Connect</span>
-                <ArrowUpRight className="h-3.5 w-3.5" />
+                <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
           </div>
 
           {/* Resume Download */}
-          <div className="flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-5 shadow-xs transition-all hover:border-azure-300 hover:shadow-sm">
+          <div className="flex flex-col justify-between rounded-3xl border-2 border-slate-200 bg-white p-7 shadow-sm transition-all hover:-translate-y-1.5 hover:border-azure-400 hover:shadow-lg cursor-pointer">
             <div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700">
-                <FileText className="h-4 w-4" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700 shadow-sm">
+                <FileText className="h-6 w-6" />
               </div>
-              <h3 className="mt-4 font-display text-sm font-bold text-slate-900">Curriculum Vitae</h3>
-              <p className="mt-1 text-xs text-slate-500 font-medium">Clean ATS-ready 1-page PDF</p>
+              <h3 className="mt-5 font-display text-lg font-extrabold text-slate-900">Curriculum Vitae</h3>
+              <p className="mt-2 text-sm text-slate-600 font-medium">Clean ATS-ready 1-page PDF</p>
             </div>
-            <div className="mt-5">
+            <div className="mt-6">
               <a
                 href={resumeUrl}
                 download="Aakash_Trivedi_Resume.pdf"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-azure-700 hover:text-azure-800"
+                className="inline-flex items-center gap-1.5 text-sm font-bold text-azure-700 hover:text-azure-800"
               >
                 <span>Download PDF</span>
-                <ArrowUpRight className="h-3.5 w-3.5" />
+                <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
           </div>
