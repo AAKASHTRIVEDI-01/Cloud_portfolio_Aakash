@@ -102,12 +102,12 @@ export default function About() {
                       key={idx}
                       className="group flex items-start gap-5 rounded-2xl border-2 border-slate-200 bg-white p-5 shadow-sm hover:-translate-y-1 hover:border-azure-300 hover:shadow-lg transition-all duration-300 cursor-pointer"
                     >
-                      <div className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700 transition-colors group-hover:bg-azure-700 group-hover:text-white">
+                      <div className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700 transition-colors group-hover:bg-azure-700 group-hover:text-white shadow-2xs">
                         <Icon className="h-6 w-6" />
                       </div>
                       <div>
                         <h4 className="text-base font-extrabold text-slate-900 sm:text-lg">{item.title}</h4>
-                        <p className="mt-1 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">{item.desc}</p>
+                        <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-700 sm:text-base">{item.desc}</p>
                       </div>
                     </div>
                   );
@@ -132,7 +132,7 @@ export default function About() {
                     <h3 className="mt-6 font-display text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
                       {cap.title}
                     </h3>
-                    <p className="mt-3 text-base font-medium leading-relaxed text-slate-600">
+                    <p className="mt-3 text-base font-medium leading-relaxed text-slate-700">
                       {cap.desc}
                     </p>
                   </div>

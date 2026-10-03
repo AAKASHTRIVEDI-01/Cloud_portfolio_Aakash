@@ -42,72 +42,90 @@ export default function Hero() {
               <span className="text-slate-700">&amp; Infrastructure Specialist</span>
             </h2>
 
-            {/* Human Value Proposition */}
+            {/* Human Value Proposition - Direct & Impact-Driven for Recruiters */}
             <p
               className="mt-5 max-w-xl text-lg leading-relaxed text-slate-700 sm:text-xl animate-fade-up opacity-0 font-medium"
               style={{ animationDelay: '0.35s' }}
             >
-              Designing and administering secure, high-availability Azure cloud infrastructure with hands-on focus on
-              virtual networks, Terraform automation, and continuous delivery pipelines.
+              Enterprise cloud engineer specializing in high-availability Azure architecture, automated Infrastructure as Code (Terraform), and zero-trust security.
             </p>
 
-            {/* Clean Microsoft Buttons with Darker Royal Azure CTA */}
+            {/* Recruiter Impact Stats Strip - Direct Proof of Competence */}
+            <div 
+              className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-xl animate-fade-up opacity-0"
+              style={{ animationDelay: '0.40s' }}
+            >
+              <div className="rounded-xl border border-slate-200 bg-white/95 p-3 shadow-2xs hover:border-azure-400 hover:shadow-sm transition-all">
+                <div className="text-xl font-extrabold text-azure-700">2+ Years</div>
+                <div className="text-xs font-semibold text-slate-600 mt-0.5">Azure Production</div>
+              </div>
+              <div className="rounded-xl border border-slate-200 bg-white/95 p-3 shadow-2xs hover:border-azure-400 hover:shadow-sm transition-all">
+                <div className="text-xl font-extrabold text-azure-700">20-30+</div>
+                <div className="text-xs font-semibold text-slate-600 mt-0.5">VMs Managed</div>
+              </div>
+              <div className="rounded-xl border border-slate-200 bg-white/95 p-3 shadow-2xs hover:border-azure-400 hover:shadow-sm transition-all">
+                <div className="text-xl font-extrabold text-azure-700">100%</div>
+                <div className="text-xs font-semibold text-slate-600 mt-0.5">IaC Automated</div>
+              </div>
+              <div className="rounded-xl border border-slate-200 bg-white/95 p-3 shadow-2xs hover:border-azure-400 hover:shadow-sm transition-all">
+                <div className="text-xl font-extrabold text-emerald-600">AZ-104</div>
+                <div className="text-xs font-semibold text-slate-600 mt-0.5">Verified Admin</div>
+              </div>
+            </div>
+
+            {/* Highly Interactive Action Buttons */}
             <div
               className="mt-8 flex flex-col sm:flex-row items-center gap-4 animate-fade-up opacity-0 w-full sm:w-auto"
-              style={{ animationDelay: '0.45s' }}
+              style={{ animationDelay: '0.48s' }}
             >
               <a
                 href="#projects"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-azure-600 px-8 py-4 text-base font-bold text-white shadow-md shadow-blue-900/15 transition-all duration-300 hover:bg-azure-700 hover:shadow-lg hover:shadow-blue-900/20 hover:-translate-y-1"
+                className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-azure-600 to-azure-700 px-8 py-4 text-base font-bold text-white shadow-md shadow-azure-900/20 transition-all duration-300 hover:from-azure-700 hover:to-azure-800 hover:shadow-xl hover:shadow-azure-700/25 hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] cursor-pointer"
               >
                 <span>Explore Projects</span>
-                <ArrowRight className="h-5 w-5" />
+                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
               </a>
 
               <a
                 href={resumeUrl}
                 download="Aakash_Trivedi_Resume.pdf"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-800 shadow-sm transition-all duration-300 hover:bg-slate-50 hover:border-slate-400 hover:text-slate-900 hover:-translate-y-1 hover:shadow-md"
+                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-xl border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-800 shadow-sm transition-all duration-300 hover:bg-azure-50/50 hover:border-azure-400 hover:text-azure-800 hover:-translate-y-1 hover:shadow-md active:translate-y-0 active:scale-[0.98] cursor-pointer"
               >
-                <FileText className="h-5 w-5 text-slate-600" />
+                <FileText className="h-5 w-5 text-azure-700 transition-transform duration-300 group-hover:scale-110" />
                 <span>Download Resume</span>
               </a>
             </div>
 
-            {/* Clean Social Links with Deep Azure Icons */}
+            {/* Clean Professional Social Links */}
             <div
-              className="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-slate-600 animate-fade-up opacity-0"
+              className="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs text-slate-600 animate-fade-up opacity-0"
               style={{ animationDelay: '0.55s' }}
             >
               <a
                 href="mailto:aakashtrivedi2003@gmail.com"
-                className="inline-flex items-center gap-1.5 transition-colors hover:text-azure-700 font-medium"
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white/80 px-3.5 py-1.5 font-semibold text-slate-700 shadow-2xs transition-all hover:border-azure-300 hover:bg-[#EAF2F8] hover:text-azure-700 hover:-translate-y-0.5"
               >
                 <Mail className="h-4 w-4 text-azure-700" />
                 <span>aakashtrivedi2003@gmail.com</span>
               </a>
 
-              <span className="text-slate-300">•</span>
-
               <a
                 href="https://linkedin.com/in/aakashtrivedi1003"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 transition-colors hover:text-azure-700 font-medium"
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white/80 px-3.5 py-1.5 font-semibold text-slate-700 shadow-2xs transition-all hover:border-azure-300 hover:bg-[#EAF2F8] hover:text-azure-700 hover:-translate-y-0.5"
               >
-                <Linkedin className="h-4 w-4 text-slate-600 hover:text-azure-700 transition-colors" />
+                <Linkedin className="h-4 w-4 text-azure-700" />
                 <span>LinkedIn</span>
               </a>
-
-              <span className="text-slate-300">•</span>
 
               <a
                 href="https://github.com/AAKASHTRIVEDI-01"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 transition-colors hover:text-slate-900 font-medium"
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white/80 px-3.5 py-1.5 font-semibold text-slate-700 shadow-2xs transition-all hover:border-slate-400 hover:bg-slate-100 hover:text-slate-900 hover:-translate-y-0.5"
               >
-                <Github className="h-4 w-4 text-slate-600 hover:text-slate-900 transition-colors" />
+                <Github className="h-4 w-4 text-slate-700" />
                 <span>GitHub</span>
               </a>
             </div>

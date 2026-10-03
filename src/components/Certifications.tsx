@@ -80,7 +80,7 @@ export default function Certifications() {
   const awsCert = CERTS[1];
 
   return (
-    <section id="certifications" className="relative bg-[#DCEEF8]/60 py-16 sm:py-20 border-y border-blue-100/80">
+    <section id="certifications" className="relative bg-slate-100/70 py-16 sm:py-20 border-y border-slate-200/90">
       <div className="mx-auto max-w-5xl px-6">
         {/* Section Header */}
         <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
@@ -99,66 +99,66 @@ export default function Certifications() {
         {/* Main Showcase */}
         <div className="mt-8 grid gap-6 lg:grid-cols-12">
           {/* Primary Credential (7 cols) - Crisp White Card */}
-          <div className="lg:col-span-7 flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm transition-all hover:shadow-md">
+          <div className="lg:col-span-7 flex flex-col justify-between rounded-3xl border-2 border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-azure-400">
             <div>
-              <div className="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
-                <div className="flex items-start gap-3.5">
-                  <div className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700">
-                    <Award className="h-6 w-6" />
+              <div className="flex items-start justify-between gap-4 border-b-2 border-slate-100 pb-5">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-14 w-14 flex-none items-center justify-center rounded-2xl bg-[#EAF2F8] text-azure-700 shadow-sm">
+                    <Award className="h-7 w-7" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-azure-700">
+                      <span className="text-sm font-extrabold text-azure-700">
                         {primaryCert.code}
                       </span>
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-700 border border-emerald-200">
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700 border-2 border-emerald-200">
+                        <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                         {primaryCert.status}
                       </span>
                     </div>
-                    <h3 className="mt-1 font-display text-base sm:text-lg font-bold text-slate-900">
+                    <h3 className="mt-2 font-display text-xl font-extrabold text-slate-900">
                       {primaryCert.name}
                     </h3>
-                    <p className="text-xs text-slate-500 font-medium">Issued by {primaryCert.issuer}</p>
+                    <p className="text-sm text-slate-600 font-semibold mt-0.5">Issued by {primaryCert.issuer}</p>
                   </div>
                 </div>
               </div>
 
-              {/* Credential Details (Clean typography, NO font-mono) */}
-              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 rounded-xl bg-[#F8FAFC] border border-slate-100 p-3 text-xs">
+              {/* Credential Details */}
+              <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 rounded-2xl bg-[#F8FAFC] border-2 border-slate-200/80 p-4 text-xs">
                 <div>
-                  <span className="text-[10px] text-slate-500 block font-semibold uppercase">Credential ID</span>
-                  <span className="text-slate-800 text-xs font-bold">{primaryCert.credentialId}</span>
+                  <span className="text-[11px] text-slate-500 block font-bold uppercase tracking-wider">Credential ID</span>
+                  <span className="text-slate-900 text-sm font-extrabold mt-0.5 block">{primaryCert.credentialId}</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-500 block font-semibold uppercase">Verification</span>
-                  <span className="text-emerald-700 text-xs font-semibold inline-flex items-center gap-1">
-                    <CheckCircle2 className="h-3 w-3 text-emerald-600" /> Microsoft Verified
+                  <span className="text-[11px] text-slate-500 block font-bold uppercase tracking-wider">Verification</span>
+                  <span className="text-emerald-700 text-sm font-bold inline-flex items-center gap-1.5 mt-0.5">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-600" /> Microsoft Verified
                   </span>
                 </div>
                 <div className="col-span-2 sm:col-span-1">
-                  <span className="text-[10px] text-slate-500 block font-semibold uppercase">Issue Date</span>
-                  <span className="text-slate-700 text-xs font-medium">{primaryCert.issueDate}</span>
+                  <span className="text-[11px] text-slate-500 block font-bold uppercase tracking-wider">Issue Date</span>
+                  <span className="text-slate-800 text-sm font-semibold mt-0.5 block">{primaryCert.issueDate}</span>
                 </div>
               </div>
 
               {/* Core Competencies (Human & Clean) */}
-              <div className="mt-5 space-y-2.5">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700">
+              <div className="mt-6 space-y-3">
+                <h4 className="text-xs font-extrabold uppercase tracking-widest text-slate-600">
                   Key Competencies Validated:
                 </h4>
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   {CORE_DOMAINS.map((domain) => {
                     const DomainIcon = domain.icon;
                     return (
                       <div
                         key={domain.title}
-                        className="flex items-start gap-2.5 rounded-lg p-2 transition-colors hover:bg-slate-50"
+                        className="flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-slate-50 border border-transparent hover:border-slate-200"
                       >
-                        <DomainIcon className="h-4 w-4 text-azure-700 flex-none mt-0.5" />
+                        <DomainIcon className="h-5 w-5 text-azure-700 flex-none mt-0.5" />
                         <div>
-                          <div className="text-xs font-bold text-slate-900">{domain.title}</div>
-                          <p className="text-[11px] text-slate-600 leading-relaxed">{domain.desc}</p>
+                          <div className="text-sm font-bold text-slate-900">{domain.title}</div>
+                          <p className="text-xs text-slate-700 font-medium leading-relaxed mt-0.5">{domain.desc}</p>
                         </div>
                       </div>
                     );
@@ -168,26 +168,26 @@ export default function Certifications() {
             </div>
 
             {/* Action Button */}
-            <div className="mt-5 border-t border-slate-100 pt-4 flex justify-end">
+            <div className="mt-6 border-t-2 border-slate-100 pt-5 flex justify-end">
               <button
                 type="button"
                 onClick={() => setSelectedCert(primaryCert)}
-                className="inline-flex items-center gap-2 rounded-lg bg-azure-600 px-5 py-2.5 text-xs font-semibold text-white shadow-xs transition-all hover:bg-azure-700"
+                className="inline-flex items-center gap-2.5 rounded-xl bg-azure-600 px-6 py-3 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:bg-azure-700 hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.98] cursor-pointer"
               >
-                <Eye className="h-3.5 w-3.5" />
+                <Eye className="h-4 w-4" />
                 <span>View Full Certificate</span>
               </button>
             </div>
           </div>
 
           {/* Right Column: Preview & AWS Badge (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
+          <div className="lg:col-span-5 flex flex-col gap-6">
             {/* Certificate Image Preview */}
             <div
               onClick={() => setSelectedCert(primaryCert)}
-              className="group cursor-pointer overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-3 shadow-sm transition-all hover:border-azure-400 hover:shadow-md"
+              className="group cursor-pointer overflow-hidden rounded-3xl border-2 border-slate-200 bg-white p-4 shadow-sm transition-all duration-300 hover:border-azure-400 hover:shadow-xl hover:-translate-y-1"
             >
-              <div className="relative overflow-hidden rounded-xl border border-slate-100 bg-slate-100">
+              <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-100">
                 <img
                   src={primaryCert.image}
                   alt={`${primaryCert.code} Certificate`}
@@ -195,31 +195,31 @@ export default function Certifications() {
                   loading="lazy"
                 />
               </div>
-              <div className="mt-2.5 flex items-center justify-center gap-1.5 text-xs font-semibold text-slate-600 group-hover:text-azure-700 transition-colors">
-                <Eye className="h-3.5 w-3.5" />
+              <div className="mt-3.5 flex items-center justify-center gap-2 text-sm font-bold text-slate-700 group-hover:text-azure-700 transition-colors">
+                <Eye className="h-4 w-4" />
                 <span>Click to view certificate</span>
               </div>
             </div>
 
             {/* AWS Badge Card */}
-            <div className="rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm flex items-center gap-4">
+            <div className="rounded-3xl border-2 border-slate-200 bg-white p-6 shadow-sm flex items-center gap-5 transition-all duration-300 hover:shadow-lg hover:border-azure-300 hover:-translate-y-1">
               <img
                 src={awsCert.image}
                 alt="AWS Academy Badge"
-                className="h-16 w-16 object-contain flex-none cursor-pointer transition-transform hover:scale-105"
+                className="h-20 w-20 object-contain flex-none cursor-pointer transition-transform hover:scale-105"
                 onClick={() => setSelectedCert(awsCert)}
               />
               <div>
-                <div className="text-xs font-bold text-slate-900">AWS Academy Cloud Foundations</div>
-                <p className="text-[11px] text-slate-600 leading-relaxed mt-0.5">
+                <div className="text-base font-extrabold text-slate-900">AWS Academy Cloud Foundations</div>
+                <p className="text-xs text-slate-600 font-medium leading-relaxed mt-1">
                   Foundational multi-cloud concepts, compute, storage, and security architectures.
                 </p>
                 <button
                   type="button"
                   onClick={() => setSelectedCert(awsCert)}
-                  className="mt-2 text-xs font-semibold text-azure-700 hover:text-azure-800 inline-flex items-center gap-1"
+                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-azure-700 hover:text-azure-900 transition-colors cursor-pointer"
                 >
-                  <span>View Badge</span>
+                  <span>View Accreditation Badge</span>
                   <span>→</span>
                 </button>
               </div>

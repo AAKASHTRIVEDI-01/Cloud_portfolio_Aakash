@@ -113,14 +113,14 @@ function ProjectCard({
         </div>
       </div>
 
-      {/* Button */}
-      <div className="mt-5 border-t border-slate-100 pt-3.5">
+      {/* Highly Interactive Button */}
+      <div className="mt-6 border-t-2 border-slate-100 pt-5">
         <button
           onClick={() => onOpen(study)}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-azure-700 transition-all duration-200 hover:text-azure-800"
+          className="group/btn w-full inline-flex items-center justify-center gap-2 rounded-xl bg-azure-50/80 border-2 border-azure-200/80 px-4 py-3 text-sm font-bold text-azure-700 transition-all duration-300 hover:bg-azure-600 hover:text-white hover:border-azure-600 hover:shadow-md active:scale-[0.98] cursor-pointer"
         >
-          <span>View Details</span>
-          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+          <span>View Architecture Details</span>
+          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1.5" />
         </button>
       </div>
     </div>

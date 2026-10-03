@@ -68,7 +68,7 @@ export default function Contact() {
             <div className="mt-6">
               <a
                 href={`mailto:${email}?subject=Inquiry%20-%20Cloud%20Engineering`}
-                className="inline-flex items-center gap-2 text-sm font-bold text-azure-700 hover:text-azure-800"
+                className="inline-flex items-center gap-2 rounded-xl bg-azure-50/90 border border-azure-200/90 px-4 py-2.5 text-sm font-bold text-azure-700 transition-all duration-200 hover:bg-azure-600 hover:text-white hover:border-azure-600 hover:shadow-md active:scale-[0.98] cursor-pointer"
               >
                 <span>Send Email</span>
                 <Send className="h-4 w-4" />
@@ -90,9 +90,9 @@ export default function Contact() {
                 href="https://linkedin.com/in/aakashtrivedi1003"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-bold text-azure-700 hover:text-azure-800"
+                className="inline-flex items-center gap-2 rounded-xl bg-azure-50/90 border border-azure-200/90 px-4 py-2.5 text-sm font-bold text-azure-700 transition-all duration-200 hover:bg-azure-600 hover:text-white hover:border-azure-600 hover:shadow-md active:scale-[0.98] cursor-pointer"
               >
-                <span>Connect</span>
+                <span>Connect on LinkedIn</span>
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
@@ -111,9 +111,9 @@ export default function Contact() {
               <a
                 href={resumeUrl}
                 download="Aakash_Trivedi_Resume.pdf"
-                className="inline-flex items-center gap-1.5 text-sm font-bold text-azure-700 hover:text-azure-800"
+                className="inline-flex items-center gap-2 rounded-xl bg-azure-50/90 border border-azure-200/90 px-4 py-2.5 text-sm font-bold text-azure-700 transition-all duration-200 hover:bg-azure-600 hover:text-white hover:border-azure-600 hover:shadow-md active:scale-[0.98] cursor-pointer"
               >
-                <span>Download PDF</span>
+                <span>Download PDF Resume</span>
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>

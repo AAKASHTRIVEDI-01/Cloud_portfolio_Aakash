@@ -1,5 +1,4 @@
 import React from 'react';
-import waveImage from '../assets/azure-waves.png';
 
 export default function WaveBackground() {
   return (
@@ -7,92 +6,141 @@ export default function WaveBackground() {
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden select-none"
       aria-hidden="true"
     >
-      {/* Soft Ambient Azure Highlights - Extremely subtle for professional look */}
+      {/* 1. Atmospheric Ambient Azure Glows - Ultra-clean radial falloffs */}
       <div 
-        className="absolute -top-24 right-[-5%] h-[550px] w-[650px] rounded-full bg-azure-400/5 blur-[100px] animate-wave-pulse"
+        className="absolute -top-32 right-[-5%] h-[600px] w-[600px] rounded-full bg-gradient-to-br from-azure-400/12 via-azure-500/8 to-transparent blur-[120px] transform-gpu pointer-events-none"
       />
       <div 
-        className="absolute top-[40%] -left-[10%] h-[500px] w-[600px] rounded-full bg-cyan-400/5 blur-[100px] animate-wave-reverse"
+        className="absolute top-[35%] -left-[10%] h-[550px] w-[550px] rounded-full bg-gradient-to-tr from-cyan-400/10 via-azure-600/6 to-transparent blur-[120px] transform-gpu pointer-events-none"
+      />
+      <div 
+        className="absolute bottom-[5%] right-[5%] h-[500px] w-[500px] rounded-full bg-gradient-to-tl from-azure-500/10 via-blue-400/5 to-transparent blur-[100px] transform-gpu pointer-events-none"
       />
 
-      {/* Layer 1: Elegant SVG Wave Ribbons */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden opacity-25">
-        <svg
-          className="absolute w-[160%] lg:w-[125%] h-auto top-[4%] -left-[10%] animate-wave-slow mix-blend-multiply"
-          viewBox="0 0 1440 600"
+      {/* 2. Modern Architectural Blueprint Dot Grid */}
+      <svg 
+        className="absolute inset-0 h-full w-full opacity-[0.45]"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern 
+            id="tech-blueprint-grid" 
+            width="48" 
+            height="48" 
+            patternUnits="userSpaceOnUse"
+          >
+            {/* Subtle dot at intersection */}
+            <circle cx="24" cy="24" r="1" fill="#0078D4" fillOpacity="0.25" />
+            {/* Fine crosshair accents at major intervals */}
+            <path 
+              d="M 24 21 L 24 27 M 21 24 L 27 24" 
+              stroke="#0078D4" 
+              strokeWidth="0.5" 
+              strokeOpacity="0.18" 
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#tech-blueprint-grid)" />
+      </svg>
+
+      {/* 3. Modern Cloud Network Topology & Circuit Routing Traces (Crisp SVG) */}
+      <svg
+        className="absolute inset-0 h-full w-full opacity-40"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        viewBox="0 0 1600 1200"
+      >
+        <defs>
+          <linearGradient id="cloudPulseGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#0078D4" stopOpacity="0" />
+            <stop offset="50%" stopColor="#0078D4" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#38BDF8" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="cloudPulseGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#005A9E" stopOpacity="0.1" />
+            <stop offset="60%" stopColor="#0078D4" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#38BDF8" stopOpacity="0.1" />
+          </linearGradient>
+        </defs>
+
+        {/* Network Trunk 1: Top-Right to Center-Left */}
+        <g className="transition-opacity duration-1000">
+          <path
+            d="M 1600 180 L 1150 180 L 980 320 L 620 320 L 520 420 L 100 420"
+            fill="none"
+            stroke="#0078D4"
+            strokeWidth="1.2"
+            strokeOpacity="0.16"
+            strokeDasharray="6 6"
+          />
+          {/* Animated Flowing Packet */}
+          <path
+            d="M 1600 180 L 1150 180 L 980 320 L 620 320 L 520 420 L 100 420"
+            fill="none"
+            stroke="url(#cloudPulseGrad1)"
+            strokeWidth="2.5"
+            strokeDasharray="80 800"
+            className="animate-dash"
+          />
+          {/* Topology Node Junctions */}
+          <circle cx="1150" cy="180" r="3.5" fill="#0078D4" fillOpacity="0.3" stroke="#0078D4" strokeWidth="1" />
+          <circle cx="980" cy="320" r="3.5" fill="#0078D4" fillOpacity="0.3" stroke="#0078D4" strokeWidth="1" />
+          <circle cx="620" cy="320" r="3.5" fill="#0078D4" fillOpacity="0.3" stroke="#0078D4" strokeWidth="1" />
+          <circle cx="520" cy="420" r="4" fill="#005A9E" fillOpacity="0.4" stroke="#0078D4" strokeWidth="1.5" />
+        </g>
+
+        {/* Network Trunk 2: Left Side Cloud Routing Bus */}
+        <g>
+          <path
+            d="M 0 680 L 280 680 L 420 800 L 780 800 L 920 940 L 1600 940"
+            fill="none"
+            stroke="#005A9E"
+            strokeWidth="1.2"
+            strokeOpacity="0.14"
+            strokeDasharray="4 8"
+          />
+          {/* Animated Flowing Packet */}
+          <path
+            d="M 0 680 L 280 680 L 420 800 L 780 800 L 920 940 L 1600 940"
+            fill="none"
+            stroke="url(#cloudPulseGrad1)"
+            strokeWidth="2.5"
+            strokeDasharray="100 1000"
+            className="animate-dash-reverse"
+          />
+          {/* Topology Node Junctions */}
+          <circle cx="280" cy="680" r="3.5" fill="#0078D4" fillOpacity="0.3" stroke="#0078D4" strokeWidth="1" />
+          <circle cx="420" cy="800" r="3.5" fill="#0078D4" fillOpacity="0.3" stroke="#0078D4" strokeWidth="1" />
+          <circle cx="780" cy="800" r="4" fill="#0078D4" fillOpacity="0.4" stroke="#0078D4" strokeWidth="1.5" />
+          <circle cx="920" cy="940" r="3.5" fill="#0078D4" fillOpacity="0.3" stroke="#0078D4" strokeWidth="1" />
+        </g>
+
+        {/* Secondary Delicate Circuit Accents */}
+        <path
+          d="M 1250 0 L 1250 140 L 1380 270 L 1600 270"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#0078D4" stopOpacity="0.22" />
-              <stop offset="40%" stopColor="#3D91CB" stopOpacity="0.28" />
-              <stop offset="75%" stopColor="#005A9E" stopOpacity="0.24" />
-              <stop offset="100%" stopColor="#84BBE0" stopOpacity="0.12" />
-            </linearGradient>
-            <linearGradient id="waveGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#00A4EF" stopOpacity="0.18" />
-              <stop offset="50%" stopColor="#005A9E" stopOpacity="0.26" />
-              <stop offset="100%" stopColor="#3D91CB" stopOpacity="0.18" />
-            </linearGradient>
-            <linearGradient id="waveGrad3" x1="0%" y1="50%" x2="100%" y2="50%">
-              <stop offset="0%" stopColor="#0078D4" stopOpacity="0.10" />
-              <stop offset="35%" stopColor="#005A9E" stopOpacity="0.20" />
-              <stop offset="70%" stopColor="#38BDF8" stopOpacity="0.16" />
-              <stop offset="100%" stopColor="#0284C7" stopOpacity="0.08" />
-            </linearGradient>
-          </defs>
+          stroke="#0078D4"
+          strokeWidth="1"
+          strokeOpacity="0.12"
+        />
+        <circle cx="1250" cy="140" r="2.5" fill="#0078D4" fillOpacity="0.35" />
+        <circle cx="1380" cy="270" r="2.5" fill="#0078D4" fillOpacity="0.35" />
 
-          {/* Ribbon Path 1 */}
-          <path
-            d="M-50 220 C 220 100, 480 320, 780 180 C 1080 50, 1320 260, 1550 150 L 1550 380 C 1320 460, 1060 290, 760 370 C 460 450, 190 280, -50 390 Z"
-            fill="url(#waveGrad1)"
-          />
+        <path
+          d="M 180 1200 L 180 1050 L 320 910 L 480 910"
+          fill="none"
+          stroke="#0078D4"
+          strokeWidth="1"
+          strokeOpacity="0.12"
+        />
+        <circle cx="180" cy="1050" r="2.5" fill="#0078D4" fillOpacity="0.35" />
+        <circle cx="320" cy="910" r="2.5" fill="#0078D4" fillOpacity="0.35" />
+      </svg>
 
-          {/* Ribbon Path 2 */}
-          <path
-            d="M-50 300 C 260 190, 520 390, 840 260 C 1140 120, 1360 320, 1550 230 L 1550 450 C 1340 520, 1090 350, 800 430 C 510 510, 220 350, -50 460 Z"
-            fill="url(#waveGrad2)"
-          />
-
-          {/* Ribbon Path 3 (Delicate highlight veil) */}
-          <path
-            d="M-50 160 C 300 70, 600 260, 920 140 C 1220 20, 1400 200, 1550 110 L 1550 290 C 1380 350, 1180 210, 880 290 C 580 380, 260 220, -50 310 Z"
-            fill="url(#waveGrad3)"
-          />
-        </svg>
-      </div>
-
-      {/* Layer 2: The User's Exact Wave Ribbon Graphic */}
-      <div className="absolute top-[2%] left-0 right-0 w-full flex justify-center items-center opacity-35 mix-blend-multiply pointer-events-none">
-        <div className="relative w-full max-w-[1700px] animate-wave-drift">
-          <img
-            src={waveImage}
-            alt=""
-            className="w-full h-auto object-cover max-h-[560px] select-none filter blur-[0.5px]"
-            style={{
-              maskImage: 'radial-gradient(ellipse 95% 80% at 50% 50%, black 60%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 95% 80% at 50% 50%, black 60%, transparent 100%)'
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Layer 3: Secondary Counter-Wave */}
-      <div className="absolute top-[52%] left-0 right-0 w-full flex justify-center items-center opacity-20 mix-blend-multiply pointer-events-none">
-        <div className="relative w-full max-w-[1800px] animate-wave-reverse">
-          <img
-            src={waveImage}
-            alt=""
-            className="w-full h-auto object-cover max-h-[440px] select-none transform -scale-x-100 filter blur-[0.8px]"
-            style={{
-              maskImage: 'radial-gradient(ellipse 90% 75% at 50% 50%, black 50%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 90% 75% at 50% 50%, black 50%, transparent 100%)'
-            }}
-          />
-        </div>
-      </div>
+      {/* 4. Fine Horizon Tech Grid Floor Accent (Extremely subtle) */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-azure-50/50 via-transparent to-transparent pointer-events-none"
+      />
     </div>
   );
 }
