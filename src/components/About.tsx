@@ -84,30 +84,30 @@ export default function About() {
           {/* Left Column: Narrative & Key Strengths (6 cols) */}
           <div className="lg:col-span-6 flex flex-col justify-between">
             <div>
-              <h2 className="font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
+              <h2 className="font-display text-4xl font-extrabold leading-tight text-slate-900 sm:text-5xl lg:text-6xl tracking-tight">
                 Architecting stable, secure, and automated cloud platforms.
               </h2>
-              <p className="mt-5 text-base leading-relaxed text-slate-700">
+              <p className="mt-6 text-lg leading-relaxed text-slate-700 sm:text-xl font-medium">
                 I am an Azure Cloud &amp; DevOps Engineer dedicated to maintaining high-availability cloud
                 infrastructure. I combine hands-on infrastructure administration with modern Infrastructure as Code
                 practices to keep enterprise systems secure, compliant, and easy to scale.
               </p>
 
               {/* Clean Highlight Items (White cards, soft borders) */}
-              <div className="mt-6 space-y-4">
+              <div className="mt-8 space-y-4">
                 {HIGHLIGHTS.map((item, idx) => {
                   const Icon = item.icon;
                   return (
                     <div
                       key={idx}
-                      className="group flex items-start gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300"
+                      className="group flex items-start gap-5 rounded-2xl border-2 border-slate-200 bg-white p-5 shadow-sm hover:-translate-y-1 hover:border-azure-300 hover:shadow-lg transition-all duration-300 cursor-pointer"
                     >
-                      <div className="flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-[#EAF2F8] text-azure-700 transition-colors group-hover:bg-azure-700 group-hover:text-white">
-                        <Icon className="h-5 w-5" />
+                      <div className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700 transition-colors group-hover:bg-azure-700 group-hover:text-white">
+                        <Icon className="h-6 w-6" />
                       </div>
                       <div>
-                        <h4 className="text-sm font-bold text-slate-900 sm:text-base">{item.title}</h4>
-                        <p className="mt-1 text-sm leading-relaxed text-slate-700">{item.desc}</p>
+                        <h4 className="text-base font-extrabold text-slate-900 sm:text-lg">{item.title}</h4>
+                        <p className="mt-1 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">{item.desc}</p>
                       </div>
                     </div>
                   );
@@ -117,22 +117,22 @@ export default function About() {
           </div>
 
           {/* Right Column: 4 Capability Cards (6 cols) */}
-          <div className="lg:col-span-6 grid gap-5 sm:grid-cols-2">
+          <div className="lg:col-span-6 grid gap-6 sm:grid-cols-2">
             {CAPABILITIES.map((cap) => {
               const Icon = cap.icon;
               return (
                 <div
                   key={cap.title}
-                  className="group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300"
+                  className="group flex flex-col justify-between rounded-3xl border-2 border-slate-200 bg-white p-6 shadow-sm hover:-translate-y-2 hover:border-azure-400 hover:shadow-xl transition-all duration-300 cursor-pointer"
                 >
                   <div>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#EAF2F8] text-azure-700 transition-colors group-hover:bg-azure-700 group-hover:text-white">
-                      <Icon className="h-6 w-6" />
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#EAF2F8] text-azure-700 transition-colors group-hover:bg-azure-700 group-hover:text-white shadow-sm">
+                      <Icon className="h-7 w-7" />
                     </div>
-                    <h3 className="mt-5 font-display text-base sm:text-lg font-bold text-slate-900">
+                    <h3 className="mt-6 font-display text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
                       {cap.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                    <p className="mt-3 text-base font-medium leading-relaxed text-slate-600">
                       {cap.desc}
                     </p>
                   </div>
@@ -143,14 +143,14 @@ export default function About() {
         </div>
 
         {/* Clean Tech Stack Row */}
-        <div className="mt-12 flex flex-wrap items-center gap-3 border-t border-slate-200 pt-6">
-          <span className="text-sm font-semibold text-slate-700 mr-2">
+        <div className="mt-14 flex flex-wrap items-center gap-4 border-t-2 border-slate-200 pt-8">
+          <span className="text-base font-extrabold uppercase tracking-widest text-slate-500 mr-2">
             Core Technologies:
           </span>
           {CORE_STACK.map((tech) => (
             <span
               key={tech}
-              className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 shadow-sm transition-all hover:-translate-y-0.5 hover:border-azure-400 hover:bg-[#EAF2F8] hover:text-azure-700 hover:shadow-md cursor-pointer"
+              className="rounded-full border-2 border-slate-200 bg-white px-5 py-2.5 text-base font-bold text-slate-800 shadow-sm transition-all hover:-translate-y-1 hover:border-azure-500 hover:bg-[#EAF2F8] hover:text-azure-800 hover:shadow-md cursor-pointer"
             >
               {tech}
             </span>
